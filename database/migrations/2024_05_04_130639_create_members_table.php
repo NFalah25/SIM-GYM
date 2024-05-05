@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('members', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('tinggi_badan');
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->enum('jenis_kelamin', ['L', 'P']);
             $table->string('alamat');
             $table->string('no_hp');
+            $table->date('birth_date');
             $table->string('photo')->nullable();
         });
     }

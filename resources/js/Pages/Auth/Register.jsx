@@ -7,6 +7,7 @@ function Register({logo}) {
         email: '',
         name: '',
         password: '',
+        password_confirmation: '',
         first_name: '',
         last_name: '',
         address: '',
@@ -20,7 +21,7 @@ function Register({logo}) {
 
     function submit(e) {
         e.preventDefault()
-        post('/Register')
+        post('/register')
     }
 
     return (
@@ -71,30 +72,36 @@ function Register({logo}) {
                                 {errors.password && <div className={'text-red-700 text-sm'}>{errors.password}</div>}
                             </div>
                             <div className={'w-1/2 ps-2'}>
-                                <Label value={'Konfirmasi Password'} htmlFor={'password'}/>
-                                <Input type={'password'} name={'password'} id={'password'} value={data.password}
-                                       onChange={(e) => setData('password', e.target.value)}/>
-                                {errors.password && <div className={'text-red-700 text-sm'}>{errors.password}</div>}
+                                <Label value={'Konfirmasi Password'} htmlFor={'password_confirmation'}/>
+                                <Input type={'password'} name={'password_confirmation'} id={'password_confirmation'} value={data.password_confirmation}
+                                       onChange={(e) => setData('password_confirmation', e.target.value)}/>
+                                {errors.password_confirmation && <div className={'text-red-700 text-sm'}>{errors.password_confirmation}</div>}
                             </div>
                         </div>
                         <div>
                             <div className={'mb-3'}>
                                 <h1 className={'text-2xl font-bold'}>Informasi Pribadi</h1>
                             </div>
-                            <div className={'flex mb-4'}>
-                                <div className={'w-1/2 pe-2'}>
+                                <div className={'w-full mb-4'}>
                                     <Label value={'Alamat'} htmlFor={'address'}/>
                                     <Input type={'text'} name={'address'} id={'address'} value={data.address}
                                            onChange={(e) => setData('address', e.target.value)}/>
                                     {errors.address && <div className={'text-red-700 text-sm '}>{errors.address}</div>}
                                 </div>
-                                <div className={'w-1/2 ps-2'}>
+                            <div className={'flex mb-4'}>
+                                <div className={'w-1/2 pe-2'}>
                                     <Label value={'Nomor Telepon'} htmlFor={'phone_number'}/>
-                                    <Input type={'text'} name={'phone_number'} id={'phone_number'}
+                                    <Input type={'number'} name={'phone_number'} id={'phone_number'}
                                            value={data.phone_number}
                                            onChange={(e) => setData('phone_number', e.target.value)}/>
                                     {errors.phone_number &&
                                         <div className={'text-red-700 text-sm '}>{errors.phone_number}</div>}
+                                </div>
+                                <div className={'ps-2 w-1/2'}>
+                                    <Label value={'Tanggal Lahir'} htmlFor={'date'}/>
+                                    <Input type={'date'} name={'date'} id={'date'} value={data.date}
+                                           onChange={(e) => setData('date', e.target.value)}/>
+                                    {errors.date && <div className={'text-red-700 text-sm'}>{errors.date}</div>}
                                 </div>
                             </div>
                         </div>
@@ -104,7 +111,7 @@ function Register({logo}) {
                                 <div
                                     className={'mt-1 flex items-center w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'}>
                                     <input className={'border-r-4 border-none rounded-md focus:ring-primary'}
-                                           type={'text'} name={'height'} id={'height'} value={data.height}
+                                           type={'number'} name={'height'} id={'height'} value={data.height}
                                            onChange={(e) => setData('height', e.target.value)}/>
 
                                     <h6 className={'ms-1 border-l-2 text-center w-full'}>Cm</h6>
@@ -118,13 +125,13 @@ function Register({logo}) {
                                     className={'mt-1 flex items-center w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'}>
 
                                     <input className={'border-r-4 border-none rounded-md focus:ring-primary'}
-                                           type={'text'} name={'weight'} id={'weight'} value={data.weight}
+                                           type={'number'} name={'weight'} id={'weight'} value={data.weight}
                                            onChange={(e) => setData('weight', e.target.value)}/>
                                     <h6 className={'ms-1 border-l-2 text-center w-full'}>Kg</h6>
                                 </div>
                                 {errors.weight && <div className={'text-red-700 text-sm '}>{errors.weight}</div>}
                             </div>
-                            <div className={'w-1/3 pe-2'}>
+                            <div className={'w-1/3'}>
                                 <Label value={'Jenis Kelamin'} htmlFor={'gender'}/>
                                 <select className="mt-1 p-2 border-slate-300 rounded-md w-full" name={'gender'}
                                         id={'name'}
@@ -135,10 +142,11 @@ function Register({logo}) {
                                 </select>
                                 {errors.gender && <div className={'text-red-700 text-sm'}>{errors.gender}</div>}
                             </div>
+
                         </div>
                         <div className={'mb-6'}>
                             <button type="submit"
-                                    className={'w-full bg-primary text-white p-2 rounded-lg hover:bg-hover-primary'}>Login
+                                    className={'w-full bg-primary text-white p-2 rounded-lg hover:bg-hover-primary'}>Register
                             </button>
                         </div>
                     </form>

@@ -59,5 +59,29 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetPasswordView(function () {
             return Inertia::render('Auth/ResetPassword');
         });
+
+        Fortify::verifyEmailView(function () {
+            return Inertia::render('Auth/VerifyEmail',[
+                'status'=> session('status'),
+                'logo'=>asset('assets/img/Logo.png')
+            ]);
+        });
+
+        Fortify::requestPasswordResetLinkView(function () {
+            return Inertia::render('Auth/ForgotPassword',[
+                'status'=> session('status'),
+                'logo'=>asset('assets/img/Logo.png')
+            ]);
+        });
+
+        Fortify::resetPasswordView(function (Request $request) {
+//            dd($request);
+            return Inertia::render('Auth/ResetPassword', [
+                'request' => $request,
+                'token'=>$request->route('token'),
+                'logo'=>asset('assets/img/Logo.png')
+            ]);
+        });
+
     }
 }
