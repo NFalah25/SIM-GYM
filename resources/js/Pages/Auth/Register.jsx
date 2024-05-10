@@ -26,7 +26,7 @@ function Register({logo}) {
 
     return (
         <>
-            <div className={'w-full h-[100vh] px-10 bg-slate-100 flex flex-col items-center justify-center'}>
+            <div className={'w-full px-10 bg-slate-100 flex flex-col items-center justify-center'}>
                 <Head title={'Register'}/>
                 <div className={'w-[15rem]'}>
                     <img src={logo} alt=""/>
@@ -150,6 +150,11 @@ function Register({logo}) {
                             </button>
                         </div>
                     </form>
+                </div>
+                <div className="my-8">
+                    <p className={'text-gray-700'}>Sudah punya akun? <Link href={route('login')}
+                                                                         className={'text-primary hover:text-black'}>Login</Link>
+                    </p>
                 </div>
 
             </div>

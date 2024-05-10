@@ -15,7 +15,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    return Inertia::render('Dashboard');
+    return Inertia::render('Dashboard',[
+        'user' => auth()->user()->member()->first()->first_name,
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');;
 
 //Route::get('/dashboard', function () {

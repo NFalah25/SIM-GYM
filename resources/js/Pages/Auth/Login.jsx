@@ -15,7 +15,7 @@ function Login({logo}) {
     }
 
     return (
-        <div className={'w-full h-[100vh] bg-slate-100 flex flex-col items-center'}>
+        <div className={'w-full min-h-[100vh] bg-slate-100 flex flex-col items-center'}>
             <Head title={'Login'}/>
             <div className={'w-[20rem]'}>
                 <img src={logo} alt=""/>
@@ -54,6 +54,11 @@ function Login({logo}) {
                         </button>
                     </div>
                 </form>
+            </div>
+            <div className='mt-8'>
+                <p className={'text-gray-700'}>Tidak punya akun? <Link href={route('register')}
+                                                                         className={'text-primary hover:text-black'}>Register</Link>
+                </p>
             </div>
 
         </div>
