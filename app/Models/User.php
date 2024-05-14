@@ -21,6 +21,14 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'first_name',
+        'last_name',
+        'phone_number',
+        'address',
+        'height',
+        'weight',
+        'gender',
+        'photo',
     ];
 
     /**
@@ -46,8 +54,4 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    public function member(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasOne(Member::class);
-    }
 }

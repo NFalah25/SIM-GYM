@@ -134,7 +134,7 @@ function Register({logo}) {
                             <div className={'w-1/3'}>
                                 <Label value={'Jenis Kelamin'} htmlFor={'gender'}/>
                                 <select className="mt-1 p-2 border-slate-300 rounded-md w-full" name={'gender'}
-                                        id={'name'}
+                                        id={'gender'}
                                         value={data.gender} onChange={(e) => setData('gender', e.target.value)}>
                                     <option>Pilih Jenis Kelamin</option>
                                     <option value={'L'}>Laki-Laki</option>
