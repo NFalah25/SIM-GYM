@@ -59,7 +59,7 @@ function Login({logo}) {
                 </div>
                 <div className='mt-8'>
                     <p className={'text-gray-300'}>Tidak punya akun? <Link href={route('register')}
-                                                                           className={'text-[#84CC16] hover:text-black'}>Register</Link>
+                                                                           className={'text-[#84CC16] hover:text-lime-700'}>Register</Link>
                     </p>
                 </div>
 
