@@ -46,7 +46,7 @@ function Login({logo}) {
                                        className={'mx-2 border border-gray-300 rounded-md shadow-sm focus:ring-lime-700 focus:border-lime-700 sm:text-sm text-lime-700'}/>
                             </div>
                             <div>
-                                <Link className={'text-sm text-slate-400 hover:text-black'}
+                                <Link className={'text-sm text-slate-400 hover:text-slate-500'}
                                       href={route('password.request')}>Forgot Password?</Link>
                             </div>
 
