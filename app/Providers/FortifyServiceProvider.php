@@ -46,13 +46,13 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::loginView(function () {
             return Inertia::render('Auth/Login',[
-                'logo'=>asset('assets/img/Logo.png')
+                'logo'=>asset('assets/img/zeus 2.png')
             ]);
         });
 
         Fortify::registerView(function () {
             return Inertia::render('Auth/Register',[
-                'logo'=>asset('assets/img/Logo.png')
+                'logo'=>asset('assets/img/zeus 2.png')
             ]);
         });
 
@@ -63,23 +63,22 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::verifyEmailView(function () {
             return Inertia::render('Auth/VerifyEmail',[
                 'status'=> session('status'),
-                'logo'=>asset('assets/img/Logo.png')
+                'logo'=>asset('assets/img/zeus 2.png')
             ]);
         });
 
         Fortify::requestPasswordResetLinkView(function () {
             return Inertia::render('Auth/ForgotPassword',[
                 'status'=> session('status'),
-                'logo'=>asset('assets/img/Logo.png')
+                'logo'=>asset('assets/img/zeus 2.png')
             ]);
         });
 
         Fortify::resetPasswordView(function (Request $request) {
-//            dd($request);
             return Inertia::render('Auth/ResetPassword', [
                 'request' => $request,
                 'token'=>$request->route('token'),
-                'logo'=>asset('assets/img/Logo.png')
+                'logo'=>asset('assets/img/zeus 2.png')
             ]);
         });
 

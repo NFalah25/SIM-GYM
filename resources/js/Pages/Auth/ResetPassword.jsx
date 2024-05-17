@@ -17,19 +17,18 @@ export default function ResetPassword({logo, request, token}) {
     }
 
     return (
-        <div className={'w-full h-[100vh] bg-slate-100 flex flex-col items-center'}>
+        <div className={'w-full h-[100vh] bg-[#020617] flex flex-col items-center justify-center'}>
             <Head title={'Reset Password'}/>
-            <div className={'w-[20rem]'}>
+            <div className={'xl:w-1/4 sm:w-1/2 w-full px-10 py-5 rounded-lg border-lime-500 border-dashed border-2'}>
+            <div className={'justify-center flex my-5'}>
                 <img src={logo} alt=""/>
             </div>
-            <div className={'xl:w-1/4 sm:w-1/2 w-full px-10 py-5 rounded-lg border-t-primary border-2 bg-white'}>
-                <h1 className={'text-2xl font-bold my-2 text-center'}>Login</h1>
-                <p className={'text-center text-gray-700'}>Login to your account</p>
+                <h1 className={'text-2xl text-slate-300 font-bold my-2 text-center'}>Reset Password</h1>
                 <form onSubmit={submit} className={'mt-2'}>
                     <Input type={'hidden'} name={'token'} value={data.token} onChange={(e)=>setData('token', e.target.value)}/>
                     <div className={'mb-4'}>
                         <Label value={'Email'} htmlFor={'email'}/>
-                        <Input className={'bg-slate-300 focus:border-0 focus:ring-0'} type={'email'} name={'email'} id={'email'} value={data.email}
+                        <Input className={'bg-slate-500 focus:border-0 focus:ring-0'} type={'email'} name={'email'} id={'email'} value={data.email}
                                onChange={(e) => setData('email', e.target.value)} readOnly={true}/>
                         {errors.email && <div className={'text-red-700 text-sm '}>{errors.email}</div>}
                     </div>
@@ -46,7 +45,7 @@ export default function ResetPassword({logo, request, token}) {
                         {errors.password_confirmation && <div className={'text-red-700 text-sm'}>{errors.password_confirmation}</div>}
                     </div>
                     <div className={'mb-6'}>
-                        <button type="submit" className={'w-full bg-primary text-white p-2 rounded-lg'}>Reset Password
+                        <button type="submit" className={'w-full bg-lime-500 text-white hover:bg-lime-700 p-2 rounded-lg duration-150'}>Reset Password
                         </button>
                     </div>
                 </form>

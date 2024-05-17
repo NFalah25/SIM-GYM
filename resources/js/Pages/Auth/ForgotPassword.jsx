@@ -13,14 +13,14 @@ function submit(e) {
 }
 
     return (
-        <div className={'w-full h-[100vh] bg-slate-100 flex flex-col items-center'}>
+        <div className={'w-full h-[100vh] bg-[#020617] flex flex-col items-center justify-center'}>
             <Head title={'Reset Password'}/>
-            <div className={'w-[20rem]'}>
+            <div className={'xl:w-1/4 sm:w-1/2 w-full px-10 py-5 rounded-lg border-2 border-lime-500 border-dashed'}>
+            <div className={'justify-center flex my-5'}>
                 <img src={logo} alt=""/>
             </div>
-            <div className={'xl:w-1/4 sm:w-1/2 w-full px-10 py-5 rounded-lg border-t-primary border-2 bg-white'}>
-                <h1 className={'text-2xl font-bold my-2 text-center'}>Reset Password</h1>
-                <p className={'text-gray-700'}>Kami akan mengirimkan link reset password melalui email anda</p>
+                <h1 className={'text-2xl font-bold my-2 text-white text-center'}>Reset Password</h1>
+                <p className={'text-slate-400'}>Kami akan mengirimkan link reset password melalui email anda</p>
                 {status && <p className={'text-green-700'}>Link reset password telah dikirim ke email anda</p>}
                 <form onSubmit={submit} className={'mt-2'}>
                     <div className={'mb-4'}>
@@ -29,7 +29,7 @@ function submit(e) {
                                onChange={(e) => setData('email', e.target.value)}/>
                     </div>
                     <div className={'mb-6'}>
-                        <button type="submit" className={'w-full bg-primary text-white p-2 rounded-lg'}>Login
+                        <button type="submit" className={'w-full duration-150 bg-lime-500 hover:bg-lime-700 text-white p-2 rounded-lg'}>Reset Password
                         </button>
                     </div>
                 </form>
