@@ -1,0 +1,181 @@
+
+/* Gaya untuk elemen header */
+header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Gaya untuk judul */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Gaya untuk tabel jadwal kelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+/* Gaya untuk baris tabel */
+tr {
+    
+}
+
+/* Gaya untuk sel header tabel */
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+/* Gaya untuk sel tabel */
+td {
+    border-top: 1px solid #ddd;
+}
+
+/* Gaya untuk link */
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+/* Gaya untuk link saat di-hover */
+a:hover {
+    text-decoration: underline;
+}
+
+/* style.css */
+
+/* Gaya untuk container */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Gaya untuk judul */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Gaya untuk tombol Tambah Jadwal Kelas */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Gaya untuk tabel jadwal kelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Gaya untuk sel header tabel */
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+/* Gaya untuk sel tabel */
+td {
+    border-top: 1px solid #ddd;
+}
+
+/* Gaya untuk tombol Detail, Edit, dan Hapus */
+.btn-info, .btn-warning, .btn-danger {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-right: 6px;
+    background-color: #17a2b8;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-info:hover, .btn-warning:hover, .btn-danger:hover {
+    background-color: #138496;
+}
+
+
+
+/* style.css */
+
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #6e6eff;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
