@@ -122,11 +122,12 @@ function Register({logo}) {
                             <div className={'pe-2 w-1/3'}>
                                 <Label value={'Berat Badan'} htmlFor={'weight'}/>
                                 <div
-                                    className={'mt-1 flex items-center w-full border border-gray-300 rounded-md shadow-sm focus:ring-lime-500 focus:border-lime-500 sm:text-sm'}>
+                                    className={'mt-1 flex items-center w-full border border-white rounded-md shadow-sm focus:ring-lime-500 focus:border-lime-500 sm:text-sm'}>
 
                                     <input className={'bg-[#020617] border-r-4 border-none rounded-md focus:ring-lime-500 focus:border-lime-500 sm:text-sm text-white'}
                                            type={'number'} name={'weight'} id={'weight'} value={data.weight}
                                            onChange={(e) => setData('weight', e.target.value)}/>
+
                                     <h6 className={'ms-1 border-l-2 text-center text-slate-100 w-full'}>Kg</h6>
                                 </div>
                                 {errors.weight && <div className={'text-red-700 text-sm '}>{errors.weight}</div>}
