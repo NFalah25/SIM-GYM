@@ -30,31 +30,26 @@ class CreateNewUser implements CreatesNewUsers
             ],
             'password' => $this->passwordRules(),
             'password_confirmation'=> ['required', 'same:password'],
-            'first_name'=> ['required','string', 'max:255'],
-            'last_name'=> ['required','string', 'max:255'],
-            'phone_number'=> ['required','string', 'max:255'],
-            'address'=> ['required','string', 'max:255'],
-            'date'=> ['required','date'],
-            'height'=> ['required','numeric'],
-            'weight'=> ['required','numeric'],
-            'gender'=> ['required'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'height' => ['required', 'integer'],
+            'weight' => ['required', 'integer'],
+            'gender' => ['required', 'string', 'max:255'],
         ])->validate();
 
         $user = User::create([
             'name' => $input['name'],
+            'first_name' => $input['first_name'],
+            'last_name' => $input['last_name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
-        ]);
-
-        $user->member()->create([
-            'first_name'=> $input['first_name'],
-            'last_name'=> $input['last_name'],
-            'no_hp'=> $input['phone_number'],
-            'alamat'=> $input['address'],
-            'birth_date'=> $input['date'],
-            'tinggi_badan'=> $input['height'],
-            'berat_badan'=> $input['weight'],
-            'jenis_kelamin'=> $input['gender'],
+            'phone_number' => $input['phone_number'],
+            'address' => $input['address'],
+            'height' => $input['height'],
+            'weight' => $input['weight'],
+            'gender'=> $input['gender'],
         ]);
 
         return $user;

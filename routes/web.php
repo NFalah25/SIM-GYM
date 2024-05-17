@@ -18,9 +18,11 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return Inertia::render('Dashboard',[
-        'user' => auth()->user()->member()->first()->first_name,
+        'user' => auth()->user()->first_name,
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');;
+
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
 //Route::get('/dashboard', function () {
 //    return Inertia::render('Dashboard');
