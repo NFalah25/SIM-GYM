@@ -3,14 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\JadwalKelas; 
+use App\Models\JadwalKelas;
+use Inertia\Inertia;
 
 class JadwalKelasController extends Controller
 {
     public function index()
     {
-        $jadwal_kelas = JadwalKelas::all(); // Mengambil semua data jadwal kelas
-        return view('jadwal-kelas', compact('jadwal_kelas'));
+        //ambil data terakhir
+        $jadwal_kelas = JadwalKelas::latest()->get();
+        // return view('jadwal-kelas', compact('jadwal_kelas'));
+        // dd($jadwal_kelas);
+        return Inertia::render('JadwalKelas', [
+            'jadwal' => $jadwal_kelas,
+        ]);
     }
 
     public function create()
@@ -27,7 +33,7 @@ class JadwalKelasController extends Controller
         'nama_ruangan' => $request->nama_ruangan,
     ]);
 
-    
+
 }
 
 }
