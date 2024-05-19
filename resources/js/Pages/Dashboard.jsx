@@ -1,8 +1,8 @@
-import {Link} from "@inertiajs/react";
-import Navbar from "./Component/Navbar";
+import { Link } from "@inertiajs/react";
+import Header from "./Component/Header";
 import Sidebar from "./Component/Sidebar";
 
-export default function Dashboard({user}) {
+export default function Dashboard({ user, children }) {
     function submit(e) {
         e.preventDefault();
         post("/logout");
@@ -10,13 +10,14 @@ export default function Dashboard({user}) {
 
     return (
         <>
-            <div className="bg-slate-200 h-screen flex w-full">
+            <div className="flex h-screen w-full bg-slate-900">
                 <div>
-                    <Sidebar/>
+                    <Sidebar />
                 </div>
-                <div className={'w-full'}>
-                    <Navbar user={user}/>
-                    <h1>Dashboard</h1>
+                <div className="w-full space-y-10 overflow-scroll">
+                    <Header user={user} />
+                    <div className="mx-auto h-auto max-w-[90%]">{children}</div>
+                    {/* Bawah ini link apa ya? */}
                     <Link method={"post"} href={route("logout")} as={"button"}>
                         Home
                     </Link>
