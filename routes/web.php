@@ -22,6 +22,10 @@ Route::get('/home', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');;
 
+Route::get('/welcome', function(){
+    return view('welcome');
+});
+
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
 //Route::get('/dashboard', function () {

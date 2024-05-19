@@ -1,4 +1,3 @@
-
 function JadwalKelas ({jadwal}){
 
     //consol log jadwal kelas
@@ -27,7 +26,9 @@ function JadwalKelas ({jadwal}){
 
         {/* Navbar */}
             <div className="bg-slate-900 p-5 flex items-center">
-                <img src="/assets/img/Foto.png" alt="Navbar Logo" className="h-10 w-10 object-cover ml-auto" />
+
+                <img src="/assets/img/Ellipse 5.png" alt="Navbar Logo" className="h-10 w-10 object-cover ml-auto" />
+
             </div>
         {/* Navbar selesai */}
 
@@ -79,3 +80,4 @@ function JadwalKelas ({jadwal}){
 }
 
 export default JadwalKelas;
+
