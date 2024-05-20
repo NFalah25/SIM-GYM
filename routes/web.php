@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JadwalKelasController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProgramFitnessController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -17,7 +18,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/home', function () {
+Route::get('/dashboard', function () {
     return Inertia::render('Dashboard', [
         'user' => auth()->user()->first_name,
     ]);
@@ -53,4 +54,6 @@ Route::get('/kelas/{id}/edit', [KelasController::class, 'edit'])->name('kelas.ed
 Route::delete('/kelas/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
 
 // Route users
-Route::get('/users', [UserController::class, 'index']);
+Route::get('/users', [UserController::class, 'index'])->name('users');
+
+Route::get('/program-fitness', [ProgramFitnessController::class, 'index'])->name('program-fitness');
