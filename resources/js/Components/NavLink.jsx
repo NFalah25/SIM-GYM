@@ -1,14 +1,19 @@
-import { Link } from '@inertiajs/react';
+import { Link } from "@inertiajs/react";
 
-export default function NavLink({ active = false, className = '', children, ...props }) {
+export default function NavLink({
+    active = false,
+    className = "",
+    children,
+    ...props
+}) {
     return (
         <Link
             {...props}
             className={
-                'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out focus:outline-none ' +
+                "font-poppins box-border rounded-lg px-7 py-3 tracking-wider hover:box-content " +
                 (active
-                    ? 'border-indigo-400 text-gray-900 focus:border-indigo-700 '
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300 ') +
+                    ? "border border-dashed border-green-500 font-semibold text-green-500 "
+                    : "text-slate-500 transition-all duration-300 hover:bg-green-500 hover:bg-opacity-25 hover:font-semibold hover:text-slate-200") +
                 className
             }
         >
