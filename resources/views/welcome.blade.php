@@ -11,10 +11,6 @@
            background-color: #0a0f24;
             color: #ffffff;
         }
-        .btn-green {
-            background-color: #32cd32;
-            color: #ffffff;
-        }
         .btn-green:hover {
             background-color: #2eb82e;
         }
@@ -30,7 +26,7 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-950">
     <header class="flex items-center p-5">
         <img src="assets/img/zeus 2.png" alt="Zeus Physique" class="hidden sm:block">
         <nav>
@@ -38,7 +34,7 @@
                 <li><a href="#" class="text-white">Home</a></li>
                 <li><a href="#" class="text-white">Program</a></li>
                 <li><a href="#" class="text-white ml-8 rounded-xl border border-white px-5 py-2">Login</a></li>
-                <li><a href="#" class="text-white btn-green px-3 py-2 rounded">Register</a></li>
+                <li><a href="#" class="bg-lime-500 text-white px-3 py-2 rounded">Register</a></li>
             </ul>
         </nav>
     </header>
@@ -55,25 +51,25 @@
     <section class="py-20">
         <h2 class="text-center text-5xl font-bold mb-10">Explore Our Program</h2>
         <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 gap-10 px-10 pl-20 pr-20">
-            <div class="border border-green-400 border-dashed bg-slate-950 p-5">
+            <div class="border-2 border-green-500 border-dashed bg-slate-950 p-5">
                 <img src="assets/img/Media Container.png" alt="Cardio Zumba" class="hidden sm:block mb-4">
                 <h3 class="text-xl font-bold mb-2">Cardio Zumba</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis, nunc a pretium viverra.</p>
                 <p class="mt-2 text-green-400">Every Mon and Wed at 4 pm</p>
             </div>
-            <div class="border border-green-400 border-dashed bg-slate-950 p-5">
+            <div class="border-2 border-green-500 border-dashed bg-slate-950 p-5">
                 <img src="assets/img/Media Container-1.png" alt="Free Weights" class="hidden sm:block mb-4">
                 <h3 class="text-xl font-bold mb-2">Free Weights</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis, nunc a pretium viverra.</p>
                 <p class="mt-2 text-green-400">Everyday at 6 am - 10 pm</p>
             </div>
-            <div class="border border-green-400 border-dashed bg-slate-950 p-5">
+            <div class="border-2 border-green-500 border-dashed bg-slate-950 p-5">
                 <img src="assets/img/Media Container-2.png" alt="Pound Fit" class="hidden sm:block mb-4">
                 <h3 class="text-xl font-bold mb-2">Pound Fit</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis, nunc a pretium viverra.</p>
                 <p class="mt-2 text-green-400">Every Tue and Thu at 4 pm</p>
             </div>
-            <div class="border border-green-400 border-dashed bg-slate-950 p-5">
+            <div class="border-2 border-green-500 border-dashed bg-slate-950 p-5">
                 <img src="assets/img/Media Container-3.png" alt="Area Boxing" class="hidden sm:block mb-4">
                 <h3 class="text-xl font-bold mb-2">Area Boxing</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis, nunc a pretium viverra.</p>
@@ -126,7 +122,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col ml-20 w-3/5 max-md:ml-20 max-md:w-full pr-20">
-                    <div class="flex flex-col grow self-stretch pt-5 pb-6 w-full rounded-xl border border-green-400 border-dashed bg-slate-950 max-md:mt-10 max-md:max-w-full">
+                    <div class="flex flex-col grow self-stretch pt-5 pb-6 w-full rounded-xl border-2 border-green-500 border-dashed bg-slate-950 max-md:mt-10 max-md:max-w-full">
                         <div class="flex gap-1 self-end mr-16 max-md:mr-2.5">
                         <img src="assets/img/Star.png" class="shrink-0 w-6 aspect-square">
                         <img src="assets/img/Star.png" class="shrink-0 w-6 aspect-square">
