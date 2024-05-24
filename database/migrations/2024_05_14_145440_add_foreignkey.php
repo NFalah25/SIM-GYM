@@ -18,17 +18,18 @@ return new class extends Migration {
 
         Schema::table('jadwals', function (Blueprint $table) {
             // langganan_id
-            $table->foreign('id_users')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::table('langganans', function (Blueprint $table) {
             // langganan_id
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_transaksi')->references('id')->on('transaksis')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::table('transaksis', function (Blueprint $table) {
             // langganan_id
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade');
         });
 
         Schema::table('detail_transaksis', function (Blueprint $table) {
@@ -61,15 +62,16 @@ return new class extends Migration {
         });
 
         Schema::table('jadwals', function (Blueprint $table) {
-            $table->dropForeign(['id_users']);
+            $table->dropForeign(['id_user']);
         });
 
         Schema::table('langganans', function (Blueprint $table) {
+            $table->dropForeign(['id_user']);
             $table->dropForeign(['id_transaksi']);
         });
 
         Schema::table('transaksis', function (Blueprint $table) {
-            $table->dropForeign(['id_users']);
+            $table->dropForeign(['id_user']);
         });
 
         Schema::table('detail_transaksis', function (Blueprint $table) {
