@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('langganans', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->bigInteger('id_user')->unsigned()->nullable();
             $table->bigInteger('id_transaksi')->unsigned()->nullable();
             $table->datetime('tanggal_mulai')->nullable();
             $table->datetime('tanggal_akhir')->nullable();
