@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\transaksi;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class TransaksiController extends Controller
 {
@@ -12,7 +13,33 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+        //ambil relasi user dari transaksi
+        $transaksi = transaksi::with('user')->get();
+        //ambil nama user
+        $user = $transaksi->pluck('user.first_name');
+        //ambil tanggal_transaksi
+        $tanggal_transaksi = $transaksi->pluck('tanggal_transaksi');
+        //ambil total_harga
+        $total_harga = $transaksi->pluck('total_harga');
+        //ambil tipe_transaksi
+        $tipe_transaksi = $transaksi->pluck('tipe_transaksi');
+        // jadikan semua variable di atas menjadi satu array
+        $tbody = $user->map(function($item, $key) use ($tanggal_transaksi, $total_harga, $tipe_transaksi){
+            return [
+                'user' => $item,
+                'tanggal_transaksi' => $tanggal_transaksi[$key],
+                'total_harga' => $total_harga[$key],
+                'tipe_transaksi' => $tipe_transaksi[$key],
+            ];
+        });
+
+
+        $thead = ['Nama User', 'Tanggal Transaksi', 'Total Harga', 'Tipe Transaksi'];
+
+        return Inertia::render('Transaksi/Index',[
+            'thead' => $thead,
+            'tbody' => $tbody,
+        ]);
     }
 
     /**

@@ -16,7 +16,7 @@ function MainNav() {
                 <NavLink href={route("program-fitness")} active={currentPath === '/program-fitness'}>
                     <span>Program</span>
                 </NavLink>
-                <NavLink href={route("dashboard")}>
+                <NavLink href={route("transaksi.index")}>
                     <span>Transaksi</span>
                 </NavLink>
                 <NavLink href={route("dashboard")} active={currentPath === '/jadwal-kelas'}>

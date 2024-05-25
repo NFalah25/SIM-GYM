@@ -54,4 +54,9 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    public function transaksi(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(transaksi::class);
+    }
+
 }
