@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\JadwalKelasController;
-use App\Http\Controllers\KelasController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProgramFitnessController;
 use Illuminate\Foundation\Application;
@@ -46,3 +45,5 @@ Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')
 Route::get('/users', [UserController::class, 'index'])->name('users');
 
 Route::get('/program-fitness', [ProgramFitnessController::class, 'index'])->name('program-fitness');
+
+Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
