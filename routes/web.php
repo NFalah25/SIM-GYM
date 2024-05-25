@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProgramFitnessController;
@@ -46,4 +47,6 @@ Route::get('/users', [UserController::class, 'index'])->name('users');
 
 Route::get('/program-fitness', [ProgramFitnessController::class, 'index'])->name('program-fitness');
 
-Route::resource('transaksi', TransaksiController::class);
+
+Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
+
