@@ -17,10 +17,6 @@ export default function Dashboard({ user, children }) {
                 <div className="w-full space-y-10 overflow-scroll">
                     <Header user={user} />
                     <div className="mx-auto h-auto max-w-[90%]">{children}</div>
-                    {/* Bawah ini link apa ya? */}
-                    <Link method={"post"} href={route("logout")} as={"button"}>
-                        Home
-                    </Link>
                 </div>
             </div>
         </>

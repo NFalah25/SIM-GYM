@@ -19,7 +19,7 @@ function MainNav() {
                 <NavLink href={route("dashboard")}>
                     <span>Transaksi</span>
                 </NavLink>
-                <NavLink href={route("jadwal-kelas")} active={currentPath === '/jadwal-kelas'}>
+                <NavLink href={route("dashboard")} active={currentPath === '/jadwal-kelas'}>
                     <span>Jadwal</span>
                 </NavLink>
                 <NavLink href={route("dashboard")}>
