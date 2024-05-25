@@ -1,7 +1,7 @@
 import Button from "./Button";
 function Pagination() {
     return (
-        <div className="flex w-full items-center justify-between">
+        <div className="flex w-full flex-col justify-start gap-4 md:flex-row md:items-center md:justify-between">
             <p className="text-sm">
                 Showing <span className="font-semibold">1</span> to{" "}
                 <span className="font-semibold">10</span> of{" "}

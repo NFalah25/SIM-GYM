@@ -3,8 +3,8 @@ import React from "react";
 function SelectItem({ options, type }) {
     return (
         <select
-            className={`font-poppins rounded-md border border-slate-600 bg-slate-800 py-3 text-base font-medium
-            text-slate-500`}
+            className={`font-poppins rounded-md border border-slate-600 bg-slate-800 py-3 text-base font-medium text-slate-500
+            md:py-2 md:text-xs lg:text-base`}
         >
             {options.map((option) => (
                 <option value={option.value} key={option.value}>
