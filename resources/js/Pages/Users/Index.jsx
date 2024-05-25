@@ -3,7 +3,7 @@ import UserTable from "@/Components/Users/UserTable";
 import UserTableOperation from "@/Components/Users/UserTableOperation";
 import Dashboard from "@/Pages/Dashboard";
 
-function UsersIndex() {
+function UsersIndex({thead, tbody}) {
     return (
         <Dashboard>
             <Row orientation="horizontal">
@@ -13,7 +13,7 @@ function UsersIndex() {
                 <UserTableOperation />
             </Row>
             <Row>
-                <UserTable />
+                <UserTable thead={thead} tbody={tbody} />
             </Row>
         </Dashboard>
     );

@@ -1,13 +1,14 @@
 import Table from "../Table";
 import Pagination from "../Pagination";
 
-function UserTable({thead, tbody}) {
+function TransaksiTable({tbody, thead}) {
     return (
-        <Table columns="1fr 1.5fr 1fr 1fr 1fr 0.5fr">
+        <Table columns="2fr 2fr 1.5fr 1fr 1fr 0.5fr">
             <Table.Header>
-                    {thead.map((column, index) => (
-                        <div key={index}>{column}</div>
-                    ))}
+
+                {thead.map((item, index) => (
+                    <div key={index}>{item}</div>
+                ))}
                 <div>Action</div>
             </Table.Header>
             <Table.Body tbody={tbody} />
@@ -18,4 +19,4 @@ function UserTable({thead, tbody}) {
     );
 }
 
-export default UserTable;
+export default TransaksiTable;
