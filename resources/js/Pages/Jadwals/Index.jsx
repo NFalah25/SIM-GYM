@@ -1,22 +1,22 @@
 import Row from "@/Components/Row";
-import UserTable from "@/Components/Users/UserTable";
-import UserTableOperation from "@/Components/Users/UserTableOperation";
+import JadwalTable from "@/Components/Jadwal/JadwalTable";
+import JadwalTableOperation from "@/Components/Jadwal/JadwalTableOperation";
 import Dashboard from "@/Pages/Dashboard";
 
-function UsersIndex({thead, tbody}) {
+function JadwalIndex() {
     return (
         <Dashboard>
             <Row orientation="horizontal">
                 <h2 className="font-poppins text-2xl font-bold text-slate-100">
-                    All User
+                    Jadwals
                 </h2>
-                <UserTableOperation />
+                <JadwalTableOperation />
             </Row>
             <Row>
-                <UserTable thead={thead} tbody={tbody} />
+                <JadwalTable />
             </Row>
         </Dashboard>
     );
 }
 
-export default UsersIndex;
+export default JadwalIndex; 

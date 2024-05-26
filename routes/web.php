@@ -1,13 +1,13 @@
 <?php
 
+use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\JadwalKelasController;
-use App\Http\Controllers\KelasController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProgramFitnessController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TransaksiController;
 use Inertia\Inertia;
 
 // Route::get('/', function () {
@@ -31,7 +31,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 
 //Route::get('/dashboard', function () {
 //    return Inertia::render('Dashboard');
@@ -45,18 +45,11 @@ Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit')
 
 //require __DIR__.'/auth.php';
 
-Route::get('/jadwal-kelas', [JadwalKelasController::class, 'index']);
-
-Route::get('/tambah-jadwal-kelas', [KelasController::class, 'create'])->name('kelas.create');
-
-Route::get('/jadwal-kelas', [JadwalKelasController::class, 'index'])->name('jadwal-kelas');
-
-Route::post('/kelas', [KelasController::class, 'store'])->name('kelas.store');
-Route::get('/kelas/{id}', [KelasController::class, 'show'])->name('kelas.show');
-Route::get('/kelas/{id}/edit', [KelasController::class, 'edit'])->name('kelas.edit');
-Route::delete('/kelas/{id}', [KelasController::class, 'destroy'])->name('kelas.destroy');
-
 // Route users
 Route::get('/users', [UserController::class, 'index'])->name('users');
 
 Route::get('/program-fitness', [ProgramFitnessController::class, 'index'])->name('program-fitness');
+
+
+Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
+
