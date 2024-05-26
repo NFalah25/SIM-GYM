@@ -4,7 +4,7 @@ import SortBy from "../SortBy";
 
 function UserTableOperation() {
     return (
-        <div className="flex items-center gap-7">
+        <div className="sm flex flex-col items-center gap-3 md:flex-row md:gap-7 lg:flex-row lg:gap-7">
             <Filter
                 options={[
                     { value: "all", label: "All" },
