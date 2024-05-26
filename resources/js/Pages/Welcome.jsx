@@ -338,7 +338,7 @@
 //     );
 // }
 
-function Welcome() {
+function Welcome({program}) {
   return (
     <div className="bg-slate-950 text-white">
     <header className="flex items-center p-5">
@@ -365,7 +365,7 @@ function Welcome() {
     <section className="py-20">
         <h2 className="text-center text-5xl font-bold mb-10">Explore Our Program</h2>
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 gap-10 px-10 pl-20 pr-20">
-            <div className="border-2 border-green-500 border-dashed bg-slate-950 p-5">
+            {/* <div className="border-2 border-green-500 border-dashed bg-slate-950 p-5">
                 <img src="assets/img/Media Container.png" alt="Cardio Zumba" className="hidden sm:block mb-4"/>
                 <h3 className="text-xl font-bold mb-2">Cardio Zumba</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis, nunc a pretium viverra.</p>
@@ -388,7 +388,15 @@ function Welcome() {
                 <h3 className="text-xl font-bold mb-2">Area Boxing</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis, nunc a pretium viverra.</p>
                 <p className="mt-2 text-green-400">Every Sat and Sun at 9 am</p>
+            </div> */}
+            {program.map((item,index)=>(
+                <div className="border-2 border-green-500 border-dashed bg-slate-950 p-5">
+                <img src="assets/img/Media Container-3.png" alt="Area Boxing" className="hidden sm:block mb-4"/>
+                <h3 className="text-xl font-bold mb-2">{item.nama_program}</h3>
+                <p>{item.deskripsi}</p>
+                <p className="mt-2 text-green-400">Every Sat and Sun at 9 am</p>
             </div>
+            ))}
         </div>
     </section>
     <section className="pl-20">
