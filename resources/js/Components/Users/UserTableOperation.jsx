@@ -34,7 +34,9 @@ function UserTableOperation() {
                     },
                 ]}
             />
-            <Button type="add-data">Add Data User</Button>
+            <Button type="add-data" target="/users/create">
+                Add Data User
+            </Button>
         </div>
     );
 }

@@ -1,4 +1,4 @@
-function Button({ children, type }) {
+function Button({ children, type, target }) {
     let classButton =
         "rounded-lg border border-slate-500 px-4 py-2 hover:bg-slate-700";
     if (type === "add-data")
@@ -13,6 +13,13 @@ function Button({ children, type }) {
     if (type === "icon-delete")
         classButton =
             "p-2 hover:bg-slate-700 w-fit rounded transition-all duration-300 hover:text-red-500";
-    return <div className={classButton}>{children}</div>;
+    return (
+        <button
+            className={classButton}
+            onClick={() => (window.location.href = target)}
+        >
+            {children}
+        </button>
+    );
 }
 export default Button;
