@@ -28,7 +28,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'height',
         'weight',
         'gender',
-        'photo',
+        'date_of_birth',
+        'foto',
     ];
 
     /**
@@ -58,5 +59,4 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(transaksi::class);
     }
-
 }
