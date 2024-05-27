@@ -6,12 +6,13 @@ export default function Header({ user }) {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [dropdownNavigationVisible, setDropdownNavigationVisible] =
         useState(false);
+
     const dropdownRef = useRef(null);
 
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
     };
-    const toggleDropdownNavigation = () => {
+    const toggleNavigationDropdown = () => {
         setDropdownNavigationVisible(!dropdownNavigationVisible);
     };
 
@@ -60,7 +61,7 @@ export default function Header({ user }) {
                             />
                         </button>
                         <button
-                            onClick={toggleDropdownNavigation}
+                            onClick={toggleNavigationDropdown}
                             className="flex items-center rounded p-2 transition-all duration-300 hover:bg-slate-700 lg:hidden"
                         >
                             <svg
@@ -105,37 +106,37 @@ export default function Header({ user }) {
                                 className="fixed right-3 mt-10 flex w-[10rem] flex-col gap-2 rounded-lg border border-slate-600 bg-slate-900 px-2 py-2"
                             >
                                 <Link
-                                    href={route("dashboard")}
+                                    href="/dashboard"
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
                                     Dashboard
                                 </Link>
                                 <Link
-                                    href={route("users")}
+                                    href="/users"
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
                                     User
                                 </Link>
                                 <Link
-                                    href={route("program-fitness")}
+                                    href="/program-fitness"
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
                                     Program
                                 </Link>
                                 <Link
-                                    href={route("transaksi.index")}
+                                    href="/dashboard"
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
                                     Transaksi
                                 </Link>
                                 <Link
-                                    href={route("dashboard")}
+                                    href="/jadwal"
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
                                     Jadwal
                                 </Link>
                                 <Link
-                                    href={route("dashboard")}
+                                    href="/dashboard"
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
                                     Presensi
