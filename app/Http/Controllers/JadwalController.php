@@ -11,12 +11,29 @@ class JadwalController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Jadwals/Index');
+        $user = jadwal::all();
+
+        $thead = ['Nomor', 'id', 'Hari', 'Waktu', 'Ruangan'];
+
+        $tbody = $user->map(function($item){
+            return [
+                'id' => $item->id,
+                'id_user' => $item->id_user,
+                'hari' => $item->hari,
+                'waktu_mulai' => $item->waktu_mulai,
+                'ruangan' => $item->nama_ruangan,
+                ];
+        });
+
+        return Inertia::render('Jadwals/Index',[
+            'thead' => $thead,
+            'tbody' => $tbody,
+        ]);
     }
 
     public function create()
     {
-        //
+        return Inertia::render('Jadwals/Create');
     }
 
     /**

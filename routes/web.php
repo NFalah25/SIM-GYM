@@ -47,6 +47,8 @@ Route::get('/users', [UserController::class, 'index'])->name('users');
 
 Route::get('/program-fitness', [ProgramFitnessController::class, 'index'])->name('program-fitness');
 
-
 Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
+Route::get('/add-jadwal', [JadwalController::class, 'create'])->name('jadwal-create');
+
+Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
 

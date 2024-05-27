@@ -16,12 +16,10 @@ function MainNav() {
                 <NavLink href={route("program-fitness")} active={currentPath === '/program-fitness'}>
                     <span>Program</span>
                 </NavLink>
-                <NavLink href={route("transaksi.index")}>
+                <NavLink href={route("transaksi")} active={currentPath === '/transaksi'}>
                     <span>Transaksi</span>
                 </NavLink>
-
                 <NavLink href={route("jadwal")} active={currentPath === '/jadwal'}>
-
                     <span>Jadwal</span>
                 </NavLink>
                 <NavLink href={route("dashboard")}>
