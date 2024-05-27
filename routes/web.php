@@ -54,6 +54,8 @@ Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 Route::get('/program-fitness', [ProgramFitnessController::class, 'index'])->name('program-fitness');
 
-
 Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
+Route::get('/add-jadwal', [JadwalController::class, 'create'])->name('jadwal-create');
+
+Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
 

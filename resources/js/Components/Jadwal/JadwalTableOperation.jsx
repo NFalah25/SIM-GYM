@@ -27,7 +27,7 @@ function JadwalTableOperation() {
                     },
                 ]}
             />
-            <Button type="add-data">Add Jadwal</Button>
+            <Button type="add-data" route={'/add-jadwal'}>Add Jadwal</Button>
         </div>
     );
 }
