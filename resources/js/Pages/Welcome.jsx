@@ -338,15 +338,15 @@
 //     );
 // }
 
-function Welcome() {
+function Welcome({program}) {
   return (
     <div className="bg-slate-950 text-white">
-    <header className="flex items-center p-5">
+    <header className="sticky top-0 flex items-center p-5 bg-slate-950">
         <img src="assets/img/zeus 2.png" alt="Zeus Physique" className="mr-[600px] ml-[50px]"/>
         <nav>
             <ul className="flex space-x-4">
                 <li><a href="#" className="text-white">Home</a></li>
-                <li><a href="#" className="text-white">Program</a></li>
+                <li><a href="#program" className="text-white">Program</a></li>
                 <li><a href={route('login')} className="text-white ml-8 rounded-xl border border-white px-5 py-2">Login</a></li>
                 <li><a href={route('register')} className="text-white btn-green px-3 py-2 rounded">Register</a></li>
             </ul>
@@ -362,10 +362,10 @@ function Welcome() {
         <img src="assets/img/Right.png" alt="Fitness" className="hidden sm:block mx-auto pr-20"/>
     </div>
     </section>
-    <section className="py-20">
+    <section id="program" className="py-20">
         <h2 className="text-center text-5xl font-bold mb-10">Explore Our Program</h2>
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 gap-10 px-10 pl-20 pr-20">
-            <div className="border-2 border-green-500 border-dashed bg-slate-950 p-5">
+            {/* <div className="border-2 border-green-500 border-dashed bg-slate-950 p-5">
                 <img src="assets/img/Media Container.png" alt="Cardio Zumba" className="hidden sm:block mb-4"/>
                 <h3 className="text-xl font-bold mb-2">Cardio Zumba</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis, nunc a pretium viverra.</p>
@@ -388,7 +388,15 @@ function Welcome() {
                 <h3 className="text-xl font-bold mb-2">Area Boxing</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut venenatis, nunc a pretium viverra.</p>
                 <p className="mt-2 text-green-400">Every Sat and Sun at 9 am</p>
+            </div> */}
+            {program.map((item,index)=>(
+                <div className="border-2 border-green-500 border-dashed bg-slate-950 p-5">
+                <img src="assets/img/Media Container-3.png" alt="Area Boxing" className="hidden sm:block mb-4"/>
+                <h3 className="text-xl font-bold mb-2">{item.nama_program}</h3>
+                <p>{item.deskripsi}</p>
+                <p className="mt-2 text-green-400">Every Sat and Sun at 9 am</p>
             </div>
+            ))}
         </div>
     </section>
     <section className="pl-20">

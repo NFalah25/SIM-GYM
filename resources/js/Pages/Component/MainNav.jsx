@@ -19,7 +19,9 @@ function MainNav() {
                 <NavLink href={route("transaksi.index")}>
                     <span>Transaksi</span>
                 </NavLink>
-                <NavLink href={route("dashboard")} active={currentPath === '/jadwal-kelas'}>
+
+                <NavLink href={route("jadwal")} active={currentPath === '/jadwal'}>
+
                     <span>Jadwal</span>
                 </NavLink>
                 <NavLink href={route("dashboard")}>
