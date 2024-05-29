@@ -1,4 +1,5 @@
 import Button from "../Button";
+import ButtonNew from "../ButtonNew";
 import Filter from "../Filter";
 import SortBy from "../SortBy";
 
@@ -34,9 +35,7 @@ function UserTableOperation() {
                     },
                 ]}
             />
-            <Button type="add-data" target="/users/create">
-                Add Data User
-            </Button>
+            <ButtonNew href="/users/create">Add Data User</ButtonNew>
         </div>
     );
 }

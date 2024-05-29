@@ -14,21 +14,24 @@ class UserController extends Controller
     public function index()
     {
         $user = User::all();
-
-        $thead = ['Nama User', 'Email', 'First Name', 'Phone Number', 'Address'];
+        $columns = '1fr 1.5fr 1fr 1fr 1fr 0.5fr';
+        $basePath = 'users';
+        $thead = ['Nama User', 'Email', 'Role', 'Phone Number', 'Address'];
 
         $tbody = $user->map(function ($item) {
             return [
                 'id' => $item->id,
                 'name' => $item->name,
                 'email' => $item->email,
-                'first_name' => $item->first_name,
+                'role' => $item->role,
                 'phone_number' => $item->phone_number,
                 'address' => $item->address,
             ];
         });
 
         return Inertia::render('Users/Index', [
+            'columns' => $columns,
+            'basePath' => $basePath,
             'thead' => $thead,
             'tbody' => $tbody,
         ]);
