@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('program_fitnes', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('id_jadwal')->unsigned()->nullable();
             $table->string('nama_program')->nullable();
             $table->integer('durasi')->nullable();
             $table->integer('harga')->nullable();

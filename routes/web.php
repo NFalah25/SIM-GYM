@@ -57,5 +57,5 @@ Route::get('/program-fitness', [ProgramFitnessController::class, 'index'])->name
 Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
 Route::get('/add-jadwal', [JadwalController::class, 'create'])->name('jadwal-create');
 
-Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
 

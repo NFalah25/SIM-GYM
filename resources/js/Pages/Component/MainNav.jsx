@@ -25,10 +25,7 @@ function MainNav() {
                 >
                     <span>Program</span>
                 </NavLink>
-                <NavLink
-                    href={route("transaksi")}
-                    active={currentPath === "/transaksi"}
-                >
+                <NavLink href={route('transaksi.index')}>
                     <span>Transaksi</span>
                 </NavLink>
                 <NavLink

@@ -19,6 +19,8 @@ return new class extends Migration {
         Schema::table('jadwals', function (Blueprint $table) {
             // langganan_id
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_program')->references('id')->on('program_fitnes')->onDelete('cascade')->onUpdate('cascade');
+
         });
 
         Schema::table('langganans', function (Blueprint $table) {
@@ -36,11 +38,6 @@ return new class extends Migration {
             // langganan_id
             $table->foreign('id_transaksi')->references('id')->on('transaksis')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_program_fitnes')->references('id')->on('program_fitnes')->onDelete('cascade')->onUpdate('cascade');
-        });
-
-        Schema::table('program_fitnes', function (Blueprint $table) {
-            // langganan_id
-            $table->foreign('id_jadwal')->references('id')->on('jadwals')->onDelete('cascade')->onUpdate('cascade');
         });
 
 
@@ -63,6 +60,7 @@ return new class extends Migration {
 
         Schema::table('jadwals', function (Blueprint $table) {
             $table->dropForeign(['id_user']);
+            $table->dropForeign(['id_program']);
         });
 
         Schema::table('langganans', function (Blueprint $table) {
@@ -78,11 +76,5 @@ return new class extends Migration {
             $table->dropForeign(['id_transaksi']);
             $table->dropForeign(['id_program_fitnes']);
         });
-
-        Schema::table('program_fitnes', function (Blueprint $table) {
-            $table->dropForeign(['id_jadwal']);
-        });
-
-
     }
 };

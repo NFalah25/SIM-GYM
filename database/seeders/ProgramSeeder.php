@@ -14,7 +14,6 @@ class ProgramSeeder extends Seeder
     public function run(): void
     {
         program_fitnes::create([
-            'id_jadwal' => 1,
             'nama_program' => 'Angkat Beban',
             'durasi' => '1',
             'deskripsi' => 'Kegiatan ini bertujuan untuk melatih otot-otot tubuh',
@@ -22,7 +21,6 @@ class ProgramSeeder extends Seeder
         ]);
 
         program_fitnes::create([
-            'id_jadwal' => 2,
             'nama_program' => 'Yoga',
             'durasi' => '1',
             'deskripsi' => 'Kegiatan ini bertujuan untuk melatih kekuatan tubuh dan pikiran',
@@ -30,7 +28,6 @@ class ProgramSeeder extends Seeder
         ]);
 
         program_fitnes::create([
-            'id_jadwal' => 3,
             'nama_program' => 'Zumba',
             'durasi' => '1',
             'deskripsi' => 'Kegiatan ini bertujuan untuk melatih kekuatan tubuh dan pikiran',
@@ -38,7 +35,6 @@ class ProgramSeeder extends Seeder
         ]);
 
         program_fitnes::create([
-            'id_jadwal' => 4,
             'nama_program' => 'Kardio',
             'durasi' => '1',
             'deskripsi' => 'Kegiatan ini bertujuan untuk melatih otot jantung serta stamina tubuh',
