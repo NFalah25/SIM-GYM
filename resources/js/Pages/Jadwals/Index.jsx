@@ -3,7 +3,7 @@ import JadwalTable from "@/Components/Jadwal/JadwalTable";
 import JadwalTableOperation from "@/Components/Jadwal/JadwalTableOperation";
 import Dashboard from "@/Pages/Dashboard";
 
-function JadwalIndex() {
+function JadwalIndex({thead, tbody}) {
     return (
         <Dashboard>
             <Row orientation="horizontal">
@@ -13,7 +13,7 @@ function JadwalIndex() {
                 <JadwalTableOperation />
             </Row>
             <Row>
-                <JadwalTable />
+                <JadwalTable thead={thead} tbody={tbody} />
             </Row>
         </Dashboard>
     );

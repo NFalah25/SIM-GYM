@@ -1,4 +1,4 @@
-import Button from "./Button";
+import ButtonNew from "./ButtonNew";
 function Pagination() {
     return (
         <div className="flex w-full flex-col justify-start gap-4 md:flex-row md:items-center md:justify-between">
@@ -8,8 +8,8 @@ function Pagination() {
                 <span className="font-semibold">23</span> entries
             </p>
             <div className="flex gap-4">
-                <Button>Previous</Button>
-                <Button>Next</Button>
+                <ButtonNew variant="secondary">Previous</ButtonNew>
+                <ButtonNew variant="secondary">Next</ButtonNew>
             </div>
         </div>
     );
