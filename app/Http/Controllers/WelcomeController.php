@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\program_fitnes;
+use App\Models\ProgramFitness;
 use Inertia\Inertia;
 
 class WelcomeController extends Controller
 {
-    public function index(program_fitnes $program_fitnes)
+    public function index(ProgramFitness $program_fitnesses)
     {
-        $program_fitnes = program_fitnes::all();
-        return Inertia::render('Welcome',[
-            'program' => $program_fitnes
+        $program_fitnesses = ProgramFitness::all();
+        return Inertia::render('Welcome', [
+            'program' => $program_fitnesses
         ]);
     }
 }
