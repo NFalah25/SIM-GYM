@@ -28,7 +28,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'height',
         'weight',
         'gender',
-        'photo',
+        'date_of_birth',
+        'foto',
     ];
 
     /**
@@ -54,4 +55,13 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    public function transaksi(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(transaksi::class);
+    }
+
+    public function jadwal()
+    {
+        return $this->hasMany(jadwal::class);
+    }
 }

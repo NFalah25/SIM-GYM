@@ -1,17 +1,9 @@
-import Button from "../Button";
-import Filter from "../Filter";
+import { Link } from "@inertiajs/react";
 import SortBy from "../SortBy";
 
-function UserTableOperation() {
+function JadwalTableOperation() {
     return (
-        <div className="sm flex flex-col items-center gap-3 md:flex-row md:gap-7 lg:flex-row lg:gap-7">
-            <Filter
-                options={[
-                    { value: "all", label: "All" },
-                    { value: "active", label: "Active" },
-                    { value: "non-active", label: "Non Active" },
-                ]}
-            />
+        <div className="flex items-center gap-7">
             <SortBy
                 options={[
                     { value: "name-asc", label: "Sort by name (A-Z)" },
@@ -34,11 +26,9 @@ function UserTableOperation() {
                     },
                 ]}
             />
-            <Button type="add-data" target="/users/create">
-                Add Data User
-            </Button>
+            <Link href={route('jadwal-create')} className={'bg-lime-500 text-slate-100 transition-all duration-300 text-lg md:text-xs lg:text-base font-semibold rounded-lg border border-lime-500 px-4 py-2 hover:bg-lime-600'}>Add Jadwal</Link>
         </div>
     );
 }
 
-export default UserTableOperation;
+export default JadwalTableOperation;

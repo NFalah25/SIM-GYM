@@ -2,24 +2,36 @@ import NavLink from "@/Components/NavLink";
 
 function MainNav() {
     const currentPath = window.location.pathname;
-    console.log(currentPath)
+    console.log(currentPath);
 
     return (
         <nav>
             <ul className="flex flex-col gap-4">
-                <NavLink href={route("dashboard")} active={currentPath === '/dashboard'}>
+                <NavLink
+                    href={route("dashboard")}
+                    active={currentPath === "/dashboard"}
+                >
                     <span>Dashboard</span>
                 </NavLink>
-                <NavLink href={route("users")} active={currentPath === '/users'}>
+                <NavLink
+                    href={route("users")}
+                    active={currentPath === "/users"}
+                >
                     <span>User</span>
                 </NavLink>
-                <NavLink href={route("program-fitness")} active={currentPath === '/program-fitness'}>
+                <NavLink
+                    href={route("program-fitness")}
+                    active={currentPath === "/program-fitness"}
+                >
                     <span>Program</span>
                 </NavLink>
-                <NavLink href={route("dashboard")}>
+                <NavLink href={route('transaksi.index')}>
                     <span>Transaksi</span>
                 </NavLink>
-                <NavLink href={route("jadwal-kelas")} active={currentPath === '/jadwal-kelas'}>
+                <NavLink
+                    href={route("jadwal")}
+                    active={currentPath === "/jadwal"}
+                >
                     <span>Jadwal</span>
                 </NavLink>
                 <NavLink href={route("dashboard")}>

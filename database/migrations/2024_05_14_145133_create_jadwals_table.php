@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('id_users')->unsigned()->nullable();
+            $table->bigInteger('id_user')->unsigned()->nullable();
+            $table->bigInteger('id_program')->unsigned()->nullable();
             $table->string('hari')->nullable();
-            $table->time('waktu')->nullable();
+            $table->time('waktu_mulai')->nullable();
+            $table->time('waktu_selesai')->nullable();
             $table->string('nama_ruangan')->nullable();
         });
     }

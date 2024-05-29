@@ -9,4 +9,9 @@ class program_fitnes extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function jadwal()
+    {
+        return $this->hasMany(jadwal::class);
+    }
 }

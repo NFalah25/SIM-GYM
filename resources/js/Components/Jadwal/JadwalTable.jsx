@@ -1,9 +1,9 @@
 import Table from "../Table";
 import Pagination from "../Pagination";
 
-function UserTable({thead, tbody}) {
+function JadwalTable({thead, tbody}) {
     return (
-        <Table columns="1fr 1.5fr 1fr 1fr 1fr 0.5fr">
+        <Table columns="1fr 1fr 1fr 1fr 0.5fr">
             <Table.Header>
                     {thead.map((column, index) => (
                         <div key={index}>{column}</div>
@@ -18,4 +18,4 @@ function UserTable({thead, tbody}) {
     );
 }
 
-export default UserTable;
+export default JadwalTable;
