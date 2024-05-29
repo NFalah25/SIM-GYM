@@ -1,7 +1,5 @@
 
-import { Link } from "@inertiajs/react";
-
-function Button({ children, type, route}) {
+function Button({ children, type}) {
     let classButton =
         "rounded-lg border border-slate-500 px-4 py-2 hover:bg-slate-700";
     if (type === "add-data")

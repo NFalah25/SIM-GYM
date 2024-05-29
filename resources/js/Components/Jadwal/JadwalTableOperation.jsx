@@ -1,5 +1,4 @@
-import Button from "../Button";
-import Filter from "../Filter";
+import { Link } from "@inertiajs/react";
 import SortBy from "../SortBy";
 
 function JadwalTableOperation() {
@@ -27,7 +26,7 @@ function JadwalTableOperation() {
                     },
                 ]}
             />
-            <Button type="add-data" route={'/add-jadwal'}>Add Jadwal</Button>
+            <Link href={route('jadwal-create')} className={'bg-lime-500 text-slate-100 transition-all duration-300 text-lg md:text-xs lg:text-base font-semibold rounded-lg border border-lime-500 px-4 py-2 hover:bg-lime-600'}>Add Jadwal</Link>
         </div>
     );
 }
