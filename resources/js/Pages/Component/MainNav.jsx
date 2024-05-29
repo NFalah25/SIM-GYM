@@ -25,7 +25,7 @@ function MainNav() {
                 >
                     <span>Program</span>
                 </NavLink>
-                <NavLink href={route("dashboard")}>
+                <NavLink href={route('transaksi.index')}>
                     <span>Transaksi</span>
                 </NavLink>
 

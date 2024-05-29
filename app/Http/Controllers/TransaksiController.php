@@ -15,24 +15,17 @@ class TransaksiController extends Controller
     {
         //ambil relasi user dari transaksi
         $transaksi = transaksi::with('user')->get();
-        //ambil nama user
-        $user = $transaksi->pluck('user.first_name');
-        //ambil tanggal_transaksi
-        $tanggal_transaksi = $transaksi->pluck('tanggal_transaksi');
-        //ambil total_harga
-        $total_harga = $transaksi->pluck('total_harga');
-        //ambil tipe_transaksi
-        $tipe_transaksi = $transaksi->pluck('tipe_transaksi');
-        // jadikan semua variable di atas menjadi satu array
-        $tbody = $user->map(function($item, $key) use ($tanggal_transaksi, $total_harga, $tipe_transaksi){
-            return [
-                'user' => $item,
-                'tanggal_transaksi' => $tanggal_transaksi[$key],
-                'total_harga' => $total_harga[$key],
-                'tipe_transaksi' => $tipe_transaksi[$key],
-            ];
-        });
 
+        $tbody = [];
+
+        foreach ($transaksi as $item) {
+            $tbody[] = [
+                'Nama User' => $item->user->name,
+                'Tanggal Transaksi' => $item->created_at->format('Y-m-d'),
+                'Total Harga' => $item->total_harga,
+                'Tipe Transaksi' => $item->tipe_transaksi,
+            ];
+        }
 
         $thead = ['Nama User', 'Tanggal Transaksi', 'Total Harga', 'Tipe Transaksi'];
 
@@ -42,51 +35,11 @@ class TransaksiController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    // public function cetak_pdf()
+    // {
+    //     $transaksi = transaksi::with('user')->get();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(transaksi $transaksi)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(transaksi $transaksi)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, transaksi $transaksi)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(transaksi $transaksi)
-    {
-        //
-    }
+    //     $pdf = PDF::loadview('transaksi_pdf', ['transaksi' => $transaksi]);
+    //     return $pdf->download('laporan-transaksi-pdf');
+    // }
 }

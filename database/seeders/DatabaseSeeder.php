@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             TransaksiSeeder::class,
-            JadwalSeeder::class,
             ProgramSeeder::class,
+            JadwalSeeder::class,
             Detail_TransaksiSeeder::class,
             LanggananSeeder::class,
             PresensiSeeder::class,
