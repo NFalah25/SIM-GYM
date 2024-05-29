@@ -13,6 +13,7 @@ class WelcomeController extends Controller
         $program_fitnesses = ProgramFitness::all();
         return Inertia::render('Welcome', [
             'program' => $program_fitnesses
+
         ]);
     }
 }
