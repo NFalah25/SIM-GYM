@@ -11,7 +11,7 @@ export default function Dashboard({ user, children }) {
     return (
         <>
             <div className="flex h-screen w-full bg-slate-900">
-                <div>
+                <div className="hidden sm:hidden md:hidden lg:block">
                     <Sidebar />
                 </div>
                 <div className="w-full space-y-10 overflow-scroll">

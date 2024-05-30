@@ -19,7 +19,7 @@ export default {
                 'primary': '#AC1929',
                 'hover-primary': '#930010',
 
-            }
+            },
         },
     },
 

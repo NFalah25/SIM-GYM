@@ -11,10 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('program_fitnes', function (Blueprint $table) {
+        Schema::create('program_fitnesses', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('id_jadwal')->unsigned()->nullable();
             $table->string('nama_program')->nullable();
             $table->integer('durasi')->nullable();
             $table->integer('harga')->nullable();
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('program_fitnes');
+        Schema::dropIfExists('program_fitnesses');
     }
 };

@@ -1,10 +1,11 @@
 import Button from "../Button";
+import ButtonNew from "../ButtonNew";
 import Filter from "../Filter";
 import SortBy from "../SortBy";
 
 function UserTableOperation() {
     return (
-        <div className="flex items-center gap-7">
+        <div className="sm flex flex-col items-center gap-3 md:flex-row md:gap-7 lg:flex-row lg:gap-7">
             <Filter
                 options={[
                     { value: "all", label: "All" },
@@ -34,7 +35,7 @@ function UserTableOperation() {
                     },
                 ]}
             />
-            <Button type="add-data">Add Data User</Button>
+            <ButtonNew href="/users/create">Add Data User</ButtonNew>
         </div>
     );
 }
