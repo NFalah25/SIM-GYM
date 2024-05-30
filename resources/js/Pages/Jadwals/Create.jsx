@@ -17,10 +17,6 @@ function JadwalCreate() {
             <input type="text" id="nomor" name="nomor" className="mt-1 p-2 bg-slate-900 text-slate-100 border border-gray-300 rounded-md w-full focus:border-slate-600"/>
         </div>
         <div className="mb-4">
-            <label className="block text-sm font-medium text-white">Nama Trainer:</label>
-            <input type="text" id="namaTrainer" name="namaTrainer" className="mt-1 p-2 bg-slate-900 text-slate-100 border border-gray-300 rounded-md w-full focus:border-slate-600"/>
-        </div>
-        <div className="mb-4">
             <label className="block text-sm font-medium text-white">Hari:</label>
             <input type="text" id="hari" name="hari" className="mt-1 p-2 bg-slate-900 text-slate-100 border border-gray-300 rounded-md w-full focus:border-slate-600"/>
         </div>

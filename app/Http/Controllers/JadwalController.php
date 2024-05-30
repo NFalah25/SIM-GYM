@@ -11,13 +11,12 @@ class JadwalController extends Controller
 {
     public function index()
     {
-        $user = jadwal::all();
+        $jadwal = jadwal::all();
 
-        $thead = ['Nomor', 'id', 'Hari', 'Waktu', 'Ruangan'];
+        $thead = ['Nomor', 'Hari', 'Waktu', 'Ruangan'];
 
         $tbody = $user->map(function ($item) {
             return [
-                'id' => $item->id,
                 'id_user' => $item->id_user,
                 'hari' => $item->hari,
                 'waktu_mulai' => $item->waktu_mulai,

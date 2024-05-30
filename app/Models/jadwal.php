@@ -9,4 +9,14 @@ class jadwal extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function program()
+    {
+        return $this->belongsTo(ProgramFitness::class, 'id_program');
+    }
 }
