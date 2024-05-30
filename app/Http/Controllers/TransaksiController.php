@@ -22,9 +22,9 @@ class TransaksiController extends Controller
         if ($tanggal_mulai && $tanggal_selesai) {
             $transaksi = transaksi::with('user')
                 ->whereBetween('tanggal_transaksi', [$tanggal_mulai, $tanggal_selesai])
-                ->get();
+                ->paginate(10);
         } else {
-            $transaksi = transaksi::with('user')->get();
+            $transaksi = transaksi::with('user')->paginate(10);
         }
 
         $tbody = [];
@@ -43,6 +43,7 @@ class TransaksiController extends Controller
         return Inertia::render('Transaksi/Index',[
             'thead' => $thead,
             'tbody' => $tbody,
+            'pagination' => $transaksi,
         ]);
     }
 

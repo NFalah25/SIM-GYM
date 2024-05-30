@@ -1,7 +1,7 @@
 import Table from "../Table";
 import Pagination from "../Pagination";
 
-function TransaksiTable({tbody, thead}) {
+function TransaksiTable({tbody, thead, pagination}) {
     return (
         <Table columns="2fr 2fr 1.5fr 1fr 1fr 0.5fr">
             <Table.Header>
@@ -13,7 +13,7 @@ function TransaksiTable({tbody, thead}) {
             </Table.Header>
             <Table.Body tbody={tbody} />
             <Table.Footer>
-                <Pagination />
+                <Pagination pagination={pagination} />
             </Table.Footer>
         </Table>
     );

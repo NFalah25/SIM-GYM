@@ -5,8 +5,9 @@ import TransaksiTableOperation from "@/Components/Transaksi/TransaksiTableOperat
 import Label from "../Component/Label";
 import Input from "../Component/Input";
 import {Link, useForm} from "@inertiajs/react";
+import {usePDF} from "react-to-pdf";
 
-function TransaksiIndex({ tbody, thead }) {
+function TransaksiIndex({ tbody, thead, pagination }) {
 
     const {data, setData, get, errors, reset} = useForm({
         mulai_tanggal: '',
@@ -59,10 +60,22 @@ function TransaksiIndex({ tbody, thead }) {
                 </form>
             </Row>
             <Row>
-                <TransaksiTable tbody={tbody} thead={thead} />
+                <TransaksiTable tbody={tbody} thead={thead} pagination={pagination} />
             </Row>
         </Dashboard>
     );
+}
+
+const PrintPDF = () => {
+    const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
+    return (
+        <div>
+            <button onClick={() => toPDF()}>Download PDF</button>
+            <div ref={targetRef}>
+                Content to be generated to PDF
+            </div>
+        </div>
+    )
 }
 
 export default TransaksiIndex;

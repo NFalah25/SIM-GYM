@@ -101,6 +101,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
+        dd($request->all());
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
@@ -117,10 +118,17 @@ class UserController extends Controller
             'role' => 'required|string|in:admin,user,member',
         ]);
 
-        if ($request->hasFile('foto')) {
-            $avatarPath = $request->file('foto')->store('assets/profile_photo', 'public');
-        } else {
-            $avatarPath = $user->foto;
+
+        // simpan avatar ke public storage dan simpan path-nya ke database
+        $avatarPath = $user->foto;
+        if ($request->hasFile('avatar')) {
+            // Hapus file avatar lama jika ada
+            if ($user->foto && Storage::disk('public')->exists($user->foto)) {
+                Storage::disk('public')->delete($user->foto);
+            }
+
+            // Simpan file avatar baru
+            $avatarPath = $request->file('avatar')->store('assets/profile_photo', 'public');
         }
 
         $user->update([
@@ -146,8 +154,8 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         // Hapus file avatar jika ada
-        if ($user->foto && \Storage::disk('public')->exists($user->foto)) {
-            \Storage::disk('public')->delete($user->foto);
+        if ($user->foto && Storage::disk('public')->exists($user->foto)) {
+            Storage::disk('public')->delete($user->foto);
         }
 
         $user->delete();
