@@ -53,9 +53,9 @@ Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edi
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 Route::get('/program-fitness', [ProgramFitnessController::class, 'index'])->name('program-fitness');
+Route::delete('/program-fitness/{id}', [ProgramFitnessController::class, 'destroy'])->name('program_fitnesses.destroy');
 
 Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
 Route::get('/add-jadwal', [JadwalController::class, 'create'])->name('jadwal-create');
 
-Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
-
+Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');

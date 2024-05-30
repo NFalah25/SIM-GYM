@@ -78,15 +78,15 @@ class UserSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Rifqi3',
-            'email' => 'rifqi@gmail.com',
-            'password' => Hash::make('password'),
+            'email' => 'rifqi@mail.com',
+            'password' => Hash::make('test12345'),
             'role' => 'member',
             'first_name' => 'Rifqi',
             'last_name' => 'Maulana',
             'phone_number' => '081234567890',
             'address' => 'Jl. Member No. 15',
             'height' => '170',
-            'weight' => '70',
+            'weight' => '50',
             'gender' => 'L',
             'email_verified_at' => now(),
         ]);

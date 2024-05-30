@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->bigInteger('id_user')->unsigned()->nullable();
+            $table->bigInteger('id_program')->unsigned()->nullable();
             $table->string('hari')->nullable();
             $table->time('waktu_mulai')->nullable();
             $table->time('waktu_selesai')->nullable();
