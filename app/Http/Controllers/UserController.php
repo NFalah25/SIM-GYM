@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user = User::all();
+        $user = User::paginate(10);
         $columns = '1fr 1.5fr 1fr 1fr 1fr 0.5fr';
         $basePath = 'users';
         $thead = ['Nama User', 'Email', 'Role', 'Phone Number', 'Address'];
@@ -34,6 +34,7 @@ class UserController extends Controller
             'basePath' => $basePath,
             'thead' => $thead,
             'tbody' => $tbody,
+            'pagination' => $user
         ]);
     }
     public function create()
