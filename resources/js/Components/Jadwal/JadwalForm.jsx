@@ -41,7 +41,7 @@ function JadwalForm({user, program}) {
                                     setData("name", e.target.value)
                                 }
                         >
-                            <option value="">Pilih User</option>
+                            <option value="">Pilih Trainer</option>
                             {user.map ((user) => (
                                 <option value={user.id}>{user.name}</option>
                             ))}

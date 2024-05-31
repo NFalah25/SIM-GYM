@@ -73,14 +73,14 @@ function Body({ tbody, basePath }) {
     };
 
     const confirmDelete = () => {
-        const url = route("users.destroy", selectedId);
+        const url = route(`${basePath}.destroy`, selectedId);
         destroy(url, {
             onSuccess: () => {
-                toast.success("User deleted successfully");
+                toast.success(`${basePath} deleted successfully`);
                 setIsModalOpen(false);
             },
             onError: () => {
-                toast.error("Error deleting user");
+                toast.error(`Error deleting ${basePath}`);
                 setIsModalOpen(false);
             },
         });

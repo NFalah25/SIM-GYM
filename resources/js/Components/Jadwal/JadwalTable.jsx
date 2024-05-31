@@ -2,6 +2,10 @@ import Pagination from "../Pagination";
 import TableNew from "../TableNew";
 
 function JadwalTable({ thead, tbody, basePath, columns }) {
+
+    {tbody.map ((item) => (
+        console.log (item.id)
+    ))}
     return (
         <>
             <TableNew columns={columns}>

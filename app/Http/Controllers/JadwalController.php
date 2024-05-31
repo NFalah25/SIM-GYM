@@ -16,16 +16,17 @@ class JadwalController extends Controller
         $relasiUser = jadwal::with('user', 'program')->get();
 
         $columns = '1fr 1fr 1fr 1fr 1fr 0.5fr';
-        $basePath = 'jadwals';
+        $basePath = 'jadwal';
         $thead = ['Nama Trainer', 'Nama Program', 'Hari', 'Waktu', 'Ruangan'];
 
         foreach ($relasiUser as $item) {
             $tbody [] = [
-                $item->user->name,
-                $item->program->nama_program, 
-                $item->hari,
-                $item->waktu_mulai,
-                $item->nama_ruangan,
+                'id' => $item->id,
+                'name' => $item->user->name,
+                'program' => $item->program->nama_program, 
+                'hari' => $item->hari,
+                'waktu' => $item->waktu_mulai,
+                'ruangan' => $item->nama_ruangan,
             ];
         };
 
