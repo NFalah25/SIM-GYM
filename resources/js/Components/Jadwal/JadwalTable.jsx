@@ -1,20 +1,26 @@
-import Table from "../Table";
 import Pagination from "../Pagination";
+import TableNew from "../TableNew";
 
-function JadwalTable({thead, tbody}) {
+function JadwalTable({ thead, tbody, basePath, columns }) {
+
+    {tbody.map ((item) => (
+        console.log (item.id)
+    ))}
     return (
-        <Table columns="1fr 1fr 1fr 1fr 0.5fr">
-            <Table.Header>
+        <>
+            <TableNew columns={columns}>
+                <TableNew.Header>
                     {thead.map((column, index) => (
                         <div key={index}>{column}</div>
                     ))}
-                <div>Action</div>
-            </Table.Header>
-            <Table.Body tbody={tbody} />
-            <Table.Footer>
-                <Pagination />
-            </Table.Footer>
-        </Table>
+                    <div>Action</div>
+                </TableNew.Header>
+                <TableNew.Body tbody={tbody} basePath={basePath} />
+                <TableNew.Footer>
+                    <Pagination />
+                </TableNew.Footer>
+            </TableNew>
+        </>
     );
 }
 
