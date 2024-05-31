@@ -1,5 +1,6 @@
 import { Link } from "@inertiajs/react";
 import SortBy from "../SortBy";
+import ButtonNew from "../ButtonNew";
 
 function JadwalTableOperation() {
     return (
@@ -26,7 +27,7 @@ function JadwalTableOperation() {
                     },
                 ]}
             />
-            <Link href={route('jadwal-create')} className={'bg-lime-500 text-slate-100 transition-all duration-300 text-lg md:text-xs lg:text-base font-semibold rounded-lg border border-lime-500 px-4 py-2 hover:bg-lime-600'}>Add Jadwal</Link>
+            <ButtonNew href="/jadwal/create">Add Jadwal</ButtonNew>
         </div>
     );
 }
