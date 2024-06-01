@@ -8,7 +8,13 @@ import { Link, useForm } from "@inertiajs/react";
 import { usePDF } from "react-to-pdf";
 import Button from "@/Components/Button";
 
-function TransaksiIndex({ tbody, thead, pagination, mulai_tanggal, sampai_tanggal }) {
+function TransaksiIndex({
+    tbody,
+    thead,
+    pagination,
+    mulai_tanggal,
+    sampai_tanggal,
+}) {
     // const PrintPDF = () => {
     //     const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
     //     return (
@@ -50,11 +56,33 @@ function TransaksiIndex({ tbody, thead, pagination, mulai_tanggal, sampai_tangga
                     All Transaksi
                 </h2>
                 <form onSubmit={halamanPrint}>
-                    <input type="date" value={data.mulai_tanggal} id="mulai_tanggal" name="mulai_tanggal" onChange={(e)=>setData('mulai_tanggal', e.target.value)} />
-                    <input type="date" value={data.sampai_tanggal} id="sampai_tanggal" name="sampai_tanggal" onChange={(e)=>setData('sampai_tanggal', e.target.value)} />
-            <button className ="bg-lime-500 text-slate-100 transition-all duration-300 text-lg md:text-xs lg:text-base font-semibold rounded-lg border border-lime-500 px-4 py-2 hover:bg-lime-600" type="submit" >Cetak Transaksi</button>
-            </form>
-
+                    <input
+                        className="hidden"
+                        type="date"
+                        value={data.mulai_tanggal}
+                        id="mulai_tanggal"
+                        name="mulai_tanggal"
+                        onChange={(e) =>
+                            setData("mulai_tanggal", e.target.value)
+                        }
+                    />
+                    <input
+                        className="hidden"
+                        type="date"
+                        value={data.sampai_tanggal}
+                        id="sampai_tanggal"
+                        name="sampai_tanggal"
+                        onChange={(e) =>
+                            setData("sampai_tanggal", e.target.value)
+                        }
+                    />
+                    <button
+                        className="bg-lime-500 text-slate-100 transition-all duration-300 text-lg md:text-xs lg:text-base font-semibold rounded-lg border border-lime-500 px-4 py-2 hover:bg-lime-600"
+                        type="submit"
+                    >
+                        Cetak Transaksi
+                    </button>
+                </form>
             </Row>
             <Row>
                 {/* button onclick print to pdf */}
@@ -108,18 +136,6 @@ function TransaksiIndex({ tbody, thead, pagination, mulai_tanggal, sampai_tangga
                         </div>
                     </div>
                 </form>
-                {/* button cetak pdf */}
-                <div className="flex justify-end w-full">
-                    {/* <Link href="/transaksi/print" className="bg-lime-500 text-slate-100 transition-all duration-300 text-lg md:text-xs lg:text-base font-semibold rounded-lg border border-lime-500 px-4 py-2 hover:bg-lime-600">
-                    Cetak PDF
-                </Link> */}
-                    <button
-                        onClick={toPDF}
-                        className="bg-lime-500 text-slate-100 transition-all duration-300 text-lg md:text-xs lg:text-base font-semibold rounded-lg border border-lime-500 px-4 py-2 hover:bg-lime-600"
-                    >
-                        Cetak PDF
-                    </button>
-                </div>
             </Row>
             <Row>
                 <TransaksiTable
