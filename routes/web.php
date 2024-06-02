@@ -22,7 +22,7 @@ use Inertia\Inertia;
 Route::get('/', [WelcomeController::class, 'index']);
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard', [
+    return Inertia::render('Dashboard/Index', [
         'user' => auth()->user()->first_name,
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');;
@@ -53,6 +53,7 @@ Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edi
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
+//Route program-fitness
 Route::get('/program-fitness', [ProgramFitnessController::class, 'index'])->name('program-fitness');
 Route::delete('/program-fitness/{id}', [ProgramFitnessController::class, 'destroy'])->name('program_fitnesses.destroy');
 
@@ -64,4 +65,6 @@ Route::get('/jadwal/{id}/edit', [JadwalController::class, 'edit'])->name('jadwal
 Route::put('/jadwal/{id}', [JadwalController::class, 'update'])->name('jadwal.update');
 Route::delete('/jadwal/{id}', [JadwalController::class, 'destroy'])->name('jadwal.destroy');
 
+//Route transaksi
 Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
+
