@@ -1,5 +1,4 @@
-function Filter({ options }) {
-    const currentFilter = "all";
+function Filter({ options, currentFilter, onFilterChange }) {
     return (
         <div className="flex gap-2 rounded-md border border-slate-600 bg-slate-800 p-2 md:p-1 ">
             {options.map((option) => (
@@ -11,6 +10,7 @@ function Filter({ options }) {
                             : "text-slate-500 hover:bg-slate-600 hover:text-slate-50"
                     }`}
                     disabled={currentFilter === option.value}
+                    onClick={() => onFilterChange(option.value)}
                 >
                     {option.label}
                 </button>

@@ -13,7 +13,7 @@ class JadwalController extends Controller
 {
     public function index()
     {
-        $relasiUser = jadwal::with('user', 'program')->get();
+        $relasiUser = jadwal::with('user', 'program')->paginate(10);
 
         $columns = '1fr 1fr 1fr 1fr 1fr 0.5fr';
         $basePath = 'jadwal';
@@ -23,7 +23,7 @@ class JadwalController extends Controller
             $tbody [] = [
                 'id' => $item->id,
                 'name' => $item->user->name,
-                'program' => $item->program->nama_program, 
+                'program' => $item->program->nama_program,
                 'hari' => $item->hari,
                 'waktu' => $item->waktu_mulai,
                 'ruangan' => $item->nama_ruangan,
@@ -35,12 +35,13 @@ class JadwalController extends Controller
             'basePath' => $basePath,
             'thead' => $thead,
             'tbody' => $tbody,
+            'pagination' => $relasiUser,
         ]);
     }
 
     public function create()
     {
-        $user = User::where('role', 'trainer') -> get(); 
+        $user = User::where('role', 'trainer') -> get();
         $program = ProgramFitness::all();
         return Inertia::render('Jadwals/Create', [
             'user' => $user,
@@ -74,7 +75,7 @@ class JadwalController extends Controller
     public function edit($id)
     {
         $jadwal = Jadwal::findOrFail($id);
-        $user = User::where('role', 'trainer') -> get(); 
+        $user = User::where('role', 'trainer') -> get();
         $program = ProgramFitness::all();
 
         return Inertia::render('Jadwals/Edit', [

@@ -1,7 +1,7 @@
 import Pagination from "../Pagination";
 import TableNew from "../TableNew";
 
-function JadwalTable({ thead, tbody, basePath, columns }) {
+function JadwalTable({ thead, tbody, basePath, columns, pagination }) {
 
     {tbody.map ((item) => (
         console.log (item.id)
@@ -17,7 +17,7 @@ function JadwalTable({ thead, tbody, basePath, columns }) {
                 </TableNew.Header>
                 <TableNew.Body tbody={tbody} basePath={basePath} />
                 <TableNew.Footer>
-                    <Pagination />
+                    <Pagination pagination={pagination} />
                 </TableNew.Footer>
             </TableNew>
         </>
