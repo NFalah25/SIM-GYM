@@ -67,8 +67,5 @@ Route::delete('/jadwal/{id}', [JadwalController::class, 'destroy'])->name('jadwa
 
 //Route transaksi
 Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
-<<<<<<< HEAD
-
-=======
 Route::get('/cetakPdf', [TransaksiController::class, 'cetak_pdf'])->name('transaksi.cetak_pdf');
->>>>>>> master
+
