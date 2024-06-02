@@ -1,7 +1,7 @@
 import TableNew from "../TableNew";
 import Pagination from "../Pagination";
 
-function UserTable({ thead, tbody, basePath, columns }) {
+function UserTable({ thead, tbody, basePath, columns, pagination }) {
     return (
         <>
             <TableNew columns={columns}>
@@ -13,7 +13,7 @@ function UserTable({ thead, tbody, basePath, columns }) {
                 </TableNew.Header>
                 <TableNew.Body tbody={tbody} basePath={basePath} />
                 <TableNew.Footer>
-                    <Pagination />
+                    <Pagination pagination={pagination} />
                 </TableNew.Footer>
             </TableNew>
         </>

@@ -27,6 +27,13 @@ class TransaksiSeeder extends Seeder
             'tipe_transaksi' => 'Cashless',
         ]);
 
+        transaksi::create([
+            'id_user' => 5,
+            'tanggal_transaksi' => '2024-05-20 12:49:23',
+            'total_harga' => 10000,
+            'tipe_transaksi' => 'Cashless',
+        ]);
+
 
     }
 }

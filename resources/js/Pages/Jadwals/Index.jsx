@@ -3,7 +3,7 @@ import JadwalTable from "@/Components/Jadwal/JadwalTable";
 import JadwalTableOperation from "@/Components/Jadwal/JadwalTableOperation";
 import Dashboard from "@/Pages/Dashboard";
 
-function JadwalIndex({columns, thead, tbody, basePath}) {
+function JadwalIndex({columns, thead, tbody, basePath, pagination}) {
     return (
         <Dashboard>
             <Row
@@ -21,10 +21,11 @@ function JadwalIndex({columns, thead, tbody, basePath}) {
                     thead={thead}
                     tbody={tbody}
                     basePath={basePath}
+                    pagination={pagination}
                 />
             </Row>
         </Dashboard>
     );
 }
 
-export default JadwalIndex; 
+export default JadwalIndex;

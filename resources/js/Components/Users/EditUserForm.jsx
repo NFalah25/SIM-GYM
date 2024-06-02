@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useForm } from "@inertiajs/react";
+import { router, useForm } from "@inertiajs/react";
 import { usePage } from "@inertiajs/react";
 import { toast } from "react-toastify";
 import Label from "@/Pages/Component/Label";
@@ -23,7 +23,7 @@ function EditUserForm() {
         gender: user.gender || "",
         role: user.role || "",
         date_of_birth: user.date_of_birth || "",
-        foto: null,
+        foto: '',
         remember: false,
     });
 
@@ -43,6 +43,17 @@ function EditUserForm() {
                 toast.error("There was an error updating the user");
             },
         });
+        // router.put(route("users.update", user.id), data, {
+        //     preserveScroll: true,
+        //     forceFormData: true,
+        //     foto: data.foto,
+        //     onSuccess: () => {
+        //         toast.success("User updated successfully");
+        //     },
+        //     onError: () => {
+        //         toast.error("There was an error updating the user");
+        //     },
+        // });
     }
 
     const handlePhotoChange = (e) => {
@@ -62,6 +73,7 @@ function EditUserForm() {
             onSubmit={submit}
             className="w-full"
             encType="multipart/form-data"
+            method="POST"
         >
             <input type="hidden" name="_method" value="PUT" />
             <div className="w-full space-y-10 rounded-xl bg-slate-800 p-4 md:p-8 lg:p-10">
@@ -83,6 +95,7 @@ function EditUserForm() {
                             id="foto"
                             name="foto"
                             className="hidden"
+                            value={data.foto}
                             onChange={handlePhotoChange}
                         />
                     </div>
