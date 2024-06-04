@@ -12,6 +12,12 @@ class TransaksiController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    private function formatCurrency($value)
+    {
+        return 'Rp ' . number_format($value, 0, ',', '.');
+    }
+
     public function index(Request $request)
     {
         $tanggal_mulai = $request->input('mulai_tanggal');
@@ -31,10 +37,11 @@ class TransaksiController extends Controller
 
         foreach ($transaksi as $item) {
             $tbody[] = [
+                'id' => $item->id,
                 'Nama User' => $item->user->name,
                 'Tanggal Transaksi' => $item->tanggal_transaksi,
-                'Total Harga' => $item->total_harga,
-                'Tipe Transaksi' => $item->tipe_transaksi,
+                'Total Harga' => $this->formatCurrency($item->total_harga),
+                'Tipe Transaksi' => $item->status,
             ];
         }
 
@@ -46,6 +53,7 @@ class TransaksiController extends Controller
             'pagination' => $transaksi,
             'mulai_tanggal' => $tanggal_mulai,
             'sampai_tanggal' => $tanggal_selesai,
+            'basePath' => 'transaksi',
         ]);
     }
 
@@ -68,8 +76,8 @@ class TransaksiController extends Controller
             $tbody[] = [
                 'nama' => $item->user->name,
                 'tanggal' => $item->tanggal_transaksi,
-                'harga' => $item->total_harga,
-                'tipe' => $item->tipe_transaksi,
+                'harga' => $this->formatCurrency($item->total_harga),
+                'tipe' => $item->status,
             ];
         }
 
@@ -77,5 +85,9 @@ class TransaksiController extends Controller
             'thead' => $thead,
             'tbody' => $tbody,
         ]);
+    }
+
+    public function detail_transaksi($id){
+        return Inertia::render('Transaksi/DetailTransaksi');
     }
 }

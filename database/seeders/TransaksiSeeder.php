@@ -17,21 +17,21 @@ class TransaksiSeeder extends Seeder
             'id_user' => 2,
             'tanggal_transaksi' => '2024-05-14 12:49:23',
             'total_harga' => 10000,
-            'tipe_transaksi' => 'Cashless',
+            'status' => 'Paid',
         ]);
 
         transaksi::create([
             'id_user' => 3,
             'tanggal_transaksi' => '2024-05-14 12:49:23',
             'total_harga' => 10000,
-            'tipe_transaksi' => 'Cashless',
+            'status' => 'Paid',
         ]);
 
         transaksi::create([
             'id_user' => 5,
             'tanggal_transaksi' => '2024-05-20 12:49:23',
             'total_harga' => 10000,
-            'tipe_transaksi' => 'Cashless',
+            'status' => 'Paid',
         ]);
 
 

@@ -26,6 +26,12 @@ class LanggananSeeder extends Seeder
             'tanggal_mulai' => '2024-05-14 12:49:23',
             'tanggal_akhir' => '2024-06-14 12:49:23',
         ]);
+        langganan::create([
+            'id_user' => 3,
+            'id_transaksi' => 2,
+            'tanggal_mulai' => '2024-05-14 12:49:23',
+            'tanggal_akhir' => '2024-05-20 12:49:23',
+        ]);
 
     }
 }

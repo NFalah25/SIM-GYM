@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('id_user')->unsigned()->nullable();
             $table->timestamp('tanggal_transaksi')->nullable();
             $table->integer('total_harga')->nullable();
-            $table->string('tipe_transaksi')->nullable();
+            $table->string('status')->nullable();
         });
     }
 

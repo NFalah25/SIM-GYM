@@ -252,7 +252,7 @@ function BodyProgram({ data, tbody }) {
     const handleDelete = (id) => {
         console.log("Deleting ID:", id); // Debug: cek ID yang diterima
         if (window.confirm("Are you sure you want to delete this item?")) {
-            const url = route("program_fitnesses.destroy", id);
+            const url = route("program.destroy", id);
             console.log("Generated URL:", url); // Debug: cek URL yang dihasilkan
             destroy(url, {
                 onSuccess: () => {
@@ -370,7 +370,7 @@ function BodyProgram({ data, tbody }) {
                         <div className="flex flex-col items-center md:flex-col lg:flex-row">
                             <Button
                                 type="icon-edit"
-                                target={`/program-fitness/${item.id}/edit`}
+                                target={`/program/${item.id}/edit`}
                                 aria-label="Edit"
                             >
                                 <svg

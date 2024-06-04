@@ -1,34 +1,47 @@
-import Button from "../Button";
-import Filter from "../Filter";
+import ButtonNew from "../ButtonNew";
+// import Filter from "../Filter";
 import SortBy from "../SortBy";
+import { useState } from "react";
+import { router } from "@inertiajs/react";
 
-function UserTableOperation() {
+function ProgramTableOperation({
+    basePath,
+    sort: initialSort,
+}) {
+    const [sort, setSort] = useState(initialSort);
+
+    const handleSortChange = (newSort) => {
+        setSort(newSort);
+        router.get(basePath, { sort: newSort });
+    };
     return (
         <div className="flex items-center gap-7">
-            <Filter
+            {/* <Filter
                 options={[
                     { value: "all", label: "All" },
                     { value: "available", label: "Available" },
                     { value: "not-available", label: "Not Available" },
                 ]}
-            />
+            /> */}
             <SortBy
                 options={[
                     { value: "name-asc", label: "Sort by name (A-Z)" },
                     { value: "name-desc", label: "Sort by name (Z-A)" },
                     {
-                        value: "regularPrice-asc",
+                        value: "price-asc",
                         label: "Sort by price (low first)",
                     },
                     {
-                        value: "regularPrice-desc",
+                        value: "price-desc",
                         label: "Sort by price (high first)",
                     },
                 ]}
+                currentSort={sort}
+                onSortChange={handleSortChange}
             />
-            <Button type="add-data">Add Program</Button>
+            <ButtonNew href={"/program/create"} type="add-data">Add Program</ButtonNew>
         </div>
     );
 }
 
-export default UserTableOperation;
+export default ProgramTableOperation;

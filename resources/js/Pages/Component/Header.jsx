@@ -1,8 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import Logo from "./Logo";
 
-export default function Header({ user }) {
+export default function Header() {
+
+    const {props} = usePage();
+    const {user_name} = props;
+
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [dropdownNavigationVisible, setDropdownNavigationVisible] =
         useState(false);
@@ -36,8 +40,8 @@ export default function Header({ user }) {
 
     return (
         <>
-            <div className="flex h-16 items-center justify-between bg-slate-800 p-10 px-4">
-                <div className="ml-4 flex items-center">
+            <div className="flex items-center justify-between h-16 p-10 px-4 bg-slate-800">
+                <div className="flex items-center ml-4">
                     <div className="hidden text-lg font-bold text-white md:hidden lg:flex">
                         Zeus Physique
                     </div>
@@ -46,23 +50,23 @@ export default function Header({ user }) {
                     </div>
                 </div>
                 <div className="flex items-center">
-                    <div className="relative ml-2 flex gap-4" ref={dropdownRef}>
+                    <div className="relative flex gap-4 ml-2" ref={dropdownRef}>
                         <button
                             onClick={toggleDropdown}
                             className="flex items-center "
                         >
-                            <h6 className="me-3 mt-1 font-semibold text-slate-100">
-                                {user || "bejo"}
+                            <h6 className="mt-1 font-semibold me-3 text-slate-100">
+                                {user_name || "bejo"}
                             </h6>
                             <img
                                 src="https://ui-avatars.com/api/?name=John+Doe&background=random&color=fff"
                                 alt="profile"
-                                className="h-8 w-8 rounded-full"
+                                className="w-8 h-8 rounded-full"
                             />
                         </button>
                         <button
                             onClick={toggleNavigationDropdown}
-                            className="flex items-center rounded p-2 transition-all duration-300 hover:bg-slate-700 lg:hidden"
+                            className="flex items-center p-2 transition-all duration-300 rounded hover:bg-slate-700 lg:hidden"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +74,7 @@ export default function Header({ user }) {
                                 viewBox="0 0 24 24"
                                 strokeWidth={2}
                                 stroke="currentColor"
-                                className="size-6 text-white"
+                                className="text-white size-6"
                             >
                                 <path
                                     strokeLinecap="round"
@@ -86,7 +90,7 @@ export default function Header({ user }) {
                             >
                                 <Link
                                     href="/profile"
-                                    className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
+                                    className="px-3 py-2 text-sm rounded-md text-slate-100 hover:bg-slate-800"
                                 >
                                     Profile
                                 </Link>
@@ -94,7 +98,7 @@ export default function Header({ user }) {
                                     href={route("logout")}
                                     method={"post"}
                                     as={"button"}
-                                    className="rounded-md px-3 py-2 text-start text-sm text-slate-100 hover:bg-slate-800"
+                                    className="px-3 py-2 text-sm rounded-md text-start text-slate-100 hover:bg-slate-800"
                                 >
                                     Logout
                                 </Link>
@@ -107,37 +111,37 @@ export default function Header({ user }) {
                             >
                                 <Link
                                     href="/dashboard"
-                                    className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
+                                    className="px-3 py-2 text-sm rounded-md text-slate-100 hover:bg-slate-800"
                                 >
                                     Dashboard
                                 </Link>
                                 <Link
                                     href="/users"
-                                    className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
+                                    className="px-3 py-2 text-sm rounded-md text-slate-100 hover:bg-slate-800"
                                 >
                                     User
                                 </Link>
                                 <Link
-                                    href="/program-fitness"
-                                    className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
+                                    href="/program"
+                                    className="px-3 py-2 text-sm rounded-md text-slate-100 hover:bg-slate-800"
                                 >
                                     Program
                                 </Link>
                                 <Link
                                     href="/dashboard"
-                                    className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
+                                    className="px-3 py-2 text-sm rounded-md text-slate-100 hover:bg-slate-800"
                                 >
                                     Transaksi
                                 </Link>
                                 <Link
                                     href="/jadwal"
-                                    className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
+                                    className="px-3 py-2 text-sm rounded-md text-slate-100 hover:bg-slate-800"
                                 >
                                     Jadwal
                                 </Link>
                                 <Link
                                     href="/dashboard"
-                                    className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
+                                    className="px-3 py-2 text-sm rounded-md text-slate-100 hover:bg-slate-800"
                                 >
                                     Presensi
                                 </Link>
