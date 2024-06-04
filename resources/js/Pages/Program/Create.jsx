@@ -1,8 +1,8 @@
+import ProgramForm from "@/Components/Program/ProgramForm";
 import Row from "@/Components/Row";
-import EditJadwalForm from "@/Components/Jadwal/EditJadwalForm";
 import Dashboard from "@/Pages/Dashboard";
 
-function JadwalIndex() {
+function ProgramCreate() {
     return (
         <Dashboard>
             <Row
@@ -10,18 +10,17 @@ function JadwalIndex() {
                 className="flex-col gap-4 md:flex-row lg:flex-row"
             >
                 <h2 className="text-2xl font-bold font-poppins text-slate-100">
-                    Edit Jadwal
+                    Create Program
                 </h2>
             </Row>
             <Row
                 orientation="horizontal"
                 className="flex-col gap-4 md:flex-row lg:flex-row"
             >
-                <EditJadwalForm
-                />
+                <ProgramForm />
             </Row>
         </Dashboard>
     );
 }
 
-export default JadwalIndex;
+export default ProgramCreate; 

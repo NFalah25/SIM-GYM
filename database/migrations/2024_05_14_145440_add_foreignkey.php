@@ -20,7 +20,7 @@ return new class extends Migration
         Schema::table('jadwals', function (Blueprint $table) {
             // langganan_id
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_program')->references('id')->on('program_fitnesses')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_program')->references('id')->on('programs')->onDelete('cascade')->onUpdate('cascade');
         });
 
         Schema::table('langganans', function (Blueprint $table) {
@@ -37,7 +37,7 @@ return new class extends Migration
         Schema::table('detail_transaksis', function (Blueprint $table) {
             // langganan_id
             $table->foreign('id_transaksi')->references('id')->on('transaksis')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_program_fitnes')->references('id')->on('program_fitnesses')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_program_fitnes')->references('id')->on('programs')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

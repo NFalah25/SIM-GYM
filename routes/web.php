@@ -4,7 +4,7 @@ use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
-use App\Http\Controllers\ProgramFitnessController;
+use App\Http\Controllers\ProgramController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransaksiController;
@@ -53,9 +53,13 @@ Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edi
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
-//Route program-fitness
-Route::get('/program-fitness', [ProgramFitnessController::class, 'index'])->name('program-fitness');
-Route::delete('/program-fitness/{id}', [ProgramFitnessController::class, 'destroy'])->name('program_fitnesses.destroy');
+//Route program
+Route::get('/program', [ProgramController::class, 'index'])->name('program');
+Route::get('/program/create', [ProgramController::class, 'create'])->name('program-create');
+Route::post('/program', [ProgramController::class, 'store'])->name('program.store');
+Route::get('/program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit');
+Route::put('/program/{id}', [ProgramController::class, 'update'])->name('program.update');
+Route::delete('/program/{id}', [ProgramController::class, 'destroy'])->name('program.destroy');
 
 // Route jadwals
 Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
