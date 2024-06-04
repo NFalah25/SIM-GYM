@@ -9,7 +9,7 @@ function JadwalIndex() {
                 orientation="horizontal"
                 className="flex-col gap-4 md:flex-row lg:flex-row"
             >
-                <h2 className="text-2xl font-bold font-poppins text-slate-100">
+                <h2 className="font-poppins text-2xl font-bold text-slate-100">
                     Edit Jadwal
                 </h2>
             </Row>

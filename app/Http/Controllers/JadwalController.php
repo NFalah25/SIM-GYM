@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
-use App\Models\Program;
+use App\Models\ProgramFitness;
 
 class JadwalController extends Controller
 {
@@ -20,7 +20,7 @@ class JadwalController extends Controller
         $thead = ['Nama Trainer', 'Nama Program', 'Hari', 'Waktu', 'Ruangan'];
 
         foreach ($relasiUser as $item) {
-            $tbody[] = [
+            $tbody [] = [
                 'id' => $item->id,
                 'name' => $item->user->name,
                 'program' => $item->program->nama_program,
@@ -41,8 +41,8 @@ class JadwalController extends Controller
 
     public function create()
     {
-        $user = User::where('role', 'trainer')->get();
-        $program = Program::all();
+        $user = User::where('role', 'trainer') -> get();
+        $program = ProgramFitness::all();
         return Inertia::render('Jadwals/Create', [
             'user' => $user,
             'program' => $program,
@@ -75,8 +75,8 @@ class JadwalController extends Controller
     public function edit($id)
     {
         $jadwal = Jadwal::findOrFail($id);
-        $user = User::where('role', 'trainer')->get();
-        $program = Program::all();
+        $user = User::where('role', 'trainer') -> get();
+        $program = ProgramFitness::all();
 
         return Inertia::render('Jadwals/Edit', [
             'jadwal' => $jadwal,
