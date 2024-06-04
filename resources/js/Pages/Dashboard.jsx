@@ -3,6 +3,7 @@ import Header from "./Component/Header";
 import Sidebar from "./Component/Sidebar";
 
 export default function Dashboard({ user, children }) {
+
     function submit(e) {
         e.preventDefault();
         post("/logout");
@@ -15,7 +16,7 @@ export default function Dashboard({ user, children }) {
                     <Sidebar />
                 </div>
                 <div className="w-full space-y-10 overflow-scroll">
-                    <Header user={user} />
+                    <Header />
                     <div className="mx-auto h-auto max-w-[90%]">{children}</div>
                 </div>
             </div>

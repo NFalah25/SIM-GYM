@@ -55,13 +55,18 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    public function transaksi(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function transaksi()
     {
-        return $this->hasMany(transaksi::class);
+        return $this->hasMany(transaksi::class, 'id_user');
     }
 
     public function jadwal()
     {
-        return $this->hasMany(jadwal::class);
+        return $this->hasMany(jadwal::class, 'id_user');
+    }
+
+    public function langganan()
+    {
+        return $this->hasMany(langganan::class, 'id_user');
     }
 }

@@ -14,18 +14,8 @@ function TransaksiIndex({
     pagination,
     mulai_tanggal,
     sampai_tanggal,
+    basePath
 }) {
-    // const PrintPDF = () => {
-    //     const { toPDF, targetRef } = usePDF({filename: 'page.pdf'});
-    //     return (
-    //         <div>
-    //             <button onClick={toPDF}>Print to PDF</button>
-    //             <div ref={targetRef}>
-    //                 Content to be generated to PDF
-    //             </div>
-    //         </div>
-    //     )
-    // }
 
     const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
 
@@ -142,6 +132,7 @@ function TransaksiIndex({
                     tbody={tbody}
                     thead={thead}
                     pagination={pagination}
+                    basePath={basePath}
                 />
             </Row>
         </Dashboard>
