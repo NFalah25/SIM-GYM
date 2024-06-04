@@ -9,6 +9,7 @@ class Program extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $table = 'programs';
 
     public function jadwal()
     {

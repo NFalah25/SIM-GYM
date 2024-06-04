@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\jadwal;
 use App\Http\Controllers\Controller;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
@@ -42,7 +43,7 @@ class JadwalController extends Controller
     public function create()
     {
         $user = User::where('role', 'trainer') -> get();
-        $program = ProgramFitness::all();
+        $program = Program::all();
         return Inertia::render('Jadwals/Create', [
             'user' => $user,
             'program' => $program,
@@ -76,7 +77,7 @@ class JadwalController extends Controller
     {
         $jadwal = Jadwal::findOrFail($id);
         $user = User::where('role', 'trainer') -> get();
-        $program = ProgramFitness::all();
+        $program = Program::all();
 
         return Inertia::render('Jadwals/Edit', [
             'jadwal' => $jadwal,
