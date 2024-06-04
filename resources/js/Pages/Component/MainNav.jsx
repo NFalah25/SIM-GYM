@@ -20,8 +20,8 @@ function MainNav() {
                     <span>User</span>
                 </NavLink>
                 <NavLink
-                    href={route("program-fitness")}
-                    active={currentPath === "/program-fitness"}
+                    href={route("program")}
+                    active={currentPath === "/program"}
                 >
                     <span>Program</span>
                 </NavLink>

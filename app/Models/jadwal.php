@@ -17,6 +17,6 @@ class jadwal extends Model
 
     public function program()
     {
-        return $this->belongsTo(ProgramFitness::class, 'id_program');
+        return $this->belongsTo(Program::class, 'id_program');
     }
 }
