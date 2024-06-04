@@ -13,6 +13,11 @@ class Program extends Model
 
     public function jadwal()
     {
-        return $this->hasMany(jadwal::class);
+        return $this->hasMany(jadwal::class, 'id_program');
+    }
+
+    public function detail_transaksi()
+    {
+        return $this->hasMany(detail_transaksi::class, 'id_program');
     }
 }

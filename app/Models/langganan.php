@@ -9,4 +9,19 @@ class langganan extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function transaksi()
+    {
+        return $this->belongsTo(transaksi::class, 'id_transaksi');
+    }
+
+    public function presensi()
+    {
+        return $this->hasMany(presensi::class, 'id_langganan');
+    }
 }

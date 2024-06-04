@@ -1,8 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import Logo from "./Logo";
 
-export default function Header({ user }) {
+export default function Header() {
+
+    const {props} = usePage();
+    const {user_name} = props;
+
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [dropdownNavigationVisible, setDropdownNavigationVisible] =
         useState(false);
@@ -52,7 +56,7 @@ export default function Header({ user }) {
                             className="flex items-center "
                         >
                             <h6 className="mt-1 font-semibold me-3 text-slate-100">
-                                {user || "bejo"}
+                                {user_name || "bejo"}
                             </h6>
                             <img
                                 src="https://ui-avatars.com/api/?name=John+Doe&background=random&color=fff"

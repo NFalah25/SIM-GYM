@@ -14,4 +14,14 @@ class transaksi extends Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
+
+    public function langganan(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(langganan::class, 'id_transaksi');
+    }
+
+    public function detail_transaksi(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(detail_transaksi::class, 'id_transaksi');
+    }
 }
