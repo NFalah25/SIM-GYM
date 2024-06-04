@@ -3,7 +3,15 @@ import UserTable from "@/Components/Users/UserTable";
 import UserTableOperation from "@/Components/Users/UserTableOperation";
 import Dashboard from "@/Pages/Dashboard";
 
-function UsersIndex({ thead, tbody }) {
+function UsersIndex({
+    columns,
+    thead,
+    tbody,
+    basePath,
+    pagination,
+    filter,
+    sort,
+}) {
     return (
         <Dashboard>
             <Row
@@ -13,10 +21,20 @@ function UsersIndex({ thead, tbody }) {
                 <h2 className="font-poppins text-2xl font-bold text-slate-100">
                     All User
                 </h2>
-                <UserTableOperation />
+                <UserTableOperation
+                    basePath={basePath}
+                    filter={filter}
+                    sort={sort}
+                />
             </Row>
             <Row>
-                <UserTable thead={thead} tbody={tbody} />
+                <UserTable
+                    columns={columns}
+                    thead={thead}
+                    tbody={tbody}
+                    basePath={basePath}
+                    pagination={pagination}
+                />
             </Row>
         </Dashboard>
     );

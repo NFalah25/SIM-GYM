@@ -39,7 +39,7 @@ export default function Header({ user }) {
             <div className="flex h-16 items-center justify-between bg-slate-800 p-10 px-4">
                 <div className="ml-4 flex items-center">
                     <div className="hidden text-lg font-bold text-white md:hidden lg:flex">
-                        LaraGym
+                        Zeus Physique
                     </div>
                     <div className="lg:hidden">
                         <Logo />

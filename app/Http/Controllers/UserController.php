@@ -11,26 +11,37 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $user = User::all();
+        $query = User::select('id', 'name', 'email', 'role', 'phone_number', 'address');
+        if ($request->has('filter') && $request->filter !== 'all') {
+            $query->where('role', "$request->filter");
+        }
+        if ($request->has('sort')) {
+            $sort = $request->sort;
+            if ($sort === 'name-asc') {
+                $query->orderBy('name', 'asc');
+            } elseif ($sort === 'name-desc') {
+                $query->orderBy('name', 'desc');
+            }
+        } else {
+            $query->orderBy('name', 'asc'); // Default sorting
+        }
+        $users = $query->paginate(10);
+        $columns = '1fr 1.5fr 1fr 1fr 1fr 0.5fr';
+        $basePath = 'users';
+        $thead = ['Nama User', 'Email', 'Role', 'Phone Number', 'Address'];
 
-        $thead = ['Nama User', 'Email', 'First Name', 'Phone Number', 'Address'];
-
-        $tbody = $user->map(function ($item) {
-            return [
-                'id' => $item->id,
-                'name' => $item->name,
-                'email' => $item->email,
-                'first_name' => $item->first_name,
-                'phone_number' => $item->phone_number,
-                'address' => $item->address,
-            ];
-        });
+        $tbody = $users->items();
 
         return Inertia::render('Users/Index', [
+            'columns' => $columns,
+            'basePath' => $basePath,
             'thead' => $thead,
             'tbody' => $tbody,
+            'pagination' => $users,
+            'filter' => $request->filter ?? 'all',
+            'sort' => $request->sort ?? 'name-asc',
         ]);
     }
     public function create()
@@ -97,6 +108,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
+        dd($request->all());
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
@@ -113,10 +125,17 @@ class UserController extends Controller
             'role' => 'required|string|in:admin,user,member',
         ]);
 
-        if ($request->hasFile('foto')) {
-            $avatarPath = $request->file('foto')->store('assets/profile_photo', 'public');
-        } else {
-            $avatarPath = $user->foto;
+
+        // simpan avatar ke public storage dan simpan path-nya ke database
+        $avatarPath = $user->foto;
+        if ($request->hasFile('avatar')) {
+            // Hapus file avatar lama jika ada
+            if ($user->foto && Storage::disk('public')->exists($user->foto)) {
+                Storage::disk('public')->delete($user->foto);
+            }
+
+            // Simpan file avatar baru
+            $avatarPath = $request->file('avatar')->store('assets/profile_photo', 'public');
         }
 
         $user->update([
@@ -142,8 +161,8 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         // Hapus file avatar jika ada
-        if ($user->foto && \Storage::disk('public')->exists($user->foto)) {
-            \Storage::disk('public')->delete($user->foto);
+        if ($user->foto && Storage::disk('public')->exists($user->foto)) {
+            Storage::disk('public')->delete($user->foto);
         }
 
         $user->delete();
