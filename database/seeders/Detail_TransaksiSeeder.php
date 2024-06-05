@@ -15,13 +15,13 @@ class Detail_TransaksiSeeder extends Seeder
     {
         detail_transaksi::create([
             'id_transaksi' => 1,
-            'id_program_fitnes' => 1,
+            'id_program' => 1,
             'jumlah' => 10000,
         ]);
 
         detail_transaksi::create([
             'id_transaksi' => 2,
-            'id_program_fitnes' => 2,
+            'id_program' => 2,
             'jumlah' => 10000,
         ]);
     }

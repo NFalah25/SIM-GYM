@@ -11,30 +11,37 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $user = User::paginate(10);
+        $query = User::select('id', 'name', 'email', 'role', 'phone_number', 'address');
+        if ($request->has('filter') && $request->filter !== 'all') {
+            $query->where('role', "$request->filter");
+        }
+        if ($request->has('sort')) {
+            $sort = $request->sort;
+            if ($sort === 'name-asc') {
+                $query->orderBy('name', 'asc');
+            } elseif ($sort === 'name-desc') {
+                $query->orderBy('name', 'desc');
+            }
+        } else {
+            $query->orderBy('name', 'asc'); // Default sorting
+        }
+        $users = $query->paginate(10);
         $columns = '1fr 1.5fr 1fr 1fr 1fr 0.5fr';
         $basePath = 'users';
         $thead = ['Nama User', 'Email', 'Role', 'Phone Number', 'Address'];
 
-        $tbody = $user->map(function ($item) {
-            return [
-                'id' => $item->id,
-                'name' => $item->name,
-                'email' => $item->email,
-                'role' => $item->role,
-                'phone_number' => $item->phone_number,
-                'address' => $item->address,
-            ];
-        });
+        $tbody = $users->items();
 
         return Inertia::render('Users/Index', [
             'columns' => $columns,
             'basePath' => $basePath,
             'thead' => $thead,
             'tbody' => $tbody,
-            'pagination' => $user
+            'pagination' => $users,
+            'filter' => $request->filter ?? 'all',
+            'sort' => $request->sort ?? 'name-asc',
         ]);
     }
     public function create()
@@ -101,7 +108,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        dd($request->all());
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,

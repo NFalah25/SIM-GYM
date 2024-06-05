@@ -14,14 +14,20 @@ function MainNav() {
                     <span>Dashboard</span>
                 </NavLink>
                 <NavLink
+                    href={route("langganan")}
+                    active={currentPath === "/langganan"}
+                >
+                    <span>User</span>
+                </NavLink>
+                <NavLink
                     href={route("users")}
                     active={currentPath === "/users"}
                 >
                     <span>User</span>
                 </NavLink>
                 <NavLink
-                    href={route("program-fitness")}
-                    active={currentPath === "/program-fitness"}
+                    href={route("program")}
+                    active={currentPath === "/program"}
                 >
                     <span>Program</span>
                 </NavLink>
@@ -34,7 +40,7 @@ function MainNav() {
                 >
                     <span>Jadwal</span>
                 </NavLink>
-                <NavLink href={route("dashboard")}>
+                <NavLink href={route("presensi")} active={currentPath === "/presensi"}>
                     <span>Presensi</span>
                 </NavLink>
             </ul>
