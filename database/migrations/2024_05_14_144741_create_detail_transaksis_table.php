@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->bigInteger('id_transaksi')->unsigned()->nullable();
-            $table->bigInteger('id_program_fitnes')->unsigned()->nullable();
+            $table->bigInteger('id_program')->unsigned()->nullable();
             $table->integer('jumlah')->nullable();
         });
     }
