@@ -55,3 +55,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/langganan', [LanggananController::class, 'index'])->name('langganan');
 });
 // Route Dashboard
+Route::get('/member', function () {
+    return Inertia::render('Member/Home');
+});
