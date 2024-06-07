@@ -17,7 +17,7 @@ function MainNav() {
                     href={route("langganan")}
                     active={currentPath === "/langganan"}
                 >
-                    <span>User</span>
+                    <span>Langganan</span>
                 </NavLink>
                 <NavLink
                     href={route("users")}

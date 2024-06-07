@@ -3,7 +3,7 @@ import JadwalTable from "@/Components/Jadwal/JadwalTable";
 import JadwalTableOperation from "@/Components/Jadwal/JadwalTableOperation";
 import Dashboard from "@/Pages/Dashboard";
 
-function JadwalIndex({columns, thead, tbody, basePath, pagination}) {
+function JadwalIndex({columns, thead, tbody, basePath, pagination, sort}) {
     return (
         <Dashboard>
             <Row
@@ -13,7 +13,10 @@ function JadwalIndex({columns, thead, tbody, basePath, pagination}) {
                 <h2 className="font-poppins text-2xl font-bold text-slate-100">
                     Jadwals
                 </h2>
-                <JadwalTableOperation />
+                <JadwalTableOperation 
+                    basePath={basePath}
+                    sort={sort}
+                    />
             </Row>
             <Row>
             <JadwalTable
