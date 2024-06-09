@@ -58,3 +58,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/update-profile', [UpdateProfileController::class, 'edit'])->name('profile.update');
     Route::put('/update-profile', [UpdateProfileController::class, 'update'])->name('profile.edit');
 });
+
+// Route Dashboard
+Route::get('/member', function () {
+    return Inertia::render('Member/Home');
+});
+
