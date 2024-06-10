@@ -12,13 +12,20 @@ use App\Models\ProgramFitness;
 
 class JadwalController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $relasiUser = jadwal::with('user', 'program')->paginate(10);
+        $sort = $request->input('sort');
+
+        if ($sort === 'asc' || $sort === 'desc') {
+            $relasiUser = jadwal::with('user', 'program')->orderBy('id_user', $sort)->paginate(10);
+        } else {
+            $relasiUser = jadwal::with('user', 'program')->paginate(10);
+        }
 
         $columns = '1fr 1fr 1fr 1fr 1fr 0.5fr';
         $basePath = 'jadwal';
         $thead = ['Nama Trainer', 'Nama Program', 'Hari', 'Waktu', 'Ruangan'];
+        $tbody = [];
 
         foreach ($relasiUser as $item) {
             $tbody [] = [
@@ -37,6 +44,7 @@ class JadwalController extends Controller
             'thead' => $thead,
             'tbody' => $tbody,
             'pagination' => $relasiUser,
+            'sort' => $request->sort ?? 'name-asc',
         ]);
     }
 
