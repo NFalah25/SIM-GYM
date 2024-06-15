@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\presensi;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -44,6 +45,15 @@ class PresensiController extends Controller
             'basePath' => $basePath,
             'columns' => $columns,
             'pagination' => $presensis,
+        ]);
+    }
+
+    public function showProfile($id)
+    {
+        $user = User::findOrFail($id);
+
+        return Inertia::render('Presensi/ShowProfile', [
+            'user' => $user
         ]);
     }
 }

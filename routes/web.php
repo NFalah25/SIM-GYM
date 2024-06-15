@@ -3,8 +3,9 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\LanggananController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\PresensiController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UpdateProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProgramController;
@@ -52,9 +53,14 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
 
     Route::get('/presensi', [PresensiController::class, 'index'])->name('presensi');
+    Route::get('/presensi/{id}/show', [PresensiController::class, 'showProfile'])->name('show.profile');
     Route::get('/langganan', [LanggananController::class, 'index'])->name('langganan');
+
+    Route::get('/update-profile', [UpdateProfileController::class, 'edit'])->name('profile.update');
+    Route::put('/update-profile', [UpdateProfileController::class, 'update'])->name('profile.edit');
 });
+
 // Route Dashboard
-Route::get('/member', function () {
-    return Inertia::render('Member/Home');
-});
+Route::get('/member', [MemberController::class, 'index'])->name('member.home');
+Route::get('member/program_catalog', [ProgramController::class, 'indexMemberProgramCatalog']);
+Route::post('member/program_catalog/purchase', [TransaksiController::class, 'submitPurchase'])->name('program.purchase');

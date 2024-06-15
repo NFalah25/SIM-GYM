@@ -1,35 +1,24 @@
 import Row from "@/Components/Row";
 import LayoutMember from "../../Components/Member/LayoutMember";
 import ProgramCard from "@/Components/Member/ProgramCard";
-function Home() {
-    const data = [
-        {
-            id: 1,
-            program: "Angkat Beban",
-            presensi: true,
-        },
-        {
-            id: 2,
-            program: "Yoga",
-            resensi: false,
-        },
-        {
-            id: 3,
-            program: "Boxing",
-            resensi: true,
-        },
-        {
-            id: 4,
-            program: "Zumba",
-            resensi: true,
-        },
-        {
-            id: 5,
-            program: "Boxing",
-            resensi: false,
-        },
-    ];
-
+import ButtonNew from "@/Components/ButtonNew";
+function Home({ data }) {
+    console.log(data);
+    if (data.length === 0) {
+        return (
+            <LayoutMember>
+                <div className="bg-red-4 flex min-h-[80vh] flex-col items-center justify-center gap-4">
+                    <h4 className="w-96 text-center text-lg font-medium italic">
+                        Anda tidak memiliki program aktif, silahkan berlangganan
+                        terlebih dahulu
+                    </h4>
+                    <ButtonNew href="/member/program_catalog">
+                        Beli program
+                    </ButtonNew>
+                </div>
+            </LayoutMember>
+        );
+    }
     return (
         <LayoutMember>
             <Row>
@@ -40,6 +29,7 @@ function Home() {
             <div className="mt-10 box-border flex flex-wrap gap-5">
                 {data.map((item) => (
                     <ProgramCard
+                        key={item.id}
                         program={item.program}
                         presensi={item.presensi}
                     />
