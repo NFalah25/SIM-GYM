@@ -20,7 +20,7 @@ class langganan extends Model
         return $this->belongsTo(transaksi::class, 'id_transaksi');
     }
 
-    public function presensi()
+    public function presensis()
     {
         return $this->hasMany(presensi::class, 'id_langganan');
     }
