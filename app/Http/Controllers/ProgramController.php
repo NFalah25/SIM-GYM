@@ -115,4 +115,13 @@ class ProgramController extends Controller
 
     return redirect()->route('program')->with('success', 'Program deleted successfully');
   }
+
+  public function indexMemberProgramCatalog()
+  {
+    $programs = Program::all();
+
+    return Inertia::render('ProgramCatalog/Index', [
+      'programs' => $programs,
+    ]);
+  }
 }
