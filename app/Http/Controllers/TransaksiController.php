@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\detail_transaksi;
 use App\Models\langganan;
 use App\Models\transaksi;
 use Barryvdh\DomPDF\PDF;
@@ -102,10 +103,41 @@ class TransaksiController extends Controller
             'tbody' => $tbody,
         ]);
     }
+    public function detail_transaksi($id){
+        $detail = detail_transaksi::with('transaksi', 'program', 'transaksi.user', 'transaksi.langganan')->where('id', $id)->get();
 
-    public function detail_transaksi($id)
-    {
-        return Inertia::render('Transaksi/DetailTransaksi');
+        $detail_pembelian = [];
+        foreach ($detail as $item) {
+            $id_transaksi = $item->id_transaksi;
+            $langganan = $item->transaksi->langganan->firstWhere('id_transaksi', $id_transaksi);
+            $detail_pembelian[] = [
+                'id_program' => 'P-'. $item->program->id,
+                'nama_program' => $item->program->nama_program,
+                'harga' => $this->formatCurrency($item->transaksi->total_harga),
+                'durasi' => $item->program->durasi,
+                'tanggal_mulai' => $langganan->tanggal_mulai,
+                'tanggal_akhir' => $langganan->tanggal_akhir,
+            ];
+        }
+
+
+        $detail_pembayaran = [];
+        foreach ($detail as $item) {
+            $detail_pembayaran[] = [
+                'id_transaksi' => $item->id_transaksi,
+                'nama_user' => $item->transaksi->user->name,
+                'tanggal_transaksi' => $item->transaksi->tanggal_transaksi,
+                'alamat' => $item->transaksi->user->address,
+                'total_harga' => $this->formatCurrency($item->transaksi->total_harga),
+                'status' => $item->transaksi->status,
+            ];
+        }
+
+
+        return Inertia::render('Transaksi/DetailTransaksi',[
+            'detail_pembelian' => $detail_pembelian,
+            'detail_pembayaran' => $detail_pembayaran,
+        ]);
     }
 
     public function submitPurchase(Request $request)
