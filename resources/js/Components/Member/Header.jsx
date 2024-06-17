@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, usePage } from "@inertiajs/react";
-import Logo from "../../Pages/Component/Logo";
 
 export default function Header() {
     const { props } = usePage();
@@ -48,7 +47,7 @@ export default function Header() {
                         <div className="flex flex-col gap-0">
                             <p className="text-sm font-medium">Hallo</p>
                             <h6 className="text-xl font-semibold text-slate-100">
-                                {user_name || "Naradi Putra"}
+                                {user_name}
                             </h6>
                         </div>
                     </div>
@@ -84,19 +83,20 @@ export default function Header() {
                                 Home
                             </Link>
                             <Link
-                                href="/member"
+                                href="member/program_catalog"
                                 className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                             >
                                 Programs
                             </Link>
                             <Link
-                                href="/member"
+                                href="/update-profile"
                                 className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                             >
                                 Settings
                             </Link>
                             <Link
-                                href="/member"
+                                href={route("logout")}
+                                method={"post"}
                                 className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                             >
                                 Logout

@@ -3,7 +3,6 @@ import LayoutMember from "../../Components/Member/LayoutMember";
 import ProgramCard from "@/Components/Member/ProgramCard";
 import ButtonNew from "@/Components/ButtonNew";
 function Home({ data }) {
-    console.log(data);
     if (data.length === 0) {
         return (
             <LayoutMember>

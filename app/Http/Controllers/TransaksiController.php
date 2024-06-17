@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\detail_transaksi;
 use App\Models\langganan;
 use App\Models\transaksi;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Midtrans\Config;
 use Midtrans\Snap;
@@ -102,10 +104,42 @@ class TransaksiController extends Controller
             'tbody' => $tbody,
         ]);
     }
-
     public function detail_transaksi($id)
     {
-        return Inertia::render('Transaksi/DetailTransaksi');
+        $detail = detail_transaksi::with('transaksi', 'program', 'transaksi.user', 'transaksi.langganan')->where('id', $id)->get();
+
+        $detail_pembelian = [];
+        foreach ($detail as $item) {
+            $id_transaksi = $item->id_transaksi;
+            $langganan = $item->transaksi->langganan->firstWhere('id_transaksi', $id_transaksi);
+            $detail_pembelian[] = [
+                'id_program' => 'P-' . $item->program->id,
+                'nama_program' => $item->program->nama_program,
+                'harga' => $this->formatCurrency($item->transaksi->total_harga),
+                'durasi' => $item->program->durasi,
+                'tanggal_mulai' => $langganan->tanggal_mulai,
+                'tanggal_akhir' => $langganan->tanggal_akhir,
+            ];
+        }
+
+
+        $detail_pembayaran = [];
+        foreach ($detail as $item) {
+            $detail_pembayaran[] = [
+                'id_transaksi' => $item->id_transaksi,
+                'nama_user' => $item->transaksi->user->name,
+                'tanggal_transaksi' => $item->transaksi->tanggal_transaksi,
+                'alamat' => $item->transaksi->user->address,
+                'total_harga' => $this->formatCurrency($item->transaksi->total_harga),
+                'status' => $item->transaksi->status,
+            ];
+        }
+
+
+        return Inertia::render('Transaksi/DetailTransaksi', [
+            'detail_pembelian' => $detail_pembelian,
+            'detail_pembayaran' => $detail_pembayaran,
+        ]);
     }
 
     public function submitPurchase(Request $request)
@@ -126,7 +160,7 @@ class TransaksiController extends Controller
         // Buat transaksi baru
         $transaksi = transaksi::create([
             'total_harga' => $request->total_harga,
-            'id_user' => 1, // Sesuaikan dengan ID user yang sedang login
+            'id_user' => Auth::user()->id, // Sesuaikan dengan ID user yang sedang login
             'tanggal_transaksi' => now(),
             'status' => 'Pending',
             "id_program" => $request->id_program,
@@ -141,10 +175,10 @@ class TransaksiController extends Controller
                 'gross_amount' => $transaksi->total_harga,
             ],
             'customer_details' => [
-                'first_name' => 'budi',
-                'last_name' => 'pratama',
-                'email' => 'budi.pra@example.com',
-                'phone' => '08111222333',
+                'first_name' => Auth::user()->first_name,
+                'last_name' => Auth::user()->last_name,
+                'email' => Auth::user()->email,
+                'phone' => Auth::user()->phone_number,
             ],
             // Sesuaikan dengan data pelanggan jika diperlukan
         ];
