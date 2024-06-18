@@ -25,7 +25,7 @@ function UserForm() {
     });
 
     const [photoPreview, setPhotoPreview] = useState(
-        "../assets/profile_photo/default_photo_profile.jpg",
+        "/assets/profile_photo/default_photo_profile.jpg",
     );
 
     function submit(e) {
@@ -263,7 +263,7 @@ function UserForm() {
                         <div className="w-full">
                             <Label value="Role" htmlFor="role" />
                             <select
-                                className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-2 p-3 text-white"
+                                className="mt-1 w-full rounded-md border-slate-300 bg-[#020617]  p-3 text-white"
                                 name="role"
                                 id="role"
                                 value={data.role}

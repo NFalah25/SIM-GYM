@@ -6,6 +6,7 @@ use App\Models\Langganan;
 use App\Models\Presensi;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class MemberController extends Controller
@@ -22,7 +23,7 @@ class MemberController extends Controller
     }
     public function index()
     {
-        $userId = 4; // ID user statis untuk contoh ini
+        $userId = Auth::user()->id; // ID user statis untuk contoh ini
         $today = Carbon::today()->toDateString();
 
         // Ambil data langganan untuk user ini yang masih aktif
