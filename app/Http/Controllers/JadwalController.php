@@ -78,7 +78,7 @@ class JadwalController extends Controller
             'nama_ruangan' => $validated['ruangan'],
         ]);
 
-        return redirect()->route('jadwal')->with('success', 'Jadwal created successfully');
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal created successfully');
     }
 
     public function edit($id)
@@ -119,7 +119,7 @@ class JadwalController extends Controller
             'nama_ruangan' => $validated['ruangan'],
         ]);
 
-        return redirect()->route('jadwal')->with('success', 'Jadwal updated successfully');
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal updated successfully');
     }
 
     /**
@@ -131,6 +131,6 @@ class JadwalController extends Controller
 
         $jadwal->delete();
 
-        return redirect()->route('jadwal')->with('success', 'Jadwal deleted successfully');
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal deleted successfully');
     }
 }

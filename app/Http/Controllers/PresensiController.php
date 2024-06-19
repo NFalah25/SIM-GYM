@@ -5,14 +5,25 @@ namespace App\Http\Controllers;
 use App\Models\presensi;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class PresensiController extends Controller
 {
     public function index()
     {
-//        thead, tbody, basePath, columns, pagination
-        $presensis = presensi::with('jadwal', 'langganan.user', 'langganan.transaksi.detail_transaksi.program')->paginate('10');
+        //        thead, tbody, basePath, columns, pagination
+        if (Auth::user()->role === 'admin') {
+            $presensis = presensi::with('jadwal', 'langganan.user', 'langganan.transaksi.detail_transaksi.program')
+                ->paginate('10');
+        } else {
+            $presensis = presensi::with('jadwal', 'langganan.user', 'langganan.transaksi.detail_transaksi.program')
+                ->whereHas('langganan', function ($query) {
+                    $query->where('id_user', Auth::user()->id);
+                })
+                ->paginate('10');
+        }
+
         $thead = ['Nama Member', 'Nama Trainer', 'Nama Program', 'Tanggal', 'Jam'];
         $basePath = 'presensi';
         $columns = '1fr 1fr 1.5fr 1fr 1fr';
@@ -39,7 +50,7 @@ class PresensiController extends Controller
                 'jam' => $item->created_at->format('H:i'),
             ];
         }
-        return Inertia::render('Presensi/Index',[
+        return Inertia::render('Presensi/Index', [
             'thead' => $thead,
             'tbody' => $tbody,
             'basePath' => $basePath,

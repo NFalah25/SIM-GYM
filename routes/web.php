@@ -12,55 +12,49 @@ use App\Http\Controllers\ProgramController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransaksiController;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
-
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', [WelcomeController::class, 'index']);
 
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/dashboard', function () {
+        if (Auth::user()->role === 'admin') {
+            return app(DashboardController::class)->index();
+        } else if(Auth::user()->role === 'member'){
+            return app(MemberController::class)->index();
+        }else if(Auth::user()->role === 'trainer'){
+            return app(MemberController::class)->index();
+        }
+    })->name('dashboard');
 
     // Route users
-    Route::get('/users', [UserController::class, 'index'])->name('users');
-    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-    Route::post('/users', [UserController::class, 'store'])->name('users.store');
-    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
-    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::resource('users', UserController::class)->middleware('can:users');
 
     //Route program
-    Route::get('/program', [ProgramController::class, 'index'])->name('program');
-    Route::get('/program/create', [ProgramController::class, 'create'])->name('program-create');
-    Route::post('/program', [ProgramController::class, 'store'])->name('program.store');
-    Route::get('/program/{id}/edit', [ProgramController::class, 'edit'])->name('program.edit');
-    Route::put('/program/{id}', [ProgramController::class, 'update'])->name('program.update');
-    Route::delete('/program/{id}', [ProgramController::class, 'destroy'])->name('program.destroy');
+    Route::resource('program', ProgramController::class)->middleware('can:program');
 
     // Route jadwals
-    Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
-    Route::get('/jadwal/create', [JadwalController::class, 'create'])->name('jadwal-create');
-    Route::post('/jadwal', [JadwalController::class, 'store'])->name('jadwal.store');
-    Route::get('/jadwal/{id}/edit', [JadwalController::class, 'edit'])->name('jadwal.edit');
-    Route::put('/jadwal/{id}', [JadwalController::class, 'update'])->name('jadwal.update');
-    Route::delete('/jadwal/{id}', [JadwalController::class, 'destroy'])->name('jadwal.destroy');
+    Route::resource('jadwal', JadwalController::class)->middleware('can:jadwal');
 
     //Route transaksi
-    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
-    Route::get('/cetakPdf', [TransaksiController::class, 'cetak_pdf'])->name('transaksi.cetak_pdf');
-    Route::get('/transaksi/{id}/detail', [TransaksiController::class, 'detail_transaksi'])->name('transaksi.detail');
-    Route::get('/transaksi/{id}/detail', [TransaksiController::class, 'detail_transaksi'])->name('transaksi.detail');
+    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index')->middleware('can:transaksi');
+    Route::get('/cetakPdf/{id}', [TransaksiController::class, 'cetak_pdf'])->name('transaksi.cetak_pdf')->middleware('can:transaksi');
+    Route::get('/transaksi/{id}/detail', [TransaksiController::class, 'detail_transaksi'])->name('transaksi.detail')->middleware('can:transaksi');
 
 
     Route::get('/presensi', [PresensiController::class, 'index'])->name('presensi');
-    Route::get('/presensi/{id}/show', [PresensiController::class, 'showProfile'])->name('show.profile');
-    Route::get('/langganan', [LanggananController::class, 'index'])->name('langganan');
+    Route::get('/presensi/{id}/show', [PresensiController::class, 'showProfile'])->name('show.profile')->middleware('can:presensi.profile');
+    Route::get('/langganan', [LanggananController::class, 'index'])->name('langganan')->middleware('can:langganan');
 
-    Route::get('/update-profile', [UpdateProfileController::class, 'edit'])->name('profile.update');
-    Route::put('/update-profile', [UpdateProfileController::class, 'update'])->name('profile.edit');
+    Route::get('/profile', [UpdateProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [UpdateProfileController::class, 'update'])->name('profile.update');
+
+    Route::get('/program_catalog', [ProgramController::class, 'indexMemberProgramCatalog'])->name('program.catalog')->middleware('can:product.catalog');
+    Route::post('/program_catalog/purchase', [TransaksiController::class, 'submitPurchase'])->name('program.purchase');
 });
 
 // Route Dashboard
-Route::get('/member', [MemberController::class, 'index'])->name('member.home');
-Route::get('member/program_catalog', [ProgramController::class, 'indexMemberProgramCatalog']);
-Route::post('member/program_catalog/purchase', [TransaksiController::class, 'submitPurchase'])->name('program.purchase');

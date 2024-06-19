@@ -1,15 +1,21 @@
 import { usePDF } from "react-to-pdf";
 import Logo from "../Component/Logo";
+import Row from "@/Components/Row";
+import { usePage } from "@inertiajs/react";
 
-function PrintPDF({ thead, tbody }) {
+function PrintPDF() {
     const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
-    console.log(tbody);
-    return (
-        <div>
-            {/* button auto klik to pdf ketika load */}
-            <button onClick={toPDF}>Print to PDF</button>
+    const {props} = usePage();
+    const detail_pembelian = props.detail_pembelian;
+    const detail_pembayaran = props.detail_pembayaran;
 
-            <div ref={targetRef} className="py-8 px-24">
+    return (
+        <>
+        {/* <div> */}
+            {/* button auto klik to pdf ketika load */}
+            {/* <button onClick={() => toPDF()}>Print to PDF</button> */}
+
+            {/*<div ref={targetRef} className="py-8 px-24">
                 <div className="text-center">
                     <h1 className="text-xl font-bold justify-center">
                         CV. Zeus Physique
@@ -31,7 +37,7 @@ function PrintPDF({ thead, tbody }) {
                                 <th className="border border-black">
                                     Total Transaksi
                                 </th> */}
-                                {thead.map((item, index) => (
+                                {/* {thead.map((item, index) => (
                                     <th
                                         key={index}
                                         className="border border-black"
@@ -40,7 +46,8 @@ function PrintPDF({ thead, tbody }) {
                                     </th>
                                 ))}
                             </tr>
-                        </thead>
+                        </thead>*/}
+                        {/*
                         <tbody className="text-center">
                             {tbody.map((row, rowIndex) => (
                                 <tr key={rowIndex}>
@@ -54,7 +61,90 @@ function PrintPDF({ thead, tbody }) {
                     </table>
                 </div>
             </div>
-        </div>
+             */}
+
+{/* <>
+            <Row className={'text-sm text-white bg-slate-600 rounded p-5 md:grid md:grid-cols-2'} ref={targetRef}>
+                {detail_pembelian.map((item, index) => (
+
+                <div className={'mb-6'}>
+                    <div className={'w-1/2 mb-4 font-bold text-lg'}>
+                        <h3 className={'text-white '}>Detail Pembelian</h3>
+                    </div>
+                    <div className={'mb-4'}>
+                        <h4 className={'text-sm font-bold mb-2'}>ID Program</h4>
+                        <p>{item.id_program}</p>
+                    </div>
+                    <div className={'flex mb-4'}>
+                        <div className={'w-1/2'}>
+                            <h4 className={'text-sm font-bold mb-2'}>Nama Program</h4>
+                            <p>{item.nama_program}</p>
+                        </div>
+                        <div className={'w-1/2'}>
+                            <h4 className={'text-sm font-bold mb-2'}>Harga Satuan</h4>
+                            <p>{item.harga}</p>
+                        </div>
+                    </div>
+                    <div className={'flex'}>
+                        <div className={'w-1/2'}>
+                            <h4 className={'text-sm font-bold mb-2'}>Durasi Program</h4>
+                            <p>{item.durasi} Hari</p>
+                        </div>
+                        <div className={'w-1/2'}>
+                            <h4 className={'text-sm font-bold mb-2'}>Masa Berlaku</h4>
+                            <p>{item.tanggal_mulai}</p> <p>{item.tanggal_akhir}</p>
+                        </div>
+                    </div>
+                </div>
+                ))}
+                {detail_pembayaran.map((item, index) => (
+
+                <div className={'mb-6'}>
+                    <div className={'w-1/2 mb-4 font-bold text-lg'}>
+                        <h3 className={'text-white '}>Detail Pembayaran</h3>
+                    </div>
+                    <div className={'mb-4'}>
+                        <h4 className={'text-sm font-bold mb-2'}>ID Transaksi</h4>
+                        <p>TRZ-{item.id_transaksi}</p>
+                    </div>
+                    <div className={'flex mb-4'}>
+                        <div className={'w-1/2'}>
+                            <h4 className={'text-sm font-bold mb-2'}>Nama User</h4>
+                            <p>{item.nama_user}</p>
+                        </div>
+                        <div className={'w-1/2'}>
+                            <h4 className={'text-sm font-bold mb-2'}>Tanggal Transaksi</h4>
+                            <p>{item.tanggal_transaksi}</p>
+                        </div>
+                    </div>
+                    <div className={'flex mb-4'}>
+                        <div className={'w-1/2'}>
+                            <h4 className={'text-sm font-bold mb-2'}>Alamat</h4>
+                            <p>{item.alamat}</p>
+                        </div>
+                        <div className={'w-1/2'}>
+                            <h4 className={'text-sm font-bold mb-2'}>Status Transaksi</h4>
+                            <p>{item.status}</p>
+                        </div>
+                    </div>
+                    <div className={'w-1/2 mt-10'}>
+                        <h4 className={'text-xl font-bold mb-2 text-lime-500'}>Total Harga</h4>
+                        <p className={'text-lg font-semibold text-yellow-500'}>{item.total_harga}</p>
+                    </div>
+                </div>
+                ))}
+
+            </Row>
+        </> */}
+
+        {/* </div> */}
+        <div>
+         <button onClick={() => toPDF()}>Download PDF</button>
+         <div ref={targetRef}>
+            Content to be generated to PDF
+         </div>
+      </div>
+      </>
     );
 }
 

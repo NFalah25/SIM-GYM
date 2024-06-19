@@ -74,7 +74,7 @@ class ProgramController extends Controller
       'deskripsi' => $validated['deskripsi'],
     ]);
 
-    return redirect()->route('program')->with('success', 'Program created successfully');
+    return redirect()->route('program.index')->with('success', 'Program created successfully');
   }
 
   public function edit($id)
@@ -104,7 +104,7 @@ class ProgramController extends Controller
       'deskripsi' => $validated['deskripsi'],
     ]);
 
-    return redirect()->route('program')->with('success', 'Program updated successfully');
+    return redirect()->route('program.index')->with('success', 'Program updated successfully');
   }
 
   public function destroy($id)
@@ -113,7 +113,7 @@ class ProgramController extends Controller
 
     $program->delete();
 
-    return redirect()->route('program')->with('success', 'Program deleted successfully');
+    return redirect()->route('program.index')->with('success', 'Program deleted successfully');
   }
 
   public function indexMemberProgramCatalog()

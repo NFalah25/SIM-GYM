@@ -14,7 +14,7 @@ class DashboardController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function index(Request $request)
+    public function index()
     {
         $countUser = User::count();
         $countProgram = Program::count();
