@@ -22,6 +22,17 @@ function MemberMainNav() {
                 </li>
                 <li>
                     <NavLink
+                        href={route("transaksi.index")}
+                        active={currentPath === "/transaksi"}
+                    >
+                        <span>Histori</span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        href={route("users")}
+                        active={currentPath === "/users"}
+
                         href="/update-profile"
                         active={currentPath === "/update-profile"}
                     >

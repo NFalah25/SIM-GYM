@@ -42,13 +42,25 @@ class TransaksiController extends Controller
         $tanggal_selesai = $request->input('sampai_tanggal');
         //ambil relasi user dari transaksi
         //        $transaksi = transaksi::with('user')->get();
-
+        
+        if(auth()-> user()->role === 'member'){
         if ($tanggal_mulai && $tanggal_selesai) {
             $transaksi = transaksi::with('user')
+                ->where('id_user',auth()->user()->id)
                 ->whereBetween('tanggal_transaksi', [$tanggal_mulai, $tanggal_selesai])
                 ->paginate(10);
         } else {
-            $transaksi = transaksi::with('user')->paginate(10);
+            $transaksi = transaksi::with('user')->where('id_user',auth()->user()->id)->paginate(10);
+        }
+        } else{
+            if ($tanggal_mulai && $tanggal_selesai) {
+                $transaksi = transaksi::with('user')
+                    ->whereBetween('tanggal_transaksi', [$tanggal_mulai, $tanggal_selesai])
+                    ->paginate(10);
+            } else {
+                $transaksi = transaksi::with('user')->paginate(10);
+                
+            }
         }
 
         $tbody = [];
