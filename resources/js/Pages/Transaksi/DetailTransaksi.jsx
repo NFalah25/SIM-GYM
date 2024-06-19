@@ -2,8 +2,14 @@ import detailTransaksiTableOperation from "@/Components/Transaksi/DetailTransaks
 import Dashboard from "@/Pages/Dashboard.jsx";
 import Row from "@/Components/Row.jsx";
 import DetailTransaksiTableOperation from "@/Components/Transaksi/DetailTransaksiTableOperation.jsx";
+import { usePage } from "@inertiajs/react";
 
 function DetailTransaksi() {
+    // props
+    const { props } = usePage();
+    const detail_pembelian = props.detail_pembelian;
+    const detail_pembayaran = props.detail_pembayaran;
+    console.log(detail_pembelian);
     return (
         <Dashboard>
             <Row orientation="horizontal"
@@ -14,68 +20,74 @@ function DetailTransaksi() {
                 <DetailTransaksiTableOperation/>
             </Row>
             <Row className={'text-sm text-white bg-slate-600 rounded p-5 md:grid md:grid-cols-2'}>
+                {detail_pembelian.map((item, index) => (
+
                 <div className={'mb-6'}>
                     <div className={'w-1/2 mb-4 font-bold text-lg'}>
                         <h3 className={'text-white '}>Detail Pembelian</h3>
                     </div>
                     <div className={'mb-4'}>
                         <h4 className={'text-sm font-bold mb-2'}>ID Program</h4>
-                        <p>P-750</p> <p>P-442</p>
+                        <p>{item.id_program}</p>
                     </div>
                     <div className={'flex mb-4'}>
                         <div className={'w-1/2'}>
                             <h4 className={'text-sm font-bold mb-2'}>Nama Program</h4>
-                            <p>Zumba</p> <p>Senam Aerobik</p>
+                            <p>{item.nama_program}</p>
                         </div>
                         <div className={'w-1/2'}>
                             <h4 className={'text-sm font-bold mb-2'}>Harga Satuan</h4>
-                            <p>Rp 20.000</p> <p>Rp 40.000</p>
+                            <p>{item.harga}</p>
                         </div>
                     </div>
                     <div className={'flex'}>
                         <div className={'w-1/2'}>
                             <h4 className={'text-sm font-bold mb-2'}>Durasi Program</h4>
-                            <p>1 Hari</p> <p>1 Hari</p>
+                            <p>{item.durasi} Hari</p>
                         </div>
                         <div className={'w-1/2'}>
                             <h4 className={'text-sm font-bold mb-2'}>Masa Berlaku</h4>
-                            <p>31 Mei 2024 - 1 Juni 2024</p> <p>31 Mei 2024 - 1 Juni 2024</p>
+                            <p>{item.tanggal_mulai}</p> <p>{item.tanggal_akhir}</p>
                         </div>
                     </div>
                 </div>
+                ))}
+                {detail_pembayaran.map((item, index) => (
+
                 <div className={'mb-6'}>
                     <div className={'w-1/2 mb-4 font-bold text-lg'}>
                         <h3 className={'text-white '}>Detail Pembayaran</h3>
                     </div>
                     <div className={'mb-4'}>
                         <h4 className={'text-sm font-bold mb-2'}>ID Transaksi</h4>
-                        <p>TRZ-750</p> <p>TRZ-442</p>
+                        <p>TRZ-{item.id_transaksi}</p>
                     </div>
                     <div className={'flex mb-4'}>
                         <div className={'w-1/2'}>
                             <h4 className={'text-sm font-bold mb-2'}>Nama User</h4>
-                            <p>User 1</p>
+                            <p>{item.nama_user}</p>
                         </div>
                         <div className={'w-1/2'}>
                             <h4 className={'text-sm font-bold mb-2'}>Tanggal Transaksi</h4>
-                            <p>31 Mei 2024</p>
+                            <p>{item.tanggal_transaksi}</p>
                         </div>
                     </div>
                     <div className={'flex mb-4'}>
                         <div className={'w-1/2'}>
                             <h4 className={'text-sm font-bold mb-2'}>Alamat</h4>
-                            <p>Jl. Raya Kedung Baruk No. 1</p>
+                            <p>{item.alamat}</p>
                         </div>
                         <div className={'w-1/2'}>
                             <h4 className={'text-sm font-bold mb-2'}>Status Transaksi</h4>
-                            <p>Lunas</p>
+                            <p>{item.status}</p>
                         </div>
                     </div>
                     <div className={'w-1/2'}>
                         <h4 className={'text-lg font-bold mb-2'}>Total Harga</h4>
-                        <p>Rp 20.000</p> <p>Rp 40.000</p>
+                        <p>{item.total_harga}</p>
                     </div>
                 </div>
+                ))}
 
             </Row>
         </Dashboard>

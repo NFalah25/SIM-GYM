@@ -2,65 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Member;
-use App\Http\Requests\StoreMemberRequest;
-use App\Http\Requests\UpdateMemberRequest;
+use App\Models\Langganan;
+use App\Models\Presensi;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class MemberController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function getTodayPresensiStatus($id_langganan)
+    {
+        $today = Carbon::today()->toDateString();
+
+        $presensiExists = Presensi::where('id_langganan', $id_langganan)
+            ->whereDate('created_at', $today)
+            ->exists();
+
+        return $presensiExists;
+    }
     public function index()
     {
-        //
-    }
+        $userId = Auth::user()->id; // ID user statis untuk contoh ini
+        $today = Carbon::today()->toDateString();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        // Ambil data langganan untuk user ini yang masih aktif
+        $langganans = Langganan::with('transaksi')
+            ->where('id_user', $userId)
+            ->where('tanggal_akhir', '>=', $today)
+            ->get();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreMemberRequest $request)
-    {
-        //
-    }
+        $data = $langganans->map(function ($langganan) use ($today) {
+            return [
+                'id' => $langganan->id,
+                'program' => $langganan->transaksi->nama_program,
+                'presensi' => $this->getTodayPresensiStatus($langganan->id),
+            ];
+        });
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Member $member)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Member $member)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateMemberRequest $request, Member $member)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Member $member)
-    {
-        //
+        return Inertia::render('Member/Home', ['data' => $data]);
     }
 }

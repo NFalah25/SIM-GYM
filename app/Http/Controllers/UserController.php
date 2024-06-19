@@ -71,9 +71,9 @@ class UserController extends Controller
         $avatarPath = 'assets/profile_photo/default_photo_profile.jpg';
 
         // Check if avatar is uploaded
-        if ($request->hasFile('avatar')) {
+        if ($request->hasFile('foto')) {
             // If uploaded, store the uploaded avatar
-            $avatarPath = $request->file('avatar')->store('assets/profile_photo', 'public');
+            $avatarPath = $request->file('foto')->store('assets/profile_photo', 'public');
         }
 
         User::create([
@@ -127,14 +127,14 @@ class UserController extends Controller
 
         // simpan avatar ke public storage dan simpan path-nya ke database
         $avatarPath = $user->foto;
-        if ($request->hasFile('avatar')) {
+        if ($request->hasFile('foto')) {
             // Hapus file avatar lama jika ada
             if ($user->foto && Storage::disk('public')->exists($user->foto)) {
                 Storage::disk('public')->delete($user->foto);
             }
 
             // Simpan file avatar baru
-            $avatarPath = $request->file('avatar')->store('assets/profile_photo', 'public');
+            $avatarPath = $request->file('foto')->store('assets/profile_photo', 'public');
         }
 
         $user->update([
