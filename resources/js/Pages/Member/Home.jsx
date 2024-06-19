@@ -11,7 +11,7 @@ function Home({ data }) {
                         Anda tidak memiliki program aktif, silahkan berlangganan
                         terlebih dahulu
                     </h4>
-                    <ButtonNew href="/member/program_catalog">
+                    <ButtonNew href="/program_catalog">
                         Beli program
                     </ButtonNew>
                 </div>
