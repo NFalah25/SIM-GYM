@@ -25,7 +25,7 @@ class AddNameUser
 
             // Bagikan nama depan user ke semua views
             Inertia::share('user_name', $firstname);
-            Inertia::share('user', $role);
+            Inertia::share('role', $role);
         }
         return $next($request);
     }

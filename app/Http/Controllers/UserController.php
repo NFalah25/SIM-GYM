@@ -92,7 +92,7 @@ class UserController extends Controller
             'role' => $validated['role'],
         ]);
 
-        return redirect()->route('users')->with('success', 'User created successfully');
+        return redirect()->route('users.index')->with('success', 'User created successfully');
     }
     public function edit($id)
     {
@@ -153,7 +153,7 @@ class UserController extends Controller
             'role' => $validated['role'],
         ]);
 
-        return redirect()->route('users')->with('success', 'User updated successfully');
+        return redirect()->route('users.index')->with('success', 'User updated successfully');
     }
     public function destroy($id)
     {
@@ -166,6 +166,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect()->route('users')->with('success', 'User deleted successfully');
+        return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
 }
