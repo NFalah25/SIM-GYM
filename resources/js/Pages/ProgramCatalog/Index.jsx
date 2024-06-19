@@ -13,7 +13,7 @@ function Home({ programs }) {
     async function confirmClick() {
         try {
             const response = await axios.post(
-                "/member/program_catalog/purchase",
+                "/program_catalog/purchase",
                 {
                     id_program: selectedProgram.id,
                     nama_program: selectedProgram.nama_program,
