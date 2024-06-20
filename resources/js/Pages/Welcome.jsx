@@ -3,7 +3,7 @@ import ButtonNew from "@/Components/ButtonNew";
 import Logo from "./Component/Logo";
 import Slider from "./LandingPage/Slider";
 
-function Welcome({ program }) {
+function Welcome({ tbody }) {
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const dropdownRef = useRef(null);
     const toggleDropdown = () => {
@@ -133,7 +133,7 @@ function Welcome({ program }) {
                     Explore Our Program
                 </h2>
                 <div className="grid grid-cols-1 gap-10 px-10 pl-20 pr-20 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                    {program.map((item, index) => (
+                    {tbody.map((item, index) => (
                         <div className="rounded-lg border-2 border-dashed border-lime-500 bg-slate-950 p-5">
                             <img
                                 src="assets/img/Media Container-3.png"
@@ -145,7 +145,7 @@ function Welcome({ program }) {
                             </h3>
                             <p>{item.deskripsi}</p>
                             <p className="mt-2 text-lime-400">
-                                Every Sat and Sun at 9 am
+                                Setiap {item.hari !== true ? item.hari : "Everi day"}
                             </p>
                         </div>
                     ))}
