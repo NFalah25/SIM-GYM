@@ -1,14 +1,7 @@
-import { Link } from "@inertiajs/react";
 import Header from "./Component/Header";
 import Sidebar from "./Component/Sidebar";
 
-export default function Dashboard({ user, children }) {
-
-    function submit(e) {
-        e.preventDefault();
-        post("/logout");
-    }
-
+export default function Dashboard({ children }) {
     return (
         <>
             <div className="flex h-screen w-full bg-slate-900">
