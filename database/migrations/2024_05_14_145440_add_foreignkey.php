@@ -37,7 +37,7 @@ return new class extends Migration
         Schema::table('detail_transaksis', function (Blueprint $table) {
             // langganan_id
             $table->foreign('id_transaksi')->references('id')->on('transaksis')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_program_fitnes')->references('id')->on('programs')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_program')->references('id')->on('programs')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -68,7 +68,7 @@ return new class extends Migration
 
         Schema::table('detail_transaksis', function (Blueprint $table) {
             $table->dropForeign(['id_transaksi']);
-            $table->dropForeign(['id_program_fitnes']);
+            $table->dropForeign(['id_program']);
         });
     }
 };

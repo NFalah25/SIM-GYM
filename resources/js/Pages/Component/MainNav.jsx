@@ -14,13 +14,19 @@ function MainNav() {
                     <span>Dashboard</span>
                 </NavLink>
                 <NavLink
-                    href={route("users")}
+                    href={route("langganan")}
+                    active={currentPath === "/langganan"}
+                >
+                    <span>Langganan</span>
+                </NavLink>
+                <NavLink
+                    href={route("users.index")}
                     active={currentPath === "/users"}
                 >
                     <span>User</span>
                 </NavLink>
                 <NavLink
-                    href={route("program")}
+                    href={route("program.index")}
                     active={currentPath === "/program"}
                 >
                     <span>Program</span>
@@ -29,12 +35,12 @@ function MainNav() {
                     <span>Transaksi</span>
                 </NavLink>
                 <NavLink
-                    href={route("jadwal")}
+                    href={route("jadwal.index")}
                     active={currentPath === "/jadwal"}
                 >
                     <span>Jadwal</span>
                 </NavLink>
-                <NavLink href={route("dashboard")}>
+                <NavLink href={route("presensi")} active={currentPath === "/presensi"}>
                     <span>Presensi</span>
                 </NavLink>
             </ul>

@@ -1,21 +1,22 @@
 import Table from "../Table";
 import Pagination from "../Pagination";
+import TableNewTransaksi from "@/Components/Transaksi/TableNewTransaksi.jsx";
 
-function TransaksiTable({tbody, thead, pagination}) {
+function TransaksiTable({tbody, thead, pagination, basePath}) {
     return (
-        <Table columns="2fr 2fr 1.5fr 1fr 1fr 0.5fr">
-            <Table.Header>
+        <TableNewTransaksi columns="2fr 2fr 1.5fr 1fr 1fr">
+            <TableNewTransaksi.Header>
 
                 {thead.map((item, index) => (
                     <div key={index}>{item}</div>
                 ))}
                 <div>Action</div>
-            </Table.Header>
-            <Table.Body tbody={tbody} />
-            <Table.Footer>
+            </TableNewTransaksi.Header>
+            <TableNewTransaksi.Body tbody={tbody} basePath={basePath} />
+            <TableNewTransaksi.Footer>
                 <Pagination pagination={pagination} />
-            </Table.Footer>
-        </Table>
+            </TableNewTransaksi.Footer>
+        </TableNewTransaksi>
     );
 }
 

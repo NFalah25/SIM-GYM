@@ -18,5 +18,10 @@ class PresensiSeeder extends Seeder
             'id_jadwal' => 1,
             'waktu_presensi' => '2024-05-14 12:49:23',
         ]);
+        presensi::create([
+            'id_langganan' => 2,
+            'id_jadwal' => 2,
+            'waktu_presensi' => '2024-05-14 12:49:23',
+        ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\jadwal;
 use App\Http\Controllers\Controller;
+use App\Models\Program;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
@@ -11,13 +12,20 @@ use App\Models\ProgramFitness;
 
 class JadwalController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $relasiUser = jadwal::with('user', 'program')->paginate(10);
+        $sort = $request->input('sort');
+
+        if ($sort === 'asc' || $sort === 'desc') {
+            $relasiUser = jadwal::with('user', 'program')->orderBy('id_user', $sort)->paginate(10);
+        } else {
+            $relasiUser = jadwal::with('user', 'program')->paginate(10);
+        }
 
         $columns = '1fr 1fr 1fr 1fr 1fr 0.5fr';
         $basePath = 'jadwal';
         $thead = ['Nama Trainer', 'Nama Program', 'Hari', 'Waktu', 'Ruangan'];
+        $tbody = [];
 
         foreach ($relasiUser as $item) {
             $tbody [] = [
@@ -36,13 +44,14 @@ class JadwalController extends Controller
             'thead' => $thead,
             'tbody' => $tbody,
             'pagination' => $relasiUser,
+            'sort' => $request->sort ?? 'name-asc',
         ]);
     }
 
     public function create()
     {
         $user = User::where('role', 'trainer') -> get();
-        $program = ProgramFitness::all();
+        $program = Program::all();
         return Inertia::render('Jadwals/Create', [
             'user' => $user,
             'program' => $program,
@@ -69,14 +78,14 @@ class JadwalController extends Controller
             'nama_ruangan' => $validated['ruangan'],
         ]);
 
-        return redirect()->route('jadwal')->with('success', 'Jadwal created successfully');
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal created successfully');
     }
 
     public function edit($id)
     {
         $jadwal = Jadwal::findOrFail($id);
         $user = User::where('role', 'trainer') -> get();
-        $program = ProgramFitness::all();
+        $program = Program::all();
 
         return Inertia::render('Jadwals/Edit', [
             'jadwal' => $jadwal,
@@ -110,7 +119,7 @@ class JadwalController extends Controller
             'nama_ruangan' => $validated['ruangan'],
         ]);
 
-        return redirect()->route('jadwal')->with('success', 'Jadwal updated successfully');
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal updated successfully');
     }
 
     /**
@@ -122,6 +131,6 @@ class JadwalController extends Controller
 
         $jadwal->delete();
 
-        return redirect()->route('jadwal')->with('success', 'Jadwal deleted successfully');
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal deleted successfully');
     }
 }

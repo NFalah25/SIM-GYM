@@ -9,4 +9,13 @@ class detail_transaksi extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function transaksi()
+    {
+        return $this->belongsTo(transaksi::class, 'id_transaksi');
+    }
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class, 'id_program');
+    }
 }

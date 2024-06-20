@@ -71,9 +71,9 @@ class UserController extends Controller
         $avatarPath = 'assets/profile_photo/default_photo_profile.jpg';
 
         // Check if avatar is uploaded
-        if ($request->hasFile('avatar')) {
+        if ($request->hasFile('foto')) {
             // If uploaded, store the uploaded avatar
-            $avatarPath = $request->file('avatar')->store('assets/profile_photo', 'public');
+            $avatarPath = $request->file('foto')->store('assets/profile_photo', 'public');
         }
 
         User::create([
@@ -92,7 +92,7 @@ class UserController extends Controller
             'role' => $validated['role'],
         ]);
 
-        return redirect()->route('users')->with('success', 'User created successfully');
+        return redirect()->route('users.index')->with('success', 'User created successfully');
     }
     public function edit($id)
     {
@@ -108,7 +108,6 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        dd($request->all());
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
@@ -128,14 +127,14 @@ class UserController extends Controller
 
         // simpan avatar ke public storage dan simpan path-nya ke database
         $avatarPath = $user->foto;
-        if ($request->hasFile('avatar')) {
+        if ($request->hasFile('foto')) {
             // Hapus file avatar lama jika ada
             if ($user->foto && Storage::disk('public')->exists($user->foto)) {
                 Storage::disk('public')->delete($user->foto);
             }
 
             // Simpan file avatar baru
-            $avatarPath = $request->file('avatar')->store('assets/profile_photo', 'public');
+            $avatarPath = $request->file('foto')->store('assets/profile_photo', 'public');
         }
 
         $user->update([
@@ -154,7 +153,7 @@ class UserController extends Controller
             'role' => $validated['role'],
         ]);
 
-        return redirect()->route('users')->with('success', 'User updated successfully');
+        return redirect()->route('users.index')->with('success', 'User updated successfully');
     }
     public function destroy($id)
     {
@@ -167,6 +166,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect()->route('users')->with('success', 'User deleted successfully');
+        return redirect()->route('users.index')->with('success', 'User deleted successfully');
     }
 }
