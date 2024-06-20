@@ -16,6 +16,12 @@ class PresensiController extends Controller
         if (Auth::user()->role === 'admin') {
             $presensis = presensi::with('jadwal', 'langganan.user', 'langganan.transaksi.detail_transaksi.program')
                 ->paginate('10');
+        } else if (Auth::user()->role === 'trainer') {
+            $presensis = presensi::with('jadwal', 'langganan.user', 'langganan.transaksi.detail_transaksi.program')
+                ->whereHas('jadwal', function ($query) {
+                    $query->where('id_user', Auth::user()->id);
+                })
+                ->paginate('10');
         } else {
             $presensis = presensi::with('jadwal', 'langganan.user', 'langganan.transaksi.detail_transaksi.program')
                 ->whereHas('langganan', function ($query) {
@@ -25,9 +31,12 @@ class PresensiController extends Controller
         }
 
         $thead = ['Nama Member', 'Nama Trainer', 'Nama Program', 'Tanggal', 'Jam'];
+        $theadTrainer = ['Nama Member', 'Nama Program', 'Tanggal', 'Jam', 'Aksi'];
+
         $basePath = 'presensi';
         $columns = '1fr 1fr 1.5fr 1fr 1fr';
         $tbody = [];
+        $tbodyTrainer = [];
 
         foreach ($presensis as $item) {
             // Initialize a variable to hold program names
@@ -49,9 +58,18 @@ class PresensiController extends Controller
                 'tanggal' => $item->created_at->format('d-m-Y'),
                 'jam' => $item->created_at->format('H:i'),
             ];
+
+            $tbodyTrainer[] = [
+                'nama' => $item->langganan->user->name,
+                'program' => $programNamesString,
+                'tanggal' => $item->created_at->format('d-m-Y'),
+                'jam' => $item->created_at->format('H:i'),
+            ];
         }
         return Inertia::render('Presensi/Index', [
+            'theadTrainer' => $theadTrainer,
             'thead' => $thead,
+            'tbodyTrainer' => $tbodyTrainer,
             'tbody' => $tbody,
             'basePath' => $basePath,
             'columns' => $columns,
@@ -66,5 +84,11 @@ class PresensiController extends Controller
         return Inertia::render('Presensi/ShowProfile', [
             'user' => $user
         ]);
+    }
+
+    // ambil id trainer?
+    public function create()
+    {
+        return Inertia::render('Presensi/Create');
     }
 }

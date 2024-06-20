@@ -7,7 +7,7 @@ function Home({ data }) {
         return (
             <LayoutMember>
                 <div className="bg-red-4 flex min-h-[80vh] flex-col items-center justify-center gap-4">
-                    <h4 className="w-96 text-center text-lg font-medium italic">
+                    <h4 className="text-lg italic font-medium text-center w-96">
                         Anda tidak memiliki program aktif, silahkan berlangganan
                         terlebih dahulu
                     </h4>
@@ -25,7 +25,7 @@ function Home({ data }) {
                     Today Class Availabel
                 </h2>
             </Row>
-            <div className="mt-10 box-border flex flex-wrap gap-5">
+            <div className="box-border flex flex-wrap gap-5 mt-10">
                 {data.map((item) => (
                     <ProgramCard
                         key={item.id}
