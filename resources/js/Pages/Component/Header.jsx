@@ -109,37 +109,43 @@ export default function Header() {
                                 className="fixed right-3 mt-10 flex w-[10rem] flex-col gap-2 rounded-lg border border-slate-600 bg-slate-900 px-2 py-2"
                             >
                                 <Link
-                                    href="/dashboard"
+                                    href={route("dashboard")}
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
                                     Dashboard
                                 </Link>
                                 <Link
-                                    href="/users"
+                                    href={route("langganan")}
+                                    className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
+                                >
+                                    Langganan
+                                </Link>
+                                <Link
+                                    href={route("users.index")}
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
                                     User
                                 </Link>
                                 <Link
-                                    href="/program"
+                                    href={route("program.index")}
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
                                     Program
                                 </Link>
                                 <Link
-                                    href="/dashboard"
+                                    href={route("transaksi.index")}
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
                                     Transaksi
                                 </Link>
                                 <Link
-                                    href="/jadwal"
+                                    href={route("jadwal.index")}
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
                                     Jadwal
                                 </Link>
                                 <Link
-                                    href="/dashboard"
+                                    href={route("presensi")}
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
                                     Presensi

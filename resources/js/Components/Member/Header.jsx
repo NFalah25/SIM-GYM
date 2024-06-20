@@ -77,19 +77,31 @@ export default function Header() {
                             className="fixed right-3 mt-10 flex w-[10rem] flex-col gap-2 rounded-lg border border-slate-600 bg-slate-900 px-2 py-2"
                         >
                             <Link
-                                href="/member"
+                                href={route("dashboard")}
                                 className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                             >
                                 Home
                             </Link>
                             <Link
-                                href="member/program_catalog"
+                                href="/program_catalog"
                                 className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                             >
                                 Programs
                             </Link>
                             <Link
-                                href="/update-profile"
+                                href={route("transaksi.index")}
+                                className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
+                            >
+                                Histori
+                            </Link>
+                            <Link
+                                href={route("presensi")}
+                                className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
+                            >
+                                Presensi
+                            </Link>
+                            <Link
+                                href={route("profile.edit")}
                                 className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                             >
                                 Settings

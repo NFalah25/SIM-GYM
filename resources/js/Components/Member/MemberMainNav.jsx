@@ -8,14 +8,17 @@ function MemberMainNav() {
         <nav>
             <ul className="flex flex-col gap-12">
                 <li>
-                    <NavLink href={route("dashboard")} active={currentPath === "/member"}>
+                    <NavLink
+                        href={route("dashboard")}
+                        active={currentPath === "/dashboard"}
+                    >
                         <span>Home</span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
                         href="/program_catalog"
-                        active={currentPath === "/langganan"}
+                        active={currentPath === "/program_catalog"}
                     >
                         <span>Programs</span>
                     </NavLink>
@@ -39,7 +42,7 @@ function MemberMainNav() {
                 <li>
                     <NavLink
                         href={route("profile.edit")}
-                        active={currentPath === "/update-profile"}
+                        active={currentPath === "/profile"}
                     >
                         <span>Settings</span>
                     </NavLink>
