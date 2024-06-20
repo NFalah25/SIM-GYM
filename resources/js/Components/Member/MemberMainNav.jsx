@@ -8,13 +8,13 @@ function MemberMainNav() {
         <nav>
             <ul className="flex flex-col gap-12">
                 <li>
-                    <NavLink href="/member" active={currentPath === "/member"}>
+                    <NavLink href={route("dashboard")} active={currentPath === "/member"}>
                         <span>Home</span>
                     </NavLink>
                 </li>
                 <li>
                     <NavLink
-                        href="member/program_catalog"
+                        href="/program_catalog"
                         active={currentPath === "/langganan"}
                     >
                         <span>Programs</span>
@@ -22,7 +22,23 @@ function MemberMainNav() {
                 </li>
                 <li>
                     <NavLink
-                        href="/update-profile"
+                        href={route("transaksi.index")}
+                        active={currentPath === "/transaksi"}
+                    >
+                        <span>Histori</span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        href={route("presensi")}
+                        active={currentPath === "/presensi"}
+                    >
+                        <span>Presensi</span>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink
+                        href={route("profile.edit")}
                         active={currentPath === "/update-profile"}
                     >
                         <span>Settings</span>

@@ -24,7 +24,7 @@ function JadwalForm({user, program}) {
                 toast.error("There was an error creating the jadwal");
             },
         });
-    }; 
+    };
 
     return (
         <form onSubmit={submit} method="POST" className="w-full">
@@ -55,7 +55,7 @@ function JadwalForm({user, program}) {
                     <div className="w-full">
                             <Label value="Nama Program" htmlFor="program" />
                             <select
-                                className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-2 p-3 text-white"
+                                className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-3 text-white"
                                 name="program"
                                 id="program"
                                 value={data.program}
@@ -77,7 +77,7 @@ function JadwalForm({user, program}) {
                     <div className="w-full">
                             <Label value="Hari" htmlFor="hari" />
                             <select
-                                className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-2 p-3 text-white"
+                                className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-3 text-white"
                                 name="hari"
                                 id="hari"
                                 value={data.hari}
@@ -86,13 +86,13 @@ function JadwalForm({user, program}) {
                                 }
                             >
                                 <option value="">Pilih Hari</option>
-                                <option value="senin">Senin</option>
-                                <option value="selasa">Selasa</option>
-                                <option value="rabu">Rabu</option>
-                                <option value="kamis">Kamis</option>
-                                <option value="jumat">Jumat</option>
-                                <option value="sabtu">Sabtu</option>
-                                <option value="minggu">Minggu</option>
+                                <option value="Senin">Senin</option>
+                                <option value="Selasa">Selasa</option>
+                                <option value="Rabu">Rabu</option>
+                                <option value="Kamis">Kamis</option>
+                                <option value="Jumat">Jumat</option>
+                                <option value="Sabtu">Sabtu</option>
+                                <option value="Minggu">Minggu</option>
                             </select>
                             {errors.hari && (
                                 <div className="mt-2 text-sm text-red-700">

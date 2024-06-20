@@ -21,9 +21,11 @@ class AddNameUser
         if (Auth::check()) {
             // Ambil nama depan user
             $firstname = Auth::user()->first_name;
+            $role = Auth::user()->role;
 
             // Bagikan nama depan user ke semua views
             Inertia::share('user_name', $firstname);
+            Inertia::share('role', $role);
         }
         return $next($request);
     }
