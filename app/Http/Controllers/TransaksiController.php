@@ -71,7 +71,8 @@ class TransaksiController extends Controller
                 'Nama User' => $item->user->name,
                 'Tanggal Transaksi' => $item->tanggal_transaksi,
                 'Total Harga' => $this->formatCurrency($item->total_harga),
-                'Tipe Transaksi' => $item->status,
+                'status' => $item->status,
+
             ];
         }
 
