@@ -72,6 +72,7 @@ class TransaksiController extends Controller
                 'Tanggal Transaksi' => $item->tanggal_transaksi,
                 'Total Harga' => $this->formatCurrency($item->total_harga),
                 'status' => $item->status,
+
             ];
         }
 
@@ -210,8 +211,6 @@ class TransaksiController extends Controller
             "durasi" => $request->durasi,
         ]);
 
-
-
         // Setup payload untuk dikirim ke Midtrans
         $payload = [
             'transaction_details' => [
@@ -291,7 +290,6 @@ class TransaksiController extends Controller
                         'tanggal_mulai' => $tanggalMulai,
                         'tanggal_akhir' => $tanggalAkhir,
                     ]);
-
                 }
             }
         } catch (\Exception $e) {
