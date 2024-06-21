@@ -16,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
         'jadwal' => ['admin'],
         'langganan' => ['admin'],
         'presensi.profile' => ['trainer'],
+        'presensi.create' => ['trainer'],
         'product.catalog' => ['member'],
 
     ];
@@ -38,6 +39,5 @@ class AppServiceProvider extends ServiceProvider
                 return in_array($user->role, $roles);
             });
         }
-
     }
 }

@@ -71,7 +71,7 @@ function DashboardIndex({
         total_harga: item.total_harga,
     }));
     return (
-        <Dashboard>
+        <Dashboard user={user}>
             <Row
                 orientation="horizontal"
                 className="flex-col gap-4 md:flex-row lg:flex-row"

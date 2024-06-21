@@ -2,7 +2,10 @@ import { usePDF } from "react-to-pdf";
 import Logo from "../Component/Logo";
 import Row from "@/Components/Row";
 import { usePage } from "@inertiajs/react";
+import Row from "@/Components/Row";
+import { usePage } from "@inertiajs/react";
 
+function PrintPDF() {
 function PrintPDF() {
     const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
     const { props } = usePage();
@@ -14,7 +17,9 @@ function PrintPDF() {
             {/* <div> */}
             {/* button auto klik to pdf ketika load */}
             {/* <button onClick={() => toPDF()}>Print to PDF</button> */}
+            {/* <button onClick={() => toPDF()}>Print to PDF</button> */}
 
+            {/*<div ref={targetRef} className="py-8 px-24">
             {/*<div ref={targetRef} className="py-8 px-24">
                 <div className="text-center">
                     <h1 className="text-xl font-bold justify-center">
