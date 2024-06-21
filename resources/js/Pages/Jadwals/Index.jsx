@@ -11,7 +11,7 @@ function JadwalIndex({columns, thead, tbody, basePath, pagination, sort}) {
                 className="flex-col gap-4 md:flex-row lg:flex-row"
             >
                 <h2 className="font-poppins text-2xl font-bold text-slate-100">
-                    Jadwals
+                    All Schedule
                 </h2>
                 <JadwalTableOperation 
                     basePath={basePath}

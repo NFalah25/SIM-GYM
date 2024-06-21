@@ -11,9 +11,9 @@ function EditProfileForm() {
     let genderuser = '';
 
     if (user.gender === "P") {
-        genderuser = "Perempuan"
+        genderuser = "Female"
     } else {
-        genderuser = "Laki-laki"
+        genderuser = "Male"
     }
 
     const { data, setData, put, processing, errors } = useForm({
@@ -109,7 +109,7 @@ function EditProfileForm() {
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div className="flex flex-col gap-4">
                         <div className={"w-full"}>
-                            <Label value={"Nama Awal"} htmlFor={"first_name"} />
+                            <Label value={"First Name"} htmlFor={"first_name"} />
                             <Input
                                 type={"text"}
                                 name={"first_name"}
@@ -126,7 +126,7 @@ function EditProfileForm() {
                             )}
                         </div>
                         <div className={"hidden"}>
-                            <Label value={"Nama Awal"} htmlFor={"first_name"} />
+                            <Label value={"First Name"} htmlFor={"first_name"} />
                             <Input
                                 type={"text"}
                                 name={"id"}
@@ -161,7 +161,7 @@ function EditProfileForm() {
                         </div>
                         <div className={"w-full"}>
                             <Label
-                                value={"Nomor Telepon"}
+                                value={"Phone Number"}
                                 htmlFor={"phone_number"}
                             />
                             <Input
@@ -180,7 +180,7 @@ function EditProfileForm() {
                             )}
                         </div>
                         <div className={"w-full"}>
-                            <Label value={"Tanggal Lahir"} htmlFor={"date"} />
+                            <Label value={"Date of Birth"} htmlFor={"date"} />
                             <Input
                                 type={"date"}
                                 name={"date_of_birth"}
@@ -197,7 +197,7 @@ function EditProfileForm() {
                             )}
                         </div>
                         <div className={"w-full"}>
-                            <Label value={"Tinggi Badan"} htmlFor={"height"} />
+                            <Label value={"Height"} htmlFor={"height"} />
                             <div
                                 className={
                                     "mt-1 flex w-full items-center rounded-md border border-white shadow-sm focus:border-lime-500 focus:ring-lime-500 sm:text-sm"
@@ -233,7 +233,7 @@ function EditProfileForm() {
                     {/* Right column */}
                     <div className="flex flex-col gap-4">
                         <div className="w-full">
-                            <Label value={"Nama Akhir"} htmlFor={"last_name"} />
+                            <Label value={"Last Name"} htmlFor={"last_name"} />
                             <Input
                                 type={"text"}
                                 name={"last_name"}
@@ -267,7 +267,7 @@ function EditProfileForm() {
                             )}
                         </div>
                         <div className={"w-full"}>
-                            <Label value={"Alamat"} htmlFor={"address"} />
+                            <Label value={"Address"} htmlFor={"address"} />
                             <Input
                                 type={"text"}
                                 name={"address"}
@@ -303,7 +303,7 @@ function EditProfileForm() {
                             )}
                         </div>
                         <div className={"w-full"}>
-                            <Label value={"Berat Badan"} htmlFor={"weight"} />
+                            <Label value={"Weight"} htmlFor={"weight"} />
                             <div
                                 className={
                                     "mt-1 flex w-full items-center rounded-md border border-white shadow-sm focus:border-lime-500 focus:ring-lime-500 sm:text-sm"

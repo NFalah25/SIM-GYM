@@ -29,7 +29,7 @@ class ProgramController extends Controller
 
     $program = $query->paginate(10);
 
-    $columns = '1fr 1fr 1fr 1fr 1fr 0.5fr';
+    $columns = '1fr 0.5fr 1fr 1.5fr 0.3fr';
     $basePath = 'program';
     $thead = ['Nama Program', 'Durasi', 'Harga', 'Deskripsi'];
 
