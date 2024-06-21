@@ -4,7 +4,7 @@ import Card from "@/Components/Card";
 
 function DashboardIndex ({user}) {
     return (
-        <Dashboard user={user}>
+        <Dashboard>
             <Row
                 orientation="horizontal"
                 className="flex-col gap-4 md:flex-row lg:flex-row"
