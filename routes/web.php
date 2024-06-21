@@ -27,6 +27,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         } else if(Auth::user()->role === 'member'){
             return app(MemberController::class)->index();
         }else if(Auth::user()->role === 'trainer'){
+
             return app(MemberController::class)->index();
         }
     })->name('dashboard');
@@ -48,6 +49,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('/presensi', [PresensiController::class, 'index'])->name('presensi');
     Route::get('/presensi/{id}/show', [PresensiController::class, 'showProfile'])->name('show.profile')->middleware('can:presensi.profile');
+    Route::get('/presensi/create', [PresensiController::class, 'create'])->name('presensi.create')->middleware('can:presensi.create');
+
     Route::get('/langganan', [LanggananController::class, 'index'])->name('langganan')->middleware('can:langganan');
 
     Route::get('/profile', [UpdateProfileController::class, 'edit'])->name('profile.edit');

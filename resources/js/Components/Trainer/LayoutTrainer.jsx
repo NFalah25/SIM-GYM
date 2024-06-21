@@ -1,12 +1,12 @@
-import Header from "./Component/Header";
-import Sidebar from "./Component/Sidebar";
+import Header from "./Header";
+import TrainerSidebar from "./TrainerSidebar";
 
-export default function Dashboard({ children }) {
+export default function LayoutTrainer({ children }) {
     return (
         <>
-            <div className="flex h-screen w-full bg-slate-900">
+            <div className="flex w-full h-screen bg-slate-950 lg:bg-slate-900">
                 <div className="hidden sm:hidden md:hidden lg:block">
-                    <Sidebar />
+                    <TrainerSidebar />
                 </div>
                 <div className="w-full space-y-10 overflow-scroll">
                     <Header />
