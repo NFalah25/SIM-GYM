@@ -9,7 +9,7 @@ function LanggananIndex({basePath, filter, sort, columns, thead, tbody, paginati
             <Row orientation="horizontal"
                  className="flex-col gap-4 md:flex-row lg:flex-row">
                 <h2 className="font-poppins text-2xl font-bold text-slate-100">
-                    Langganan
+                    Subcriber
                 </h2>
                 <LanggananTableOperation basePath={basePath} filter={filter} sort={sort}/>
             </Row>

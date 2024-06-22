@@ -17,7 +17,7 @@ function PresentasiIndex({tbodyTrainer, theadTrainer, thead, tbody, basePath, co
                 <Dashboard>
                     <Row>
                         <h2 className="text-2xl font-bold font-poppins text-slate-100">
-                            All Presentasi
+                            All Presence
                         </h2>
                     </Row>
                     <Row>

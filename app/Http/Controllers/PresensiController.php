@@ -30,9 +30,9 @@ class PresensiController extends Controller
                 ->paginate('10');
         }
 
-        $thead = ['Nama Member', 'Nama Trainer', 'Nama Program', 'Tanggal', 'Jam'];
+        $thead = ['Member Name', 'Trainer Name', 'Program Name', 'Date', 'Time'];
 
-        $theadTrainer = ['Nama Member', 'Nama Program', 'Tanggal', 'Jam', 'Aksi'];
+        $theadTrainer = ['Member Name', 'Program Name', 'Date', 'Time', 'Action'];
 
         $basePath = 'presensi';
         $columns = '1fr 1fr 1.5fr 1fr 1fr';
