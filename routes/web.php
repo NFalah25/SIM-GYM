@@ -59,5 +59,3 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/program_catalog', [ProgramController::class, 'indexMemberProgramCatalog'])->name('program.catalog')->middleware('can:product.catalog');
     Route::post('/program_catalog/purchase', [TransaksiController::class, 'submitPurchase'])->name('program.purchase');
 });
-
-// Route Dashboard

@@ -38,7 +38,7 @@ function MainNav() {
                     href={route("jadwal.index")}
                     active={currentPath === "/jadwal"}
                 >
-                    <span>Jadwal</span>
+                    <span>Schedule</span>
                 </NavLink>
                 <NavLink href={route("presensi")} active={currentPath === "/presensi"}>
                     <span>Presensi</span>
