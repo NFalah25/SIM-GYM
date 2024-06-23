@@ -24,7 +24,7 @@ class JadwalController extends Controller
 
         $columns = '1fr 1fr 1fr 1fr 1fr 0.5fr';
         $basePath = 'jadwal';
-        $thead = ['Nama Trainer', 'Nama Program', 'Hari', 'Waktu', 'Ruangan'];
+        $thead = ['Trainer', 'Program', 'Day', 'Time', 'Room'];
         $tbody = [];
 
         foreach ($relasiUser as $item) {

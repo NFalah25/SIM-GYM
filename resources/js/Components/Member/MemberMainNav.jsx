@@ -28,7 +28,7 @@ function MemberMainNav() {
                         href={route("transaksi.index")}
                         active={currentPath === "/transaksi"}
                     >
-                        <span>Histori</span>
+                        <span>History</span>
                     </NavLink>
                 </li>
                 <li>
@@ -36,7 +36,7 @@ function MemberMainNav() {
                         href={route("presensi")}
                         active={currentPath === "/presensi"}
                     >
-                        <span>Presensi</span>
+                        <span>Attendance</span>
                     </NavLink>
                 </li>
                 <li>

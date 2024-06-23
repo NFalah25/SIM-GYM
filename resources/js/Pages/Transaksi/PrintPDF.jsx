@@ -6,7 +6,6 @@ import Row from "@/Components/Row";
 import { usePage } from "@inertiajs/react";
 
 function PrintPDF() {
-function PrintPDF() {
     const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
     const { props } = usePage();
     const detail_pembelian = props.detail_pembelian;
