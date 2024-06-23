@@ -8,12 +8,9 @@ function Home({ data }) {
             <LayoutMember>
                 <div className="bg-red-4 flex min-h-[80vh] flex-col items-center justify-center gap-4">
                     <h4 className="w-96 text-center text-lg font-medium italic">
-                        Anda tidak memiliki program aktif, silahkan berlangganan
-                        terlebih dahulu
+                        You don't have any active program, please buy one
                     </h4>
-                    <ButtonNew href="/program_catalog">
-                        Beli program
-                    </ButtonNew>
+                    <ButtonNew href="/program_catalog">Buy Program</ButtonNew>
                 </div>
             </LayoutMember>
         );
