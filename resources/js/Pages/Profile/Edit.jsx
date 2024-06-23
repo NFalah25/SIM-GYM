@@ -28,7 +28,7 @@ function ProfileUpdate() {
                     </Row>
                 </Dashboard>
             }
-            {role === "member" && (
+            {role === "member" || role === 'trainer' && (
                 <LayoutMember>
                     <Row
                         orientation="horizontal"

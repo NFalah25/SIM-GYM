@@ -2,8 +2,9 @@ import Row from "@/Components/Row";
 import CreatePresensiForm from "@/Components/Presensi/CreateForm.jsx";
 import Dashboard from "@/Pages/Dashboard";
 import LayoutTrainer from "@/Components/Trainer/LayoutTrainer";
+import PresensiTable from "@/Components/Presensi/PresensiTable";
 
-function Create() {
+function Create({ basePath, columns, pagination, tbody, thead}) {
     return (
         <LayoutTrainer>
             <Row
@@ -18,7 +19,13 @@ function Create() {
                 orientation="horizontal"
                 className="flex-col gap-4 md:flex-row lg:flex-row"
             >
-                <CreatePresensiForm />
+                <PresensiTable
+                            thead={thead}
+                            tbody={tbody}
+                            basePath={basePath}
+                            columns={columns}
+                            pagination={pagination}
+                        />
             </Row>
         </LayoutTrainer>
     );

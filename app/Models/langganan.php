@@ -24,4 +24,6 @@ class langganan extends Model
     {
         return $this->hasMany(presensi::class, 'id_langganan');
     }
+
+    
 }

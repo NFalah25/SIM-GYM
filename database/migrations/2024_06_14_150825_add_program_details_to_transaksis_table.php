@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('transaksis', function (Blueprint $table) {
-            $table->bigInteger('id_program')->unsigned()->nullable()->after('status');
+            $table->foreignId('id_program')->nullable()->constrained('programs')->after('status');
+            // $table->bigInteger('id_program')->unsigned()->nullable()->after('status');
             $table->string('nama_program')->nullable()->after('id_program');
             $table->integer('durasi')->nullable()->after('nama_program');
         });

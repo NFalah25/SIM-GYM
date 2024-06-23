@@ -58,7 +58,7 @@ function PresentasiIndex({tbodyTrainer, theadTrainer, thead, tbody, basePath, co
                         <TrainerPresensiTableOperation />
                     </Row>
                     <Row>
-                        <PresensiTableTrainer
+                        <PresensiTable
                             thead={theadTrainer}
                             tbody={tbodyTrainer}
                             basePath={basePath}
