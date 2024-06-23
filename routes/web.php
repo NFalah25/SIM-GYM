@@ -49,7 +49,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::get('/presensi', [PresensiController::class, 'index'])->name('presensi');
     Route::get('/presensi/{id}/show', [PresensiController::class, 'showProfile'])->name('show.profile')->middleware('can:presensi.profile');
-    Route::get('/presensi/create', [PresensiController::class, 'create'])->name('presensi.create')->middleware('can:presensi.create');
+    Route::get('/presensi/{id}/create', [PresensiController::class, 'create'])->name('presensi.create')->middleware('can:presensi.create');
+    Route::get('/presensi/{id}/jadwal/{id_jadwal}/langganan/{id_langganan}', [PresensiController::class, 'store'])->name('presensi.store');
 
     Route::get('/langganan', [LanggananController::class, 'index'])->name('langganan')->middleware('can:langganan');
 
@@ -59,5 +60,3 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/program_catalog', [ProgramController::class, 'indexMemberProgramCatalog'])->name('program.catalog')->middleware('can:product.catalog');
     Route::post('/program_catalog/purchase', [TransaksiController::class, 'submitPurchase'])->name('program.purchase');
 });
-
-// Route Dashboard

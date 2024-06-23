@@ -87,7 +87,7 @@ class LanggananController extends Controller
                 'status' => $value->status,
             ];
         }
-        $thead = ['Nama User', 'Program', 'Tanggal Mulai', 'Tanggal Selesai', 'Status'];
+        $thead = ['User Name', 'Program', 'Start Date', 'End Date', 'Status'];
         $basePath = 'langganan';
         $columns = '1fr 1fr 1fr 1fr 1fr';
 

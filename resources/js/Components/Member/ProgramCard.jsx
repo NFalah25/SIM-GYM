@@ -5,7 +5,7 @@ function ProgramCard({ presensi, program }) {
         "Angkat Beban": "/assets/img/exercise-weight.png",
         Yoga: "/assets/img/exercise-yoga.png",
         Zumba: "/assets/img/exercise-zumba.png",
-        Boxing: "/assets/img/exercise-boxing.png",
+        Kardio: "/assets/img/exercise-boxing.png",
     };
 
     return (

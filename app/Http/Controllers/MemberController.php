@@ -40,6 +40,8 @@ class MemberController extends Controller
             ];
         });
 
+        // dd($data);
+
         return Inertia::render('Member/Home', ['data' => $data]);
     }
 }

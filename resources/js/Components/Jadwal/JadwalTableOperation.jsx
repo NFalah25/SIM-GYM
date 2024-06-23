@@ -32,7 +32,7 @@ function JadwalTableOperation({
                 currentSort={sort}
                 onSortChange={handleSortChange}
             />
-            <ButtonNew href="/jadwal/create">Add Jadwal</ButtonNew>
+            <ButtonNew href="/jadwal/create">Add Schedule</ButtonNew>
         </div>
     );
 }

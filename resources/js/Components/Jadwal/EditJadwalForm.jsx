@@ -23,10 +23,10 @@ function EditJadwalForm() {
         e.preventDefault();
         put(route("jadwal.update", jadwal.id), {
             onSuccess: () => {
-                toast.success("Jadwal updated successfully");
+                toast.success("Schedule updated successfully");
             },
             onError: () => {
-                toast.error("There was an error updating the jadwal");
+                toast.error("There was an error updating the schedule");
             },
         });
     }; 
@@ -41,7 +41,7 @@ function EditJadwalForm() {
             <div className="w-full space-y-10 rounded-xl bg-slate-800 p-4 md:p-8 lg:p-10">
             <div className="flex flex-col gap-4">
                     <div className="w-full">
-                        <Label value="Nama Trainer" htmlFor="name" />
+                        <Label value="Select Trainer" htmlFor="name" />
                         <select
                                 className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-3 text-white"
                                 name="name"
@@ -51,7 +51,7 @@ function EditJadwalForm() {
                                     setData("name", e.target.value)
                                 }
                         >
-                            <option value="">Pilih User</option>
+                            <option value="">Trainer</option>
                                 {user.map ((user) => (
                                 <option value={user.id} selected={jadwal.id_user == user.id ? 'selected' : ''}>{user.name}</option>
                                 ))}
@@ -63,7 +63,7 @@ function EditJadwalForm() {
                             )}
                     </div>
                     <div className="w-full">
-                            <Label value="Nama Program" htmlFor="program" />
+                            <Label value="Select Program" htmlFor="program" />
                             <select
                                 className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-2 p-3 text-white"
                                 name="program"
@@ -73,7 +73,7 @@ function EditJadwalForm() {
                                     setData("program", e.target.value)
                                 }
                             >
-                                <option value="">Pilih Program</option>
+                                <option value="">Program</option>
                                 {program.map ((program) => (
                                 <option value={program.id} selected={jadwal.id_program == program.id ? 'selected' : ''}>{program.nama_program}</option>
                                 ))}
@@ -85,7 +85,7 @@ function EditJadwalForm() {
                             )}
                     </div>
                     <div className="w-full">
-                            <Label value="Hari" htmlFor="hari" />
+                            <Label value="Select Hari" htmlFor="hari" />
                             <select
                                 className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-2 p-3 text-white"
                                 name="hari"
@@ -95,14 +95,14 @@ function EditJadwalForm() {
                                     setData("hari", e.target.value)
                                 }
                             >
-                                <option value="">Pilih Hari</option>
-                                <option value="Senin" selected={jadwal.hari == 'Senin' ? 'selected' : ''}>Senin</option>
-                                <option value="Selasa" selected={jadwal.hari == 'Selasa' ? 'selected' : ''}>Selasa</option>
-                                <option value="Rabu" selected={jadwal.hari == 'Rabu' ? 'selected' : ''}>Rabu</option>
-                                <option value="Kamis" selected={jadwal.hari == 'Kamis' ? 'selected' : ''}>Kamis</option>
-                                <option value="Jumat" selected={jadwal.hari == 'Jumat' ? 'selected' : ''}>Jumat</option>
-                                <option value="Sabtu" selected={jadwal.hari == 'Sabtu' ? 'selected' : ''}>Sabtu</option>
-                                <option value="Minggu" selected={jadwal.hari == 'Minggu' ? 'selected' : ''}>Minggu</option>
+                                <option value="">Day</option>
+                                <option value="Monday" selected={jadwal.hari == 'Monday' ? 'selected' : ''}>Monday</option>
+                                <option value="Tuesday" selected={jadwal.hari == 'Tuesday' ? 'selected' : ''}>Tuesday</option>
+                                <option value="Wednesday" selected={jadwal.hari == 'Wednesday' ? 'selected' : ''}>Wednesday</option>
+                                <option value="Thursday" selected={jadwal.hari == 'Thursday' ? 'selected' : ''}>Thursday</option>
+                                <option value="Friday" selected={jadwal.hari == 'Friday' ? 'selected' : ''}>Friday</option>
+                                <option value="Saturday" selected={jadwal.hari == 'Saturday' ? 'selected' : ''}>Saturday</option>
+                                <option value="Sunday" selected={jadwal.hari == 'Sunday' ? 'selected' : ''}>Sunday</option>
                                 
                             </select>
                             {errors.hari && (
@@ -112,7 +112,7 @@ function EditJadwalForm() {
                             )}
                         </div>
                         <div className="w-full">
-                            <Label value="Waktu Mulai" htmlFor="waktu_mulai" />
+                            <Label value="Start Time" htmlFor="waktu_mulai" />
                             <Input
                                 type="time"
                                 name="waktu_mulai"
@@ -125,7 +125,7 @@ function EditJadwalForm() {
                             />
                         </div>
                         <div className="w-full">
-                            <Label value="Waktu Selesai" htmlFor="waktu_selesai" />
+                            <Label value="End Time" htmlFor="waktu_selesai" />
                             <Input
                                 type="time"
                                 name="waktu_selesai"
@@ -138,7 +138,7 @@ function EditJadwalForm() {
                             />
                         </div>
                         <div className="w-full">
-                            <Label value="Ruangan" htmlFor="ruangan" />
+                            <Label value="Room" htmlFor="ruangan" />
                             <Input
                                 type="text"
                                 name="ruangan"
@@ -159,7 +159,7 @@ function EditJadwalForm() {
                             "inline-flex items-center justify-center rounded-md border border-transparent bg-lime-500 px-4 py-2 text-sm font-semibold text-white transition duration-150 ease-in-out hover:bg-lime-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-lime-500 focus-visible:ring-offset-2 disabled:opacity-25"
                         }
                     >
-                        {processing ? "Processing..." : "Simpan"}
+                        {processing ? "Processing..." : "Save"}
                     </button>
                 </div>
             </div>

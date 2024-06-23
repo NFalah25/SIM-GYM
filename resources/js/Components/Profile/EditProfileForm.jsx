@@ -102,7 +102,7 @@ function EditProfileForm() {
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div className="flex flex-col gap-4">
                         <div className={"w-full"}>
-                            <Label value={"Nama Awal"} htmlFor={"first_name"} />
+                            <Label value={"First Name"} htmlFor={"first_name"} />
                             <Input
                                 type={"text"}
                                 name={"first_name"}
@@ -119,7 +119,7 @@ function EditProfileForm() {
                             )}
                         </div>
                         <div className={"hidden"}>
-                            <Label value={"Nama Awal"} htmlFor={"first_name"} />
+                            <Label value={"First Name"} htmlFor={"first_name"} />
                             <Input
                                 type={"text"}
                                 name={"id"}
@@ -154,7 +154,7 @@ function EditProfileForm() {
                         </div>
                         <div className={"w-full"}>
                             <Label
-                                value={"Nomor Telepon"}
+                                value={"Phone Number"}
                                 htmlFor={"phone_number"}
                             />
                             <Input
@@ -173,7 +173,7 @@ function EditProfileForm() {
                             )}
                         </div>
                         <div className={"w-full"}>
-                            <Label value={"Tanggal Lahir"} htmlFor={"date"} />
+                            <Label value={"Date of Birth"} htmlFor={"date"} />
                             <Input
                                 type={"date"}
                                 name={"date_of_birth"}
@@ -190,7 +190,7 @@ function EditProfileForm() {
                             )}
                         </div>
                         <div className={"w-full"}>
-                            <Label value={"Tinggi Badan"} htmlFor={"height"} />
+                            <Label value={"Height"} htmlFor={"height"} />
                             <div
                                 className={
                                     "mt-1 flex w-full items-center rounded-md border border-white shadow-sm focus:border-lime-500 focus:ring-lime-500 sm:text-sm"
@@ -226,7 +226,7 @@ function EditProfileForm() {
                     {/* Right column */}
                     <div className="flex flex-col gap-4">
                         <div className="w-full">
-                            <Label value={"Nama Akhir"} htmlFor={"last_name"} />
+                            <Label value={"Last Name"} htmlFor={"last_name"} />
                             <Input
                                 type={"text"}
                                 name={"last_name"}
@@ -260,7 +260,7 @@ function EditProfileForm() {
                             )}
                         </div>
                         <div className={"w-full"}>
-                            <Label value={"Alamat"} htmlFor={"address"} />
+                            <Label value={"Address"} htmlFor={"address"} />
                             <Input
                                 type={"text"}
                                 name={"address"}
@@ -289,8 +289,8 @@ function EditProfileForm() {
                                     setData("gender", e.target.value)
                                 }
                             >
-                                <option value={"L"}>Laki-Laki</option>
-                                <option value={"P"}>Perempuan</option>
+                                <option value={"L"}>Male</option>
+                                <option value={"P"}>Female</option>
                             </select>
                             {errors.gender && (
                                 <div className={"mt-2 text-sm text-red-700 "}>
@@ -299,7 +299,7 @@ function EditProfileForm() {
                             )}
                         </div>
                         <div className={"w-full"}>
-                            <Label value={"Berat Badan"} htmlFor={"weight"} />
+                            <Label value={"Weight"} htmlFor={"weight"} />
                             <div
                                 className={
                                     "mt-1 flex w-full items-center rounded-md border border-white shadow-sm focus:border-lime-500 focus:ring-lime-500 sm:text-sm"
@@ -341,7 +341,7 @@ function EditProfileForm() {
                             "inline-flex items-center justify-center rounded-md border border-transparent bg-lime-500 px-4 py-2 text-sm font-semibold text-white transition duration-150 ease-in-out hover:bg-lime-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-lime-500 focus-visible:ring-offset-2 disabled:opacity-25"
                         }
                     >
-                        {processing ? "Processing..." : "Simpan"}
+                        {processing ? "Processing..." : "Save"}
                     </button>
                 </div>
             </div>
