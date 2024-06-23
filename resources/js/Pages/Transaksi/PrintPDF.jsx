@@ -2,8 +2,6 @@ import { usePDF } from "react-to-pdf";
 import Logo from "../Component/Logo";
 import Row from "@/Components/Row";
 import { usePage } from "@inertiajs/react";
-import Row from "@/Components/Row";
-import { usePage } from "@inertiajs/react";
 
 function PrintPDF() {
     const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
@@ -16,9 +14,7 @@ function PrintPDF() {
             {/* <div> */}
             {/* button auto klik to pdf ketika load */}
             {/* <button onClick={() => toPDF()}>Print to PDF</button> */}
-            {/* <button onClick={() => toPDF()}>Print to PDF</button> */}
 
-            {/*<div ref={targetRef} className="py-8 px-24">
             {/*<div ref={targetRef} className="py-8 px-24">
                 <div className="text-center">
                     <h1 className="text-xl font-bold justify-center">
@@ -143,7 +139,7 @@ function PrintPDF() {
 
             {/* </div> */}
             <div>
-                <button onClick={() => toPDF()} className="text-white">Cetak Bukti</button>
+                <button onClick={() => toPDF()} className="text-white">Invoice payment</button>
                 <div
                     ref={targetRef}
                     className={
@@ -153,24 +149,24 @@ function PrintPDF() {
                     {detail_pembelian.map((item, index) => (
                         <div className={"mb-6"} key={item.id_program}>
                             <div className={"w-1/2 mb-4 font-bold text-lg"}>
-                                <h3 className={""}>Detail Pembelian</h3>
+                                <h3 className={""}>Purchase Details</h3>
                             </div>
                             <div className={"mb-4"}>
                                 <h4 className={"text-sm font-bold mb-2"}>
-                                    ID Program
+                                    Program ID
                                 </h4>
                                 <p>{item.id_program}</p>
                             </div>
                             <div className={"flex mb-4"}>
                                 <div className={"w-1/2"}>
                                     <h4 className={"text-sm font-bold mb-2"}>
-                                        Nama Program
+                                        Program Name
                                     </h4>
                                     <p>{item.nama_program}</p>
                                 </div>
                                 <div className={"w-1/2"}>
                                     <h4 className={"text-sm font-bold mb-2"}>
-                                        Harga Satuan
+                                        Unit Price
                                     </h4>
                                     <p>{item.harga}</p>
                                 </div>
@@ -178,13 +174,13 @@ function PrintPDF() {
                             <div className={"flex"}>
                                 <div className={"w-1/2"}>
                                     <h4 className={"text-sm font-bold mb-2"}>
-                                        Durasi Program
+                                        Program Duration
                                     </h4>
                                     <p>{item.durasi} Hari</p>
                                 </div>
                                 <div className={"w-1/2"}>
                                     <h4 className={"text-sm font-bold mb-2"}>
-                                        Masa Berlaku
+                                        Validity Period
                                     </h4>
                                     <p>{item.tanggal_mulai}</p>{" "}
                                     <p>{item.tanggal_akhir}</p>
@@ -196,25 +192,25 @@ function PrintPDF() {
                         <div className={"mb-6"} key={item.id_transaksi}>
                             <div className={"w-1/2 mb-4 font-bold text-lg"}>
                                 <h3 className={"text-white "}>
-                                    Detail Pembayaran
+                                    Payment Details
                                 </h3>
                             </div>
                             <div className={"mb-4"}>
                                 <h4 className={"text-sm font-bold mb-2"}>
-                                    ID Transaksi
+                                    Transaction ID
                                 </h4>
                                 <p>TRZ-{item.id_transaksi}</p>
                             </div>
                             <div className={"flex mb-4"}>
                                 <div className={"w-1/2"}>
                                     <h4 className={"text-sm font-bold mb-2"}>
-                                        Nama User
+                                        User Name
                                     </h4>
                                     <p>{item.nama_user}</p>
                                 </div>
                                 <div className={"w-1/2"}>
                                     <h4 className={"text-sm font-bold mb-2"}>
-                                        Tanggal Transaksi
+                                        Transaction Date
                                     </h4>
                                     <p>{item.tanggal_transaksi}</p>
                                 </div>
@@ -222,13 +218,13 @@ function PrintPDF() {
                             <div className={"flex mb-4"}>
                                 <div className={"w-1/2"}>
                                     <h4 className={"text-sm font-bold mb-2"}>
-                                        Alamat
+                                        Address
                                     </h4>
                                     <p>{item.alamat}</p>
                                 </div>
                                 <div className={"w-1/2"}>
                                     <h4 className={"text-sm font-bold mb-2"}>
-                                        Status Transaksi
+                                        Transaction Status
                                     </h4>
                                     <p>{item.status}</p>
                                 </div>
@@ -239,7 +235,7 @@ function PrintPDF() {
                                         "text-xl font-bold mb-2 "
                                     }
                                 >
-                                    Total Harga
+                                    Total Price
                                 </h4>
                                 <p
                                     className={

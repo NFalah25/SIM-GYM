@@ -48,7 +48,7 @@ function TransaksiIndex({
                 <Dashboard>
                     <Row orientation="horizontal">
                         <h2 className="font-poppins text-2xl font-bold text-slate-100">
-                            All Transaksi
+                            All Transactions
                         </h2>
                     </Row>
                     <Row>
@@ -58,11 +58,11 @@ function TransaksiIndex({
                             className="p-4 border-b border-gray-600 bg-slate-700 text-slate-300 rounded-md"
                         >
                             <div className="text-lg mb-4">
-                                <h2>Filter Laporan</h2>
+                                <h2>Filter Report</h2>
                             </div>
                             <div className="md:flex">
                                 <div className="md:w-2/5 md:pe-4">
-                                    <Label value="Mulai Tanggal" />
+                                    <Label value="Start Date" />
                                     <Input
                                         type="date"
                                         value={data.mulai_tanggal}
@@ -77,7 +77,7 @@ function TransaksiIndex({
                                     />
                                 </div>
                                 <div className="md:w-2/5 md:ps-4 md:pe-2">
-                                    <Label value="Sampai Tanggal" />
+                                    <Label value="End Date" />
                                     <Input
                                         type="date"
                                         value={data.sampai_tanggal}
@@ -125,7 +125,7 @@ function TransaksiIndex({
                 <LayoutMember>
                     <Row orientation="horizontal">
                         <h2 className="font-poppins text-2xl font-bold text-slate-100">
-                            All Transaksi
+                            All Transactions
                         </h2>
                     </Row>
                     <Row>
@@ -135,11 +135,11 @@ function TransaksiIndex({
                             className="p-4 border-b border-gray-600 bg-slate-700 text-slate-300 rounded-md"
                         >
                             <div className="text-lg mb-4">
-                                <h2>Filter Laporan</h2>
+                                <h2>Filter Report</h2>
                             </div>
                             <div className="md:flex">
                                 <div className="md:w-2/5 md:pe-4">
-                                    <Label value="Mulai Tanggal" />
+                                    <Label value="Start Date" />
                                     <Input
                                         type="date"
                                         value={data.mulai_tanggal}
@@ -154,7 +154,7 @@ function TransaksiIndex({
                                     />
                                 </div>
                                 <div className="md:w-2/5 md:ps-4 md:pe-2">
-                                    <Label value="Sampai Tanggal" />
+                                    <Label value="End Date" />
                                     <Input
                                         type="date"
                                         value={data.sampai_tanggal}
