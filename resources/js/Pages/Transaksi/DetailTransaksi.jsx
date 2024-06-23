@@ -21,7 +21,7 @@ function DetailTransaksi() {
                         className="flex-col gap-4 md:flex-row lg:flex-row"
                     >
                         <h2 className="font-poppins text-2xl font-bold text-slate-100">
-                            Detail Transaksi
+                            Transaction Details
                         </h2>
                         <DetailTransaksiTableOperation />
                     </Row>
@@ -159,7 +159,7 @@ function DetailTransaksi() {
                         className="flex-col gap-4 md:flex-row lg:flex-row"
                     >
                         <h2 className="font-poppins text-2xl font-bold text-slate-100">
-                            Detail Transaksi
+                            Transaction Details
                         </h2>
                         <DetailTransaksiTableOperation />
                     </Row>
@@ -172,12 +172,12 @@ function DetailTransaksi() {
                             <div className={"mb-6"}>
                                 <div className={"w-1/2 mb-4 font-bold text-lg"}>
                                     <h3 className={"text-white "}>
-                                        Detail Pembelian
+                                        Transaction Details
                                     </h3>
                                 </div>
                                 <div className={"mb-4"}>
                                     <h4 className={"text-sm font-bold mb-2"}>
-                                        ID Program
+                                    Program ID
                                     </h4>
                                     <p>{item.id_program}</p>
                                 </div>
@@ -186,7 +186,7 @@ function DetailTransaksi() {
                                         <h4
                                             className={"text-sm font-bold mb-2"}
                                         >
-                                            Nama Program
+                                            Program Name
                                         </h4>
                                         <p>{item.nama_program}</p>
                                     </div>
@@ -194,7 +194,7 @@ function DetailTransaksi() {
                                         <h4
                                             className={"text-sm font-bold mb-2"}
                                         >
-                                            Harga Satuan
+                                            Unit price
                                         </h4>
                                         <p>{item.harga}</p>
                                     </div>
@@ -204,15 +204,15 @@ function DetailTransaksi() {
                                         <h4
                                             className={"text-sm font-bold mb-2"}
                                         >
-                                            Durasi Program
+                                            Program Duration
                                         </h4>
-                                        <p>{item.durasi} Hari</p>
+                                        <p>{item.durasi} Day</p>
                                     </div>
                                     <div className={"w-1/2"}>
                                         <h4
                                             className={"text-sm font-bold mb-2"}
                                         >
-                                            Masa Berlaku
+                                            Validity period
                                         </h4>
                                         <p>{item.tanggal_mulai}</p>{" "}
                                         <p>{item.tanggal_akhir}</p>
@@ -224,12 +224,12 @@ function DetailTransaksi() {
                             <div className={"mb-6"}>
                                 <div className={"w-1/2 mb-4 font-bold text-lg"}>
                                     <h3 className={"text-white "}>
-                                        Detail Pembayaran
+                                    Payment Details
                                     </h3>
                                 </div>
                                 <div className={"mb-4"}>
                                     <h4 className={"text-sm font-bold mb-2"}>
-                                        ID Transaksi
+                                    Transaction ID
                                     </h4>
                                     <p>TRZ-{item.id_transaksi}</p>
                                 </div>
@@ -238,7 +238,7 @@ function DetailTransaksi() {
                                         <h4
                                             className={"text-sm font-bold mb-2"}
                                         >
-                                            Nama User
+                                            User Name
                                         </h4>
                                         <p>{item.nama_user}</p>
                                     </div>
@@ -246,7 +246,7 @@ function DetailTransaksi() {
                                         <h4
                                             className={"text-sm font-bold mb-2"}
                                         >
-                                            Tanggal Transaksi
+                                            Transaction date
                                         </h4>
                                         <p>{item.tanggal_transaksi}</p>
                                     </div>
@@ -256,7 +256,7 @@ function DetailTransaksi() {
                                         <h4
                                             className={"text-sm font-bold mb-2"}
                                         >
-                                            Alamat
+                                            Address
                                         </h4>
                                         <p>{item.alamat}</p>
                                     </div>
@@ -264,7 +264,7 @@ function DetailTransaksi() {
                                         <h4
                                             className={"text-sm font-bold mb-2"}
                                         >
-                                            Status Transaksi
+                                           Transaction Status
                                         </h4>
                                         <p>{item.status}</p>
                                     </div>
@@ -275,7 +275,7 @@ function DetailTransaksi() {
                                             "text-xl font-bold mb-2 text-lime-500"
                                         }
                                     >
-                                        Total Harga
+                                        Total price
                                     </h4>
                                     <p
                                         className={

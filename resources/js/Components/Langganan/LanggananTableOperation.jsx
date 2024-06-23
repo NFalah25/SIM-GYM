@@ -27,8 +27,8 @@ function LanggananTableOperation({
             <Filter
                 options={[
                     { value: "all", label: "All" },
-                    { value: "active", label: "Aktif" },
-                    { value: "expired", label: "Tidak Aktif" },
+                    { value: "active", label: "Active" },
+                    { value: "expired", label: "Expired" },
                 ]}
                 currentFilter={filter}
                 onFilterChange={handleFilterChange}

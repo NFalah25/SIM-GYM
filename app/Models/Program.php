@@ -20,4 +20,9 @@ class Program extends Model
     {
         return $this->hasMany(detail_transaksi::class, 'id_program');
     }
+
+    public function transaksi()
+    {
+        return $this->hasMany(transaksi::class, 'id_program');
+    }
 }

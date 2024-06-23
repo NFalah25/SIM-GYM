@@ -24,4 +24,9 @@ class transaksi extends Model
     {
         return $this->hasMany(detail_transaksi::class, 'id_transaksi');
     }
+
+    public function program(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(program::class, 'id_program');
+    }
 }
