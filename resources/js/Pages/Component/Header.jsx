@@ -5,6 +5,11 @@ import Logo from "./Logo";
 export default function Header() {
     const { props } = usePage();
     const { user_name } = props;
+    const { auth } = props;
+
+    const imgUrl = auth.user.foto
+        ? `/storage/${auth.user.foto}`
+        : "/assets/profile_photo/default_photo_profile.jpg";
 
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [dropdownNavigationVisible, setDropdownNavigationVisible] =
@@ -58,7 +63,7 @@ export default function Header() {
                                 {user_name || "bejo"}
                             </h6>
                             <img
-                                src="https://ui-avatars.com/api/?name=John+Doe&background=random&color=fff"
+                                src={imgUrl}
                                 alt="profile"
                                 className="h-8 w-8 rounded-full"
                             />
@@ -118,7 +123,7 @@ export default function Header() {
                                     href={route("langganan")}
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
-                                    Langganan
+                                    Subscription
                                 </Link>
                                 <Link
                                     href={route("users.index")}
@@ -136,19 +141,19 @@ export default function Header() {
                                     href={route("transaksi.index")}
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
-                                    Transaksi
+                                    Transaction
                                 </Link>
                                 <Link
                                     href={route("jadwal.index")}
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
-                                    Jadwal
+                                    Schedule
                                 </Link>
                                 <Link
                                     href={route("presensi")}
                                     className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                                 >
-                                    Presensi
+                                    Attandace
                                 </Link>
                             </div>
                         )}
