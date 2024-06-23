@@ -6,6 +6,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -30,7 +31,7 @@ class UserController extends Controller
         $users = $query->paginate(10);
         $columns = '1fr 1.5fr 1fr 1fr 1fr 0.5fr';
         $basePath = 'users';
-        $thead = ['Nama User', 'Email', 'Role', 'Phone Number', 'Address'];
+        $thead = ['Username', 'Email', 'Role', 'Phone Number', 'Address'];
 
         $tbody = $users->items();
 
@@ -103,10 +104,10 @@ class UserController extends Controller
         ]);
     }
 
-    // Method for updating user details
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
+
 
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -124,16 +125,15 @@ class UserController extends Controller
             'role' => 'required|string|in:admin,user,member',
         ]);
 
-
-        // simpan avatar ke public storage dan simpan path-nya ke database
         $avatarPath = $user->foto;
+
         if ($request->hasFile('foto')) {
-            // Hapus file avatar lama jika ada
+            // Delete old avatar file if exists
             if ($user->foto && Storage::disk('public')->exists($user->foto)) {
                 Storage::disk('public')->delete($user->foto);
             }
 
-            // Simpan file avatar baru
+            // Store new avatar file
             $avatarPath = $request->file('foto')->store('assets/profile_photo', 'public');
         }
 

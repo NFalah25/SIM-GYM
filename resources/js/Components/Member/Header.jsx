@@ -92,13 +92,13 @@ export default function Header() {
                                 href={route("transaksi.index")}
                                 className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                             >
-                                Histori
+                                History
                             </Link>
                             <Link
                                 href={route("presensi")}
                                 className="rounded-md px-3 py-2 text-sm text-slate-100 hover:bg-slate-800"
                             >
-                                Presensi
+                                Attendance
                             </Link>
                             <Link
                                 href={route("profile.edit")}

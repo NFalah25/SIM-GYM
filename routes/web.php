@@ -24,9 +24,9 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', function () {
         if (Auth::user()->role === 'admin') {
             return app(DashboardController::class)->index();
-        } else if(Auth::user()->role === 'member'){
+        } else if (Auth::user()->role === 'member') {
             return app(MemberController::class)->index();
-        }else if(Auth::user()->role === 'trainer'){
+        } else if (Auth::user()->role === 'trainer') {
 
             return app(MemberController::class)->index();
         }
@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     // Route users
     Route::resource('users', UserController::class)->middleware('can:users');
-
+    Route::post('/users/{id}/update', [UserController::class, 'update'])->name('users.updates');
     //Route program
     Route::resource('program', ProgramController::class)->middleware('can:program');
 
@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/langganan', [LanggananController::class, 'index'])->name('langganan')->middleware('can:langganan');
 
     Route::get('/profile', [UpdateProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile', [UpdateProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [UpdateProfileController::class, 'update'])->name('profile.update');
 
     Route::get('/program_catalog', [ProgramController::class, 'indexMemberProgramCatalog'])->name('program.catalog')->middleware('can:product.catalog');
     Route::post('/program_catalog/purchase', [TransaksiController::class, 'submitPurchase'])->name('program.purchase');
