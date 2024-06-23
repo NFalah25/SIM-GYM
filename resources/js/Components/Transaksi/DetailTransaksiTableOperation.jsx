@@ -11,7 +11,7 @@ function DetailTransaksiTableOperation() {
 
     return (
         <div className="flex items-center gap-7">
-            <Button type="add-data" target={`/cetakPdf/${detail_pembayaran[0].id_transaksi}`}>Cetak Transaksi</Button>
+            <Button type="add-data" target={`/cetakPdf/${detail_pembayaran[0].id_transaksi}`}>Print Transaction</Button>
         </div>
     );
 }

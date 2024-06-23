@@ -76,7 +76,7 @@ class TransaksiController extends Controller
             ];
         }
 
-        $thead = ['Nama User', 'Tanggal Transaksi', 'Total Harga', 'Tipe Transaksi'];
+        $thead = ['User Name', 'Transaction Date', 'Total Price', 'Transaction Type'];
 
         return Inertia::render('Transaksi/Index', [
             'thead' => $thead,
