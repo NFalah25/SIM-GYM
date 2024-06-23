@@ -185,7 +185,6 @@ class TransaksiController extends Controller
             ];
         }
 
-
         return Inertia::render('Transaksi/DetailTransaksi', [
             'detail_pembelian' => $detail_pembelian,
             'detail_pembayaran' => $detail_pembayaran,
@@ -216,6 +215,12 @@ class TransaksiController extends Controller
             "id_program" => $request->id_program,
             "nama_program" => $request->nama_program,
             "durasi" => $request->durasi,
+        ]);
+
+        detail_transaksi::create([
+            'id_transaksi' => $transaksi->id,
+            'id_program' => $request->id_program,
+            'harga' => $request->total_harga,
         ]);
 
         // Setup payload untuk dikirim ke Midtrans
