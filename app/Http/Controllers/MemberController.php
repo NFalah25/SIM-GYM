@@ -33,14 +33,23 @@ class MemberController extends Controller
             ->get();
 
         $data = $langganans->map(function ($langganan) use ($today) {
+            $trainerName = 'N/A';
+
+            foreach ($langganan->transaksi->jadwals as $jadwal) {
+                if ($jadwal->user) {
+                    $trainerName = $jadwal->user->name;
+                    break;
+                }
+            }
+
             return [
                 'id' => $langganan->id,
                 'program' => $langganan->transaksi->nama_program,
+                'trainer' => $trainerName,
                 'presensi' => $this->getTodayPresensiStatus($langganan->id),
             ];
         });
 
-        // dd($data);
 
         return Inertia::render('Member/Home', ['data' => $data]);
     }

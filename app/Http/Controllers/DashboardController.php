@@ -48,7 +48,7 @@ class DashboardController extends Controller
             "userCount" => $countUser,
             "programCount" => $countProgram,
             "langgananCount" => $countLanggananActive,
-            "transactionAmount" => $transactionAmount,
+            "transactionAmount" => $this->formatCurrency($transactionAmount),
             "monthlyRevenue" => $formattedMonthlyRevenue,
             "activeCustomersPerMonth" => $activeCustomersPerMonth
         ]);
@@ -74,5 +74,9 @@ class DashboardController extends Controller
         }
 
         return $data;
+    }
+    private function formatCurrency($value)
+    {
+        return 'Rp ' . number_format($value, 0, ',', '.');
     }
 }
