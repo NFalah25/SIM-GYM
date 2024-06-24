@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\jadwal;
 use App\Models\Langganan;
 use App\Models\Presensi;
 use Carbon\Carbon;
@@ -31,25 +32,40 @@ class MemberController extends Controller
             ->where('id_user', $userId)
             ->where('tanggal_akhir', '>=', $today)
             ->get();
+        // dd($langganans);
 
-        $data = $langganans->map(function ($langganan) use ($today) {
-            $trainerName = 'N/A';
+        if (Auth::user()->role == 'member') {
+            $data = $langganans->map(function ($langganan) use ($today) {
+                $trainerName = 'N/A';
 
-            foreach ($langganan->transaksi->jadwals as $jadwal) {
-                if ($jadwal->user) {
-                    $trainerName = $jadwal->user->name;
-                    break;
+                foreach ($langganan->transaksi->jadwals as $jadwal) {
+                    if ($jadwal->user) {
+                        $trainerName = $jadwal->user->name;
+                        break;
+                    }
                 }
-            }
+                return [
+                    'id' => $langganan->id,
+                    'program' => $langganan->transaksi->nama_program,
+                    'trainer' => $trainerName,
+                    'presensi' => $this->getTodayPresensiStatus($langganan->id),
+                ];
+            });
+        }
+        $jadwal = jadwal::with('program')->where('id_user', Auth::user()->id)->get();
 
-            return [
-                'id' => $langganan->id,
-                'program' => $langganan->transaksi->nama_program,
-                'trainer' => $trainerName,
-                'presensi' => $this->getTodayPresensiStatus($langganan->id),
-            ];
-        });
-
+        if (Auth::user()->role == 'trainer') {
+            $data = $jadwal->map(function ($jadwal) use ($today) {
+                return [
+                    'id' => $jadwal->id,
+                    'program' => $jadwal->program->nama_program,
+                    'waktu' => Carbon::parse($jadwal->waktu_mulai)->format('H.i'),
+                    'hari' => $jadwal->hari,
+                    'ruangan' => $jadwal->nama_ruangan,
+                    'hari_ini' => Carbon::now()->format('l'),
+                ];
+            });
+        }
 
         return Inertia::render('Member/Home', ['data' => $data]);
     }
