@@ -5,7 +5,6 @@ import PresensiTableTrainer from "@/Components/Presensi/PresensiTableTrainer.jsx
 import { usePage } from "@inertiajs/react";
 import LayoutMember from "@/Components/Member/LayoutMember";
 import LayoutTrainer from "@/Components/Trainer/LayoutTrainer";
-import TrainerPresensiTableOperation from '@/Components/Presensi/TrainerPresensiTableOperation';
 
 function PresentasiIndex({tbodyTrainer, theadTrainer, thead, tbody, basePath, columns, pagination }) {
     const { props } = usePage();
@@ -35,7 +34,7 @@ function PresentasiIndex({tbodyTrainer, theadTrainer, thead, tbody, basePath, co
                 <LayoutMember>
                     <Row>
                         <h2 className="text-2xl font-bold font-poppins text-slate-100">
-                            All Presentasi
+                            All Presence
                         </h2>
                     </Row>
                     <Row>
@@ -53,9 +52,8 @@ function PresentasiIndex({tbodyTrainer, theadTrainer, thead, tbody, basePath, co
                 <LayoutTrainer>
                     <Row orientation="horizontal" className="flex-col gap-4 md:flex-row lg:flex-row">
                         <h2 className="text-2xl font-bold font-poppins text-slate-100">
-                            Presensi Program {props.user_name}
+                            {props.user_name} Program Presence
                         </h2>
-                        <TrainerPresensiTableOperation />
                     </Row>
                     <Row>
                         <PresensiTable
