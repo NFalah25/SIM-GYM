@@ -26,7 +26,7 @@ function UserTableOperation() {
                     },
                 ]}
             />
-            <Button type="add-data" target={'/cetakPdf'}>Cetak Transaksi</Button>
+            <Button type="add-data" target={'/cetakPdf'}>Print Transaction</Button>
         </div>
     );
 }

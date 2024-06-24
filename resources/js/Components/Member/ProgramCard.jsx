@@ -1,6 +1,6 @@
 import React from "react";
 
-function ProgramCard({ presensi, program }) {
+function ProgramCard({ presensi, program, trainer }) {
     const iconProgram = {
         "Angkat Beban": "/assets/img/exercise-weight.png",
         Yoga: "/assets/img/exercise-yoga.png",
@@ -17,14 +17,14 @@ function ProgramCard({ presensi, program }) {
             </div>
             <div className="ml-2">
                 <h5 className="text-xl font-bold text-slate-100">{program}</h5>
-                <p>Tanpa personal trainer</p>
+                <p>{trainer}</p>
                 {presensi ? (
                     <p className="text-sm text-red-500">
-                        Anda sudah melakukan presensi hari ini
+                        You already made an attendance on this day
                     </p>
                 ) : (
                     <p className="text-sm text-lime-500">
-                        Anda belum melakukan presensi hari ini
+                        You haven't made an attendance on this day
                     </p>
                 )}
             </div>

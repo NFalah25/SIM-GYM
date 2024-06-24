@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\detail_transaksi;
 use App\Models\langganan;
 use App\Models\transaksi;
-use Barryvdh\DomPDF\PDF;
+// use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -13,6 +13,8 @@ use Midtrans\Config;
 use Midtrans\Snap;
 use Midtrans\Notification;
 use Illuminate\Support\Facades\Validator;
+
+use PDF;
 
 class TransaksiController extends Controller
 {
@@ -76,7 +78,7 @@ class TransaksiController extends Controller
             ];
         }
 
-        $thead = ['Nama User', 'Tanggal Transaksi', 'Total Harga', 'Tipe Transaksi'];
+        $thead = ['User Name', 'Transaction Date', 'Total Price', 'Transaction Type'];
 
         return Inertia::render('Transaksi/Index', [
             'thead' => $thead,
@@ -142,10 +144,15 @@ class TransaksiController extends Controller
         }
 
 
-        return Inertia::render('Transaksi/PrintPDF', [
-            'detail_pembelian' => $detail_pembelian,
-            'detail_pembayaran' => $detail_pembayaran,
-        ]);
+        // return Inertia::render('Transaksi/PrintPDF', [
+        //     'detail_pembelian' => $detail_pembelian,
+        //     'detail_pembayaran' => $detail_pembayaran,
+        // ]);
+        // dom pdf
+        $pdf = PDF::loadView('Invoice');
+        //return render
+        return $pdf->stream('invoice.pdf');
+
     }
     public function detail_transaksi($id)
     {
@@ -178,7 +185,6 @@ class TransaksiController extends Controller
             ];
         }
 
-
         return Inertia::render('Transaksi/DetailTransaksi', [
             'detail_pembelian' => $detail_pembelian,
             'detail_pembayaran' => $detail_pembayaran,
@@ -209,6 +215,12 @@ class TransaksiController extends Controller
             "id_program" => $request->id_program,
             "nama_program" => $request->nama_program,
             "durasi" => $request->durasi,
+        ]);
+
+        detail_transaksi::create([
+            'id_transaksi' => $transaksi->id,
+            'id_program' => $request->id_program,
+            'harga' => $request->total_harga,
         ]);
 
         // Setup payload untuk dikirim ke Midtrans
