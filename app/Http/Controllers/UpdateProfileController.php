@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
@@ -37,6 +38,7 @@ class UpdateProfileController extends Controller
             'gender' => 'required|string|in:L,P',
             'date_of_birth' => 'required|date',
             'foto' => 'nullable|image|max:2048',
+            'password' => 'nullable|string|min:8|confirmed'
         ]);
 
 
@@ -49,7 +51,7 @@ class UpdateProfileController extends Controller
             }
 
             // Simpan file avatar baru
-            $avatarPath = $request->file('avatar')->store('assets/profile_photo', 'public');
+            $avatarPath = $request->file('foto')->store('assets/profile_photo', 'public');
         }
 
         $user->update([
@@ -64,9 +66,10 @@ class UpdateProfileController extends Controller
             'gender' => $validated['gender'],
             'date_of_birth' => $validated['date_of_birth'],
             'foto' => $avatarPath,
+            'password' => $validated['password'] ? Hash::make($validated['password']) : $user->password,
+
         ]);
 
-        return redirect()->route('profile.update')->with('success', 'User updated successfully');
+        return redirect()->route('profile.edit')->with('success', 'User updated successfully');
     }
-
 }

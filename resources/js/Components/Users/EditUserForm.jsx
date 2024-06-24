@@ -9,7 +9,7 @@ function EditUserForm() {
     const { props } = usePage();
     const user = props.user;
 
-    const { data, setData, put, processing, errors } = useForm({
+    const { data, setData, post, processing, errors } = useForm({
         email: user.email || "",
         name: user.name || "",
         password: "",
@@ -24,7 +24,6 @@ function EditUserForm() {
         role: user.role || "",
         date_of_birth: user.date_of_birth || "",
         foto: null,
-        remember: false,
     });
 
     const [photoPreview, setPhotoPreview] = useState(
@@ -33,9 +32,11 @@ function EditUserForm() {
             : "/assets/profile_photo/default_photo_profile.jpg",
     );
 
-    function submit(e) {
+    const submit = (e) => {
         e.preventDefault();
-        put(route("users.update", user.id), {
+        post(route("users.updates", user.id), {
+            // Gunakan post() untuk metode POST
+            _method: "put", // Method spoofing untuk Laravel
             onSuccess: () => {
                 toast.success("User updated successfully");
             },
@@ -43,7 +44,7 @@ function EditUserForm() {
                 toast.error("There was an error updating the user");
             },
         });
-    }
+    };
 
     const handlePhotoChange = (e) => {
         const file = e.target.files[0];
@@ -60,11 +61,12 @@ function EditUserForm() {
     return (
         <form
             onSubmit={submit}
-            method="POST"
+            method="POST" // Gunakan method POST untuk form submission
             className="w-full"
             encType="multipart/form-data"
         >
-            <input type="hidden" name="_method" value="PUT" />
+            <input type="hidden" name="_method" value="POST" />
+            {/* Method spoofing untuk Laravel */}
             <div className="w-full space-y-10 rounded-xl bg-slate-800 p-4 md:p-8 lg:p-10">
                 <div className="w-full">
                     <div className="flex flex-col items-center gap-5">
@@ -90,7 +92,7 @@ function EditUserForm() {
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div className="flex flex-col gap-4">
                         <div className="w-full">
-                            <Label value="Nama Awal" htmlFor="first_name" />
+                            <Label value="First Name" htmlFor="first_name" />
                             <Input
                                 type="text"
                                 name="first_name"
@@ -130,7 +132,7 @@ function EditUserForm() {
                         </div>
                         <div className="w-full">
                             <Label
-                                value="Nomor Telepon"
+                                value="Phone Number"
                                 htmlFor="phone_number"
                             />
                             <Input
@@ -146,7 +148,7 @@ function EditUserForm() {
                         </div>
                         <div className="w-full">
                             <Label
-                                value="Tanggal Lahir"
+                                value="Date of Birth"
                                 htmlFor="date_of_birth"
                             />
                             <Input
@@ -161,7 +163,7 @@ function EditUserForm() {
                             />
                         </div>
                         <div className="w-full">
-                            <Label value="Tinggi Badan (cm)" htmlFor="height" />
+                            <Label value="Height (cm)" htmlFor="height" />
                             <Input
                                 type="number"
                                 name="height"
@@ -171,13 +173,12 @@ function EditUserForm() {
                                     setData("height", e.target.value)
                                 }
                                 error={errors.height}
-                                className="relative flex items-center"
                             />
                         </div>
                     </div>
                     <div className="flex flex-col gap-4">
                         <div className="w-full">
-                            <Label value="Nama Akhir" htmlFor="last_name" />
+                            <Label value="Last Name" htmlFor="last_name" />
                             <Input
                                 type="text"
                                 name="last_name"
@@ -204,7 +205,7 @@ function EditUserForm() {
                         </div>
                         <div className="w-full">
                             <Label
-                                value="Konfirmasi Password"
+                                value="Confirm Password"
                                 htmlFor="password_confirmation"
                             />
                             <Input
@@ -222,7 +223,7 @@ function EditUserForm() {
                             />
                         </div>
                         <div className="w-full">
-                            <Label value="Alamat" htmlFor="address" />
+                            <Label value="Address" htmlFor="address" />
                             <Input
                                 type="text"
                                 name="address"
@@ -235,7 +236,7 @@ function EditUserForm() {
                             />
                         </div>
                         <div className="w-full">
-                            <Label value="Jenis Kelamin" htmlFor="gender" />
+                            <Label value="Gender" htmlFor="gender" />
                             <select
                                 className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-3 text-white"
                                 name="gender"
@@ -245,9 +246,9 @@ function EditUserForm() {
                                     setData("gender", e.target.value)
                                 }
                             >
-                                <option value="">Pilih Jenis Kelamin</option>
-                                <option value="L">Laki-Laki</option>
-                                <option value="P">Perempuan</option>
+                                <option value="">Choose Gender</option>
+                                <option value="L">Male</option>
+                                <option value="P">Female</option>
                             </select>
                             {errors.gender && (
                                 <div className="mt-2 text-sm text-red-700">
@@ -256,7 +257,7 @@ function EditUserForm() {
                             )}
                         </div>
                         <div className="w-full">
-                            <Label value="Berat Badan (Kg)" htmlFor="weight" />
+                            <Label value="Weight (Kg)" htmlFor="weight" />
                             <Input
                                 type="number"
                                 name="weight"
@@ -266,7 +267,6 @@ function EditUserForm() {
                                     setData("weight", e.target.value)
                                 }
                                 error={errors.weight}
-                                className="relative flex items-center"
                             />
                         </div>
                         <div className="w-full">
@@ -280,7 +280,7 @@ function EditUserForm() {
                                     setData("role", e.target.value)
                                 }
                             >
-                                <option value="">Pilih Role</option>
+                                <option value="">Choose Role</option>
                                 <option value="admin">Admin</option>
                                 <option value="user">User</option>
                                 <option value="member">Member</option>
@@ -295,12 +295,11 @@ function EditUserForm() {
                 </div>
                 <div className="flex justify-end">
                     <ButtonNew type="submit" size="large" disabled={processing}>
-                        {processing ? "Processing..." : "Simpan"}
+                        {processing ? "Processing..." : "Save Changes"}
                     </ButtonNew>
                 </div>
             </div>
         </form>
     );
 }
-
 export default EditUserForm;

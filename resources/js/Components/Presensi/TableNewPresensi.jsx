@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
-import { useForm } from "@inertiajs/react";
+import { useForm, usePage } from "@inertiajs/react";
 import ButtonNew from "@/Components/ButtonNew.jsx";
 import ConfirmModal from "@/Components/ConfirmModal.jsx";
 
@@ -67,6 +67,9 @@ function Body({ tbody, basePath }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedId, setSelectedId] = useState(null);
 
+    const {props} = usePage();
+    const role = props.role;
+
     const handleDelete = (id) => {
         setSelectedId(id);
         setIsModalOpen(true);
@@ -92,12 +95,44 @@ function Body({ tbody, basePath }) {
                 {tbody.map((item, index) => (
                     <Row key={index}>
                         {Object.entries(item)
-                            .filter(([key]) => key !== "id")
+                            .filter(
+                                ([key]) =>
+                                    key !== "id" &&
+                                    key !== "id_langganan" &&
+                                    key !== "id_jadwal" &&
+                                    key !== "presens",
+                            )
                             .map(([key, value], index) => (
                                 <p className="truncate px-2" key={index}>
                                     {value}
                                 </p>
                             ))}
+                        {basePath === "presensi/create" && role === "trainer" && (
+                            <div className="flex flex-col items-center md:flex-col lg:flex-row justify-around">
+                                {item.presens === false && (
+                                    <ButtonNew
+                                        href={`/presensi/${item.id}/jadwal/${item.id_jadwal}/langganan/${item.id_langganan}`}
+                                    >
+                                        Presense
+                                    </ButtonNew>
+                                )}
+                                <ButtonNew
+                                    variant={"secondary"}
+                                    href={route("show.profile", item.id)}
+                                >
+                                    Show Profile
+                                </ButtonNew>
+                            </div>
+                        )}
+                        {basePath === "presensi" && role=== "trainer" && (
+                            <div className="flex flex-col items-center md:flex-col lg:flex-row justify-around">
+                                <ButtonNew
+                                    href={route("presensi.create", item.id)}
+                                >
+                                    Presense
+                                </ButtonNew>
+                            </div>
+                        )}
                     </Row>
                 ))}
             </div>

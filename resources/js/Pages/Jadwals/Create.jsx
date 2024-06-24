@@ -10,7 +10,7 @@ function JadwalCreate({user, program}) {
                 className="flex-col gap-4 md:flex-row lg:flex-row"
             >
                 <h2 className="font-poppins text-2xl font-bold text-slate-100">
-                    Create Jadwal
+                    Create Schedule
                 </h2>
             </Row>
             <Row

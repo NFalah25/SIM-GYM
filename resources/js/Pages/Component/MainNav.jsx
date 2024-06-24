@@ -17,7 +17,7 @@ function MainNav() {
                     href={route("langganan")}
                     active={currentPath === "/langganan"}
                 >
-                    <span>Langganan</span>
+                    <span>Subscription</span>
                 </NavLink>
                 <NavLink
                     href={route("users.index")}
@@ -31,17 +31,20 @@ function MainNav() {
                 >
                     <span>Program</span>
                 </NavLink>
-                <NavLink href={route('transaksi.index')}>
-                    <span>Transaksi</span>
+                <NavLink href={route("transaksi.index")}>
+                    <span>Transaction</span>
                 </NavLink>
                 <NavLink
                     href={route("jadwal.index")}
                     active={currentPath === "/jadwal"}
                 >
-                    <span>Jadwal</span>
+                    <span>Schedule</span>
                 </NavLink>
-                <NavLink href={route("presensi")} active={currentPath === "/presensi"}>
-                    <span>Presensi</span>
+                <NavLink
+                    href={route("presensi")}
+                    active={currentPath === "/presensi"}
+                >
+                    <span>Attandance</span>
                 </NavLink>
             </ul>
         </nav>

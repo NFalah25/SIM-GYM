@@ -18,10 +18,10 @@ function JadwalForm({user, program}) {
         e.preventDefault();
         post("/jadwal", {
             onSuccess: () => {
-                toast.success("Jadwal created successfully");
+                toast.success("Schedule created successfully");
             },
             onError: () => {
-                toast.error("There was an error creating the jadwal");
+                toast.error("There was an error creating the schedule");
             },
         });
     };
@@ -31,7 +31,7 @@ function JadwalForm({user, program}) {
             <div className="w-full space-y-10 rounded-xl bg-slate-800 p-4 md:p-8 lg:p-10">
                 <div className="flex flex-col gap-4">
                     <div className="w-full">
-                        <Label value="Nama Trainer" htmlFor="name" />
+                        <Label value="Select Trainer" htmlFor="name" />
                         <select
                                 className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-3 text-white"
                                 name="name"
@@ -41,7 +41,7 @@ function JadwalForm({user, program}) {
                                     setData("name", e.target.value)
                                 }
                         >
-                            <option value="">Pilih Trainer</option>
+                            <option value="">Trainer</option>
                             {user.map ((user) => (
                                 <option value={user.id}>{user.name}</option>
                             ))}
@@ -53,7 +53,7 @@ function JadwalForm({user, program}) {
                             )}
                     </div>
                     <div className="w-full">
-                            <Label value="Nama Program" htmlFor="program" />
+                            <Label value="Select Program" htmlFor="program" />
                             <select
                                 className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-3 text-white"
                                 name="program"
@@ -63,7 +63,7 @@ function JadwalForm({user, program}) {
                                     setData("program", e.target.value)
                                 }
                             >
-                                <option value="">Pilih Program</option>
+                                <option value="">Program</option>
                                     {program.map ((program) => (
                                 <option value={program.id}>{program.nama_program}</option>
                                 ))}
@@ -75,7 +75,7 @@ function JadwalForm({user, program}) {
                             )}
                     </div>
                     <div className="w-full">
-                            <Label value="Hari" htmlFor="hari" />
+                            <Label value="Select Day" htmlFor="hari" />
                             <select
                                 className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-3 text-white"
                                 name="hari"
@@ -85,14 +85,14 @@ function JadwalForm({user, program}) {
                                     setData("hari", e.target.value)
                                 }
                             >
-                                <option value="">Pilih Hari</option>
-                                <option value="Senin">Senin</option>
-                                <option value="Selasa">Selasa</option>
-                                <option value="Rabu">Rabu</option>
-                                <option value="Kamis">Kamis</option>
-                                <option value="Jumat">Jumat</option>
-                                <option value="Sabtu">Sabtu</option>
-                                <option value="Minggu">Minggu</option>
+                                <option value="">Day</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
                             </select>
                             {errors.hari && (
                                 <div className="mt-2 text-sm text-red-700">
@@ -101,7 +101,7 @@ function JadwalForm({user, program}) {
                             )}
                         </div>
                         <div className="w-full">
-                            <Label value="Waktu Mulai" htmlFor="waktu_mulai" />
+                            <Label value="Start Time" htmlFor="waktu_mulai" />
                             <Input
                                 type="time"
                                 name="waktu_mulai"
@@ -114,7 +114,7 @@ function JadwalForm({user, program}) {
                             />
                         </div>
                         <div className="w-full">
-                            <Label value="Waktu Selesai" htmlFor="waktu_selesai" />
+                            <Label value="End Time" htmlFor="waktu_selesai" />
                             <Input
                                 type="time"
                                 name="waktu_selesai"
@@ -127,7 +127,7 @@ function JadwalForm({user, program}) {
                             />
                         </div>
                         <div className="w-full">
-                            <Label value="Ruangan" htmlFor="ruangan" />
+                            <Label value="Room" htmlFor="ruangan" />
                             <Input
                                 type="text"
                                 name="ruangan"
@@ -142,7 +142,7 @@ function JadwalForm({user, program}) {
             </div>
                 <div className="flex justify-end">
                     <ButtonNew type="submit" size="large" disabled={processing}>
-                        {processing ? "Processing..." : "Create Jadwal"}
+                        {processing ? "Processing..." : "Create Schedule"}
                     </ButtonNew>
                 </div>
             </div>
