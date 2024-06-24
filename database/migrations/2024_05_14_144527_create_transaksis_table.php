@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamp('tanggal_transaksi')->nullable();
             $table->integer('total_harga')->nullable();
             $table->string('status')->nullable();
+            $table->string('payment_type')->nullable();
         });
     }
 

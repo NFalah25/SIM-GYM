@@ -32,7 +32,6 @@ class MemberController extends Controller
             ->where('id_user', $userId)
             ->where('tanggal_akhir', '>=', $today)
             ->get();
-        // dd($langganans);
 
         if (Auth::user()->role == 'member') {
             $data = $langganans->map(function ($langganan) use ($today) {
