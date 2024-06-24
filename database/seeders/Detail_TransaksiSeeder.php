@@ -18,11 +18,26 @@ class Detail_TransaksiSeeder extends Seeder
             'id_program' => 1,
             'jumlah' => 10000,
         ]);
-
         detail_transaksi::create([
             'id_transaksi' => 2,
-            'id_program' => 2,
+            'id_program' => 1,
             'jumlah' => 10000,
         ]);
+        detail_transaksi::create([
+            'id_transaksi' => 3,
+            'id_program' => 1,
+            'jumlah' => 10000,
+        ]);
+        detail_transaksi::create([
+            'id_transaksi' => 4,
+            'id_program' => 1,
+            'jumlah' => 10000,
+        ]);
+        detail_transaksi::create([
+            'id_transaksi' => 5,
+            'id_program' => 1,
+            'jumlah' => 10000,
+        ]);
+
     }
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { usePage } from "@inertiajs/react";
 
 
-function ProgramCard({ presensi, program, hari, waktu, ruangan, hariIni }) {
+function ProgramCard({ presensi, program, hari, waktu, ruangan, hariIni, trainer }) {
     const { props } = usePage();
     const role = props.role;
     const iconProgram = {

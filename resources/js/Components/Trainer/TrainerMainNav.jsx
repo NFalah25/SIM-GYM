@@ -12,6 +12,7 @@ function TrainerMainNav() {
                         <span>Home</span>
                     </NavLink>
                 </li>
+                {}
                 <li>
                     <NavLink
                         href="/program_catalog"

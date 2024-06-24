@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\transaksi;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class TransaksiSeeder extends Seeder
 {
@@ -14,26 +15,60 @@ class TransaksiSeeder extends Seeder
     public function run(): void
     {
         transaksi::create([
-            'id_user' => 2,
-            'tanggal_transaksi' => '2024-05-14 12:49:23',
-            'total_harga' => 10000,
-            'status' => 'Paid',
-        ]);
-
-        transaksi::create([
+            'snap_token' => Str::random(10),
             'id_user' => 3,
-            'tanggal_transaksi' => '2024-05-14 12:49:23',
+            'tanggal_transaksi' => now(),
             'total_harga' => 10000,
             'status' => 'Paid',
+            'id_program' => 1,
+            'nama_program' => 'Angkat Beban',
+            'durasi' => 1,
+            'payment_type' => 'Qris'
         ]);
-
         transaksi::create([
-            'id_user' => 5,
-            'tanggal_transaksi' => '2024-05-20 12:49:23',
+            'snap_token' => Str::random(10),
+            'id_user' => 4,
+            'tanggal_transaksi' => now(),
             'total_harga' => 10000,
             'status' => 'Paid',
+            'id_program' => 1,
+            'nama_program' => 'Angkat Beban',
+            'durasi' => 1,
+            'payment_type' => 'Qris'
         ]);
+        transaksi::create([
+            'snap_token' => Str::random(10),
+            'id_user' => 5,
+            'tanggal_transaksi' => now(),
+            'total_harga' => 10000,
+            'status' => 'Paid',
+            'id_program' => 1,
+            'nama_program' => 'Angkat Beban',
+            'durasi' => 1,
+            'payment_type' => 'Qris'
 
-
+        ]);
+        transaksi::create([
+            'snap_token' => Str::random(10),
+            'id_user' => 6,
+            'tanggal_transaksi' => now(),
+            'total_harga' => 10000,
+            'status' => 'Paid',
+            'id_program' => 1,
+            'nama_program' => 'Angkat Beban',
+            'durasi' => 1,
+            'payment_type' => 'Qris'
+        ]);
+        transaksi::create([
+            'snap_token' => Str::random(10),
+            'id_user' => 7,
+            'tanggal_transaksi' => now(),
+            'total_harga' => 10000,
+            'status' => 'Paid',
+            'id_program' => 1,
+            'nama_program' => 'Angkat Beban',
+            'durasi' => 1,
+            'payment_type' => 'Qris'
+        ]);
     }
 }

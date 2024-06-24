@@ -186,6 +186,6 @@ class PresensiController extends Controller
             'waktu_presensi'=>now(),
         ]);
 
-        return redirect()->route('presensi');
+        return redirect()->route('presensi.create', $id_jadwal)->with('success', 'Presensi created successfully');
     }
 }
