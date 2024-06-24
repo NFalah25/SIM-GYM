@@ -91,9 +91,8 @@ class TransaksiController extends Controller
             }
         }
 
-
         if (Auth::user()->role === 'admin') {
-            $thead = ['Nama User', 'Tanggal Transaksi', 'Total Harga', 'Tipe Transaksi'];
+            $thead = ['User Name', 'Transaction Date', 'Total Price', 'Transaction Type'];
         } else {
             $thead = ['Nama Program', 'Tanggal Transaksi', 'Total Harga', 'Tipe Transaksi'];
         }

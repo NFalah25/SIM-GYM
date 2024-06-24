@@ -29,4 +29,8 @@ class transaksi extends Model
     {
         return $this->belongsTo(program::class, 'id_program');
     }
+    public function jadwals()
+    {
+        return $this->hasMany(Jadwal::class, 'id_program', 'id_program');
+    }
 }

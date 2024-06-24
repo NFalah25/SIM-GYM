@@ -80,7 +80,7 @@ function UserForm() {
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div className="flex flex-col gap-4">
                         <div className="w-full">
-                            <Label value="Nama Awal" htmlFor="first_name" />
+                            <Label value="First Name" htmlFor="first_name" />
                             <Input
                                 type="text"
                                 name="first_name"
@@ -120,7 +120,7 @@ function UserForm() {
                         </div>
                         <div className="w-full">
                             <Label
-                                value="Nomor Telepon"
+                                value="Phone Number"
                                 htmlFor="phone_number"
                             />
                             <Input
@@ -136,7 +136,7 @@ function UserForm() {
                         </div>
                         <div className="w-full">
                             <Label
-                                value="Tanggal Lahir"
+                                value="Date of Birth"
                                 htmlFor="date_of_birth"
                             />
                             <Input
@@ -151,7 +151,7 @@ function UserForm() {
                             />
                         </div>
                         <div className="w-full">
-                            <Label value="Tinggi Badan (cm)" htmlFor="height" />
+                            <Label value="Height (cm)" htmlFor="height" />
                             <Input
                                 type="number"
                                 name="height"
@@ -161,14 +161,13 @@ function UserForm() {
                                     setData("height", e.target.value)
                                 }
                                 error={errors.height}
-                                className="relative flex items-center"
                             />
                         </div>
                     </div>
                     {/* Batas tengah */}
                     <div className="flex flex-col gap-4">
                         <div className="w-full">
-                            <Label value="Nama Akhir" htmlFor="last_name" />
+                            <Label value="Last Name" htmlFor="last_name" />
                             <Input
                                 type="text"
                                 name="last_name"
@@ -195,7 +194,7 @@ function UserForm() {
                         </div>
                         <div className="w-full">
                             <Label
-                                value="Konfirmasi Password"
+                                value="Confirm Password"
                                 htmlFor="password_confirmation"
                             />
                             <Input
@@ -213,7 +212,7 @@ function UserForm() {
                             />
                         </div>
                         <div className="w-full">
-                            <Label value="Alamat" htmlFor="address" />
+                            <Label value="Address" htmlFor="address" />
                             <Input
                                 type="text"
                                 name="address"
@@ -226,7 +225,7 @@ function UserForm() {
                             />
                         </div>
                         <div className="w-full">
-                            <Label value="Jenis Kelamin" htmlFor="gender" />
+                            <Label value="Gender" htmlFor="gender" />
                             <select
                                 className="mt-1 w-full rounded-md border-slate-300 bg-[#020617] p-3 text-white"
                                 name="gender"
@@ -236,9 +235,9 @@ function UserForm() {
                                     setData("gender", e.target.value)
                                 }
                             >
-                                <option value="">Pilih Jenis Kelamin</option>
-                                <option value="L">Laki-Laki</option>
-                                <option value="P">Perempuan</option>
+                                <option value="">Choose Gender</option>
+                                <option value="L">Male</option>
+                                <option value="P">Female</option>
                             </select>
                             {errors.gender && (
                                 <div className="mt-2 text-sm text-red-700">
@@ -247,7 +246,7 @@ function UserForm() {
                             )}
                         </div>
                         <div className="w-full">
-                            <Label value="Berat Badan (Kg)" htmlFor="weight" />
+                            <Label value="Weight (Kg)" htmlFor="weight" />
                             <Input
                                 type="number"
                                 name="weight"
@@ -257,7 +256,6 @@ function UserForm() {
                                     setData("weight", e.target.value)
                                 }
                                 error={errors.weight}
-                                className="relative flex items-center"
                             />
                         </div>
                         <div className="w-full">
@@ -271,7 +269,7 @@ function UserForm() {
                                     setData("role", e.target.value)
                                 }
                             >
-                                <option value="">Pilih Role</option>
+                                <option value="">Choose Role</option>
                                 <option value="admin">Admin</option>
                                 <option value="user">User</option>
                                 <option value="member">Member</option>
