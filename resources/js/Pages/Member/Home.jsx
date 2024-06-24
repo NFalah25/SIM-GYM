@@ -28,6 +28,7 @@ function Home({ data }) {
                         key={item.id}
                         program={item.program}
                         presensi={item.presensi}
+                        trainer={item.trainer}
                     />
                 ))}
             </div>

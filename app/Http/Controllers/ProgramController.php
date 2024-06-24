@@ -38,7 +38,7 @@ class ProgramController extends Controller
         'id' => $item->id,
         'nama_program' => $item->nama_program,
         'durasi' => $item->durasi,
-        'harga' => $item->harga,
+        'harga' => $this->formatCurrency($item->harga),
         'deskripsi' => $item->deskripsi,
       ];
     });
@@ -123,5 +123,9 @@ class ProgramController extends Controller
     return Inertia::render('ProgramCatalog/Index', [
       'programs' => $programs,
     ]);
+  }
+  private function formatCurrency($value)
+  {
+    return 'Rp ' . number_format($value, 0, ',', '.');
   }
 }
