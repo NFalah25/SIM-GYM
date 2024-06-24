@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\detail_transaksi;
 use App\Models\langganan;
 use App\Models\transaksi;
+use Carbon\Carbon;
 // use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,41 +46,57 @@ class TransaksiController extends Controller
         //ambil relasi user dari transaksi
         //        $transaksi = transaksi::with('user')->get();
 
-        if(auth()-> user()->role === 'member'){
-        if ($tanggal_mulai && $tanggal_selesai) {
-            $transaksi = transaksi::with('user')
-                ->where('id_user',auth()->user()->id)
-                ->whereBetween('tanggal_transaksi', [$tanggal_mulai, $tanggal_selesai])
-                ->paginate(10);
-        } else {
-            $transaksi = transaksi::with('user')->where('id_user',auth()->user()->id)->paginate(10);
-        }
-        } else{
+        if (auth()->user()->role === 'member') {
             if ($tanggal_mulai && $tanggal_selesai) {
-                $transaksi = transaksi::with('user')
+                $transaksi = transaksi::with('user', 'program')
+                    ->where('id_user', auth()->user()->id)
                     ->whereBetween('tanggal_transaksi', [$tanggal_mulai, $tanggal_selesai])
                     ->paginate(10);
             } else {
-                $transaksi = transaksi::with('user')->paginate(10);
-
+                $transaksi = transaksi::with('user', 'program')->where('id_user', auth()->user()->id)->paginate(10);
+            }
+        } else {
+            if ($tanggal_mulai && $tanggal_selesai) {
+                $transaksi = transaksi::with('user', 'program')
+                    ->whereBetween('tanggal_transaksi', [$tanggal_mulai, $tanggal_selesai])
+                    ->paginate(10);
+            } else {
+                $transaksi = transaksi::with('user', 'program')->paginate(10);
             }
         }
 
         $tbody = [];
+        // dd($transaksi);
 
-        foreach ($transaksi as $item) {
-            $tbody[] = [
-                'id' => $item->id,
-                'Nama User' => $item->user->name,
-                'Tanggal Transaksi' => $item->tanggal_transaksi,
-                'Total Harga' => $this->formatCurrency($item->total_harga),
-                'status' => $item->status,
+        if (Auth::user()->role === 'admin') {
+            foreach ($transaksi as $item) {
+                $tbody[] = [
+                    'id' => $item->id,
+                    'nama_user' => $item->user->name,
+                    'Tanggal Transaksi' => $item->tanggal_transaksi,
+                    'Total Harga' => $this->formatCurrency($item->total_harga),
+                    'status' => $item->status,
 
-            ];
+                ];
+            }
+        } else {
+            foreach ($transaksi as $item) {
+                $tbody[] = [
+                    'id' => $item->id,
+                    'nama_program' => $item->program->nama_program,
+                    'Tanggal Transaksi' => $item->tanggal_transaksi,
+                    'Total Harga' => $this->formatCurrency($item->total_harga),
+                    'status' => $item->status,
+                ];
+            }
         }
 
-        $thead = ['Nama User', 'Tanggal Transaksi', 'Total Harga', 'Tipe Transaksi'];
 
+        if (Auth::user()->role === 'admin') {
+            $thead = ['Nama User', 'Tanggal Transaksi', 'Total Harga', 'Tipe Transaksi'];
+        } else {
+            $thead = ['Nama Program', 'Tanggal Transaksi', 'Total Harga', 'Tipe Transaksi'];
+        }
         return Inertia::render('Transaksi/Index', [
             'thead' => $thead,
             'tbody' => $tbody,
@@ -114,21 +131,30 @@ class TransaksiController extends Controller
         //     ];
         // }
 
-        $detail = detail_transaksi::with('transaksi', 'program', 'transaksi.user', 'transaksi.langganan')->where('id', $id)->get();
+        $detail = detail_transaksi::with('transaksi', 'program', 'transaksi.user', 'transaksi.langganan')->where('id_transaksi', $id)->get();
 
         $detail_pembelian = [];
         foreach ($detail as $item) {
             $id_transaksi = $item->id_transaksi;
             $langganan = $item->transaksi->langganan->firstWhere('id_transaksi', $id_transaksi);
+            if ($item->transaksi->status == 'Paid') {
+                $lunas = 'Lunas';
+            } else {
+                $lunas = 'Belum Lunas';
+            }
             $detail_pembelian[] = [
                 'id_program' => 'P-' . $item->program->id,
                 'nama_program' => $item->program->nama_program,
                 'harga' => $this->formatCurrency($item->transaksi->total_harga),
                 'durasi' => $item->program->durasi,
-                'tanggal_mulai' => $langganan->tanggal_mulai,
-                'tanggal_akhir' => $langganan->tanggal_akhir,
+                'tanggal_mulai' => Carbon::parse($langganan->tanggal_mulai)->format('j F Y'),
+                'tanggal_akhir' => Carbon::parse($langganan->tanggal_akhir)->format('j F Y'),
+                'payment_type' => $item->transaksi->payment_type,
+                'status' => $lunas,
             ];
         }
+
+        // dd($detail_pembelian);
 
 
         $detail_pembayaran = [];
@@ -143,20 +169,36 @@ class TransaksiController extends Controller
             ];
         }
 
+        // dd($detail_pembelian, $detail_pembayaran);
+
+
 
         // return Inertia::render('Transaksi/PrintPDF', [
         //     'detail_pembelian' => $detail_pembelian,
         //     'detail_pembayaran' => $detail_pembayaran,
         // ]);
         // dom pdf
-        $pdf = PDF::loadView('Invoice');
+        $pdf = PDF::loadView('Invoice', [
+            'detail_pembelian' => $detail_pembelian,
+            'detail_pembayaran' => $detail_pembayaran,
+        ]);
         //return render
         return $pdf->stream('invoice.pdf');
-
     }
     public function detail_transaksi($id)
     {
-        $detail = detail_transaksi::with('transaksi', 'program', 'transaksi.user', 'transaksi.langganan')->where('id', $id)->get();
+        $transaksi = transaksi::with('user')->where('id', $id)->first();
+
+        if (detail_transaksi::where('id_transaksi', $id)->doesntExist()) {
+
+            detail_transaksi::create([
+                'id_transaksi' => $id,
+                'id_program' => $transaksi->id_program,
+                'jumlah' => $transaksi->total_harga,
+            ]);
+        }
+        $detail = detail_transaksi::with('transaksi', 'program', 'transaksi.user', 'transaksi.langganan')->where('id_transaksi', $id)->get();
+        // dd($detail);
 
         $detail_pembelian = [];
         foreach ($detail as $item) {
@@ -217,12 +259,6 @@ class TransaksiController extends Controller
             "durasi" => $request->durasi,
         ]);
 
-        detail_transaksi::create([
-            'id_transaksi' => $transaksi->id,
-            'id_program' => $request->id_program,
-            'harga' => $request->total_harga,
-        ]);
-
         // Setup payload untuk dikirim ke Midtrans
         $payload = [
             'transaction_details' => [
@@ -238,6 +274,8 @@ class TransaksiController extends Controller
             // Sesuaikan dengan data pelanggan jika diperlukan
         ];
 
+        // detail pembayaran
+
         try {
             // Dapatkan Snap Token dari Midtrans
             $snapToken = Snap::getSnapToken($payload);
@@ -245,6 +283,7 @@ class TransaksiController extends Controller
             // Simpan Snap Token ke dalam transaksi
             $transaksi->snap_token = $snapToken;
             $transaksi->save();
+
 
             return response()->json([
                 'status' => 'success',
@@ -289,6 +328,8 @@ class TransaksiController extends Controller
                     $transaksi->status = 'Cancel';
                 }
 
+                $transaksi->payment_type = $notification->payment_type;
+
                 // Simpan perubahan ke database
                 $transaksi->save();
 
@@ -301,6 +342,7 @@ class TransaksiController extends Controller
                         'id_transaksi' => $transaksi->id,
                         'tanggal_mulai' => $tanggalMulai,
                         'tanggal_akhir' => $tanggalAkhir,
+
                     ]);
                 }
             }
