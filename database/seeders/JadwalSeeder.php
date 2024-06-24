@@ -15,8 +15,8 @@ class JadwalSeeder extends Seeder
     {
         jadwal::create([
             'id_user' => 9,
-            'id_program' => 2,
-            'hari' => 'Senin',
+            'id_program' => 1,
+            'hari' => 'Monday',
             'waktu_mulai' => '11:00:00',
             'waktu_selesai' => '13:00:00',
             'nama_ruangan' => 'Aula 1',
@@ -24,8 +24,8 @@ class JadwalSeeder extends Seeder
 
         jadwal::create([
             'id_user' => 9,
-            'id_program'=> 2,
-            'hari' => 'Selasa',
+            'id_program'=> 1,
+            'hari' => 'Tuesday',
             'waktu_mulai' => '11:00:00',
             'waktu_selesai' => '13:00:00',
             'nama_ruangan' => 'Aula 2',
@@ -33,8 +33,8 @@ class JadwalSeeder extends Seeder
 
         jadwal::create([
             'id_user' => 9,
-            'id_program' => 1,
-            'hari' => 'Rabu',
+            'id_program' => 2,
+            'hari' => 'Wednesday',
             'waktu_mulai' => '11:00:00',
             'waktu_selesai' => '13:00:00',
             'nama_ruangan' => 'Aula 3',
@@ -42,8 +42,16 @@ class JadwalSeeder extends Seeder
 
         jadwal::create([
             'id_user' => 9,
-            'id_program' => 1,
-            'hari' => 'Kamis',
+            'id_program' => 3,
+            'hari' => 'Thursday',
+            'waktu_mulai' => '11:00:00',
+            'waktu_selesai' => '13:00:00',
+            'nama_ruangan' => 'Aula 4',
+        ]);
+        jadwal::create([
+            'id_user' => 9,
+            'id_program' => 4,
+            'hari' => 'Friday',
             'waktu_mulai' => '11:00:00',
             'waktu_selesai' => '13:00:00',
             'nama_ruangan' => 'Aula 4',

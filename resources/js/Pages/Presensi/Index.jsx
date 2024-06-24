@@ -50,7 +50,7 @@ function PresentasiIndex({tbodyTrainer, theadTrainer, thead, tbody, basePath, co
                 </LayoutMember>
             )}
             {role === "trainer" && (
-                <LayoutTrainer>
+                <LayoutMember>
                     <Row orientation="horizontal" className="flex-col gap-4 md:flex-row lg:flex-row">
                         <h2 className="text-2xl font-bold font-poppins text-slate-100">
                             Presensi Program {props.user_name}
@@ -66,7 +66,7 @@ function PresentasiIndex({tbodyTrainer, theadTrainer, thead, tbody, basePath, co
                             pagination={pagination}
                         />
                     </Row>
-                </LayoutTrainer>
+                </LayoutMember>
             )}
         </>
     );

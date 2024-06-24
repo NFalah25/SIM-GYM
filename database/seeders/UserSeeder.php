@@ -47,7 +47,7 @@ class UserSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'Naufal1',
+            'name' => 'Naufal',
             'email' => 'falahnaufal1@gmail.com',
             'password' => Hash::make('password'),
             'role' => 'member',
@@ -62,7 +62,7 @@ class UserSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'Fitrah2',
+            'name' => 'Fitrah',
             'email' => 'fitrah@gmail.com',
             'password' => Hash::make('password'),
             'role' => 'member',
@@ -77,7 +77,7 @@ class UserSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'Rifqi3',
+            'name' => 'Rifqi',
             'email' => 'rifqi@mail.com',
             'password' => Hash::make('test12345'),
             'role' => 'member',
@@ -92,7 +92,7 @@ class UserSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'name' => 'Sriwana4',
+            'name' => 'Sriwana',
             'email' => 'sriwana@gmail.com',
             'password' => Hash::make('password'),
             'role' => 'member',

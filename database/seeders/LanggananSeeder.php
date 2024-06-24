@@ -14,23 +14,35 @@ class LanggananSeeder extends Seeder
     public function run(): void
     {
         langganan::create([
-            'id_user' => 2,
+            'id_user' => 3,
             'id_transaksi' => 1,
-            'tanggal_mulai' => '2024-05-14 12:49:23',
-            'tanggal_akhir' => '2024-06-14 12:49:23',
+            'tanggal_mulai' => now(),
+            'tanggal_akhir' => now()->addDays(1),
         ]);
 
         langganan::create([
-            'id_user' => 3,
+            'id_user' => 4,
             'id_transaksi' => 2,
-            'tanggal_mulai' => '2024-05-14 12:49:23',
-            'tanggal_akhir' => '2024-07-14 12:49:23',
+            'tanggal_mulai' => now(),
+            'tanggal_akhir' => now()->addDays(1),
         ]);
         langganan::create([
-            'id_user' => 3,
-            'id_transaksi' => 2,
-            'tanggal_mulai' => '2024-05-14 12:49:23',
-            'tanggal_akhir' => '2024-06-20 12:49:23',
+            'id_user' => 5,
+            'id_transaksi' => 3,
+            'tanggal_mulai' => now(),
+            'tanggal_akhir' => now()->addDays(1),
+        ]);
+        langganan::create([
+            'id_user' => 6,
+            'id_transaksi' => 4,
+            'tanggal_mulai' => now(),
+            'tanggal_akhir' => now()->addDays(1),
+        ]);
+        langganan::create([
+            'id_user' => 7,
+            'id_transaksi' => 5,
+            'tanggal_mulai' => now(),
+            'tanggal_akhir' => now()->addDays(1),
         ]);
 
     }

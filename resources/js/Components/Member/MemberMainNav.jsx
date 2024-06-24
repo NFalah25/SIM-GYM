@@ -1,6 +1,10 @@
 import NavLink from "@/Components/NavLink";
+import { usePage } from "@inertiajs/react";
 
 function MemberMainNav() {
+    const { props } = usePage();
+    const role = props.role;
+
     const currentPath = window.location.pathname;
     console.log(currentPath);
 
@@ -15,6 +19,7 @@ function MemberMainNav() {
                         <span>Home</span>
                     </NavLink>
                 </li>
+                {role === "member" && (
                 <li>
                     <NavLink
                         href="/program_catalog"
@@ -23,6 +28,8 @@ function MemberMainNav() {
                         <span>Programs</span>
                     </NavLink>
                 </li>
+                )}
+                {role === "member" && (
                 <li>
                     <NavLink
                         href={route("transaksi.index")}
@@ -31,6 +38,7 @@ function MemberMainNav() {
                         <span>History</span>
                     </NavLink>
                 </li>
+                )}
                 <li>
                     <NavLink
                         href={route("presensi")}
