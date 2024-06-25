@@ -14,7 +14,6 @@ use Midtrans\Config;
 use Midtrans\Snap;
 use Midtrans\Notification;
 use Illuminate\Support\Facades\Validator;
-
 use PDF;
 
 class TransaksiController extends Controller
@@ -351,5 +350,13 @@ class TransaksiController extends Controller
         }
 
         return response()->json(['status' => 'success']);
+    }
+
+    public function destroy($id)
+    {
+        $transaksi = transaksi::findOrFail($id);
+        $transaksi->delete();
+
+        return redirect()->route('transaksi.index')->with('success', 'Transaksi deleted successfully');
     }
 }

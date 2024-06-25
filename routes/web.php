@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index')->middleware('can:transaksi');
     Route::get('/cetakPdf/{id}', [TransaksiController::class, 'cetak_pdf'])->name('transaksi.cetak_pdf')->middleware('can:transaksi');
     Route::get('/transaksi/{id}/detail', [TransaksiController::class, 'detail_transaksi'])->name('transaksi.detail')->middleware('can:transaksi');
+    Route::delete('/transaksi/{id}/delete', [TransaksiController::class, 'destroy'])->name('transaksi.destroy')->middleware('can:transaksi');
 
 
     Route::get('/presensi', [PresensiController::class, 'index'])->name('presensi');
